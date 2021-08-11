@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<context:component-scan base-package="kr.co.mlec" />
+    <mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
+	</mvc:view-resolvers>
+	
+	<mvc:view-controller path="/member/login.do" view-name="member/login"/>
+	<mvc:view-controller path="/member/signup.do" view-name="member/signup"/>
+	<mvc:view-controller path="/signal/exchange.do" view-name="signal/exchange"/>
+	<mvc:view-controller path="/signal/rate.do" view-name="signal/rate"/>
+	<mvc:view-controller path="/signal/oil.do" view-name="signal/oil"/>
+	<mvc:view-controller path="/signal/commodity.do" view-name="signal/commodity"/>
+	<mvc:view-controller path="/signal/metal.do" view-name="signal/metal"/>
+	<mvc:view-controller path="/signal/market.do" view-name="signal/market"/>
+
+</beans>
