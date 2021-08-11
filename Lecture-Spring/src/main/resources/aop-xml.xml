@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop" 
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/aop
+	   					   http://www.springframework.org/schema/aop/spring-aop.xsd ">
+
+	<bean class="aop.xml.Programmer" id="programmer" />
+	<bean class="aop.xml.Designer" id="designer" />
+	<bean class="aop.xml.MyAspect" id="myAspect" />
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* aop.xml.*.work())" id="pointcut01"/>
+		<aop:aspect ref="myAspect">
+			<aop:before method="gotoOffice" pointcut-ref="pointcut01" />
+			<aop:after method="getoffOffice" pointcut-ref="pointcut01" />
+			
+			<!-- <aop:before method="gotoOffice" pointcut="execution(* aop.xml.*.work())" />
+			<aop:after method="getoffOffice" pointcut="execution(* aop.xml.*.work())" /> 
+			이렇게 일일이 지정해줄 수도 있고 위처럼 한번에 위에 지정해놓고 ref로 불러서 사용할 수도 있다. 위에가 당연히 
+			더 효율적이겠지?-->
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

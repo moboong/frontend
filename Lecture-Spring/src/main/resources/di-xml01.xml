@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   					   
+	<bean class="di.xml01.Car" id="car" />
+	<bean class="di.xml01.HankookTire" id="tire" />
+	
+	<bean class="di.xml01.HankookTire" id="hankook" />
+	<bean class="di.xml01.KumhoTire" id="kumho" />
+	
+	<!-- new와 의존주입을 동시에 -->
+	<bean class="di.xml01.Car" id="car2">
+		<property name="tire" ref="tire"></property> <!-- 여기 tire는 Car의 멤버변수 tire야. 즉, set함수에 들어가는 문자/ 그리고 위에 한국타이어객체 생성해주고 그 id를 주입  -->
+		<property name="frontL" ref="kumho"></property>
+		<property name="frontR" ref="kumho"></property>
+		<property name="backL" ref="hankook"></property>
+		<property name="backR" ref="hankook"></property>
+	</bean>
+</beans>

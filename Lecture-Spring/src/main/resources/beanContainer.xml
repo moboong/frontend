@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Hello hello = new Hello() -->
+	<bean class="basic.Hello" id="hello" />
+	<bean class="basic.Hello" id="hello2" lazy-init="true" />  <!-- 객체 생성 시점을 설정 가능해. 실제 사용할 때 객체를 셍성한다는 속성 -->
+</beans>
