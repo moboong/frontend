@@ -23,7 +23,7 @@
    	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#login').attr('class','nav-link active')
+			$('#login-signup').attr('class','nav-link dropdown-toggle active')
 		})
 	</script>
   </head>
@@ -37,7 +37,7 @@
 	<main class="form-signin">
 	  <form>
 	    <img class="d-block mx-auto mb-4" src="${pageContext.request.contextPath}/img/logoinlogo.png" alt="" width="200">	  	
-	    <h1 class="h3 mb-3 fw-normal"></h1>
+	    <h1 class="h3 mb-3 fw-normal">로그인을 해주세요</h1>
 	
 	    <div class="form-floating">
 	      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -59,8 +59,7 @@
 	</main>
 	
 	
-	<%-- <jsp:include page="../include/bottom.jsp" /> --%>
   
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

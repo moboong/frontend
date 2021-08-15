@@ -16,7 +16,7 @@
 <script>
 	$(document).ready(function() {
 		
-		$(':button').click(function() {
+		$('#btn').click(function() {
 			$.ajax({
 				type : 'GET',
 				url : 'http://192.168.217.48:9999/spring-mvc/ajax/restBody.json',
@@ -29,8 +29,6 @@
 			})
 		})
 		
-		
-		$('#home').attr('class','nav-link active')
 	})
 </script>
 
@@ -57,7 +55,7 @@
 					<a class="btn btn-primary" href="<%=request.getContextPath()%>/member/signup.do">signup</a>
 				</div>
 				<div class="col-md-auto">
-					<input class="btn btn-primary" type="button" value="서버에 자료요청">
+					<input id="btn" class="btn btn-primary" type="button" value="서버에 자료요청">
 					<div id="msgView" style="border: 1px solid black; height: 200px; width: 500px;"></div>
 				</div>
 			</div>
@@ -66,7 +64,7 @@
 		
 	</main> --%>
 	
-	<main class="flex-shrink-0">
+	<main class="flex-shrink-0" style="margin-top: 8px;">
 
 	  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 	    <div class="carousel-indicators">
@@ -202,7 +200,7 @@
 	  <!-- FOOTER -->
 	  <footer class="container">
 	    <p class="float-end"><a href="#">Back to top</a></p>
-	    <p>&copy; 2017â2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+	    <p>&copy;2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 	  </footer>
 	</main>
 	

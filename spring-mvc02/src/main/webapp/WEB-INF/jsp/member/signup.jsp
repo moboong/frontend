@@ -15,7 +15,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#signup').attr('class','nav-link active')
+			$('#login-signup').attr('class','nav-link dropdown-toggle active')
 		})
 	</script>    
     
