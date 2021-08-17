@@ -23,4 +23,8 @@
 		font-size: 3.5rem;
 	}
 }
+
+.bg-light {
+    --bs-bg-opacity: 0;
+}
 </style>

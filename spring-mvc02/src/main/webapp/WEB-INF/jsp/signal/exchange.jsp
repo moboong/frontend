@@ -48,6 +48,22 @@
 	        });
 	    }
 		
+	 	// 외국인 그래프
+	    function changeChart(type) {
+	 		
+	    	$('#tab > li > a').attr('class','nav-link')
+			$('#' + type + 'Tab > a').attr('class','nav-link active');
+	    		
+	    	jindo.$Element("dayGraph").hide();
+	    	jindo.$Element("weekGraph").hide();
+	    	jindo.$Element("oneMonthGraph").hide();
+	    	jindo.$Element("threeMonthGraph").hide();
+
+	    	jindo.$Element(type + "Graph").show();
+
+	    }
+	 	// 기준시 1990-08-26 21:48:00
+		
 	</script>
     
   </head>
@@ -82,9 +98,14 @@
 		        </div>
 		      </div>
 		
-		      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+		      
+			
+			
+			<!-- 네이버 금융 -->	
+			<div class="container">
+				<h4 class="h4">원/달러 환율</h4>
 				
-				<!-- 네이버 금융 -->
+				
 				<div class="chart_control_area">
 		            <dl class="line">
 		                <dd>
@@ -99,12 +120,49 @@
 		                </dd>
 		            </dl>
 		        </div>
+		      
 		        <div class="flash_area">
 		        	<c:set var="now" value="<%=new java.util.Date()%>" />
 		       	  	<c:set var="sysDate"><fmt:formatDate value="${now}" pattern="yyyyMMdd" /></c:set>
             		<img src="https://ssl.pstatic.net/imgfinance/chart/marketindex/area/month3/FX_USDKRW.png?sidcode=<c:out value="${sysDate}" />" width="700" alt="차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x243.gif'">
        	 		</div>
+       	 	</div>
+       	 	<!-- 네이버 금융 -->
+       	 		
+       	 	<!-- 네이버 금융 -->
+       	 	<div class="container">
+				<h4 class="h4">투자자매매동향(외국인 매도수 현황)</h4>
+				<div class="box_top_sub">
+					<div id="type_0">
+						<img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="rb"><img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="lb"><img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="rt"><img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="lt">
+						<div class="subtop_sise_graph2">
+							<div class="tab_toptit">
+								<ul id="tab" class="nav nav-tabs" role="tablist">
+									<li id="dayTab"><a class="nav-link active" href="javascript:changeChart('day');"><span>1일(1분)</span></a></li>
+									<li id="weekTab"><a class="nav-link" href="javascript:changeChart('week');"><span>1주일</span></a></li>
+									<li id="oneMonthTab"><a class="nav-link" href="javascript:changeChart('oneMonth');"><span>1개월</span></a></li>
+									<li id="threeMonthTab"><a class="nav-link" href="javascript:changeChart('threeMonth');"><span>3개월</span></a></li>
+								</ul>
+							</div>
+														
+							<c:set var="nowTime" value="<%=new java.util.Date().getTime() %>" />
+							<c:set var="stdTime" value="<%=new java.util.Date(651678500000L).getTime() %>" />
+		       	  			<fmt:parseNumber var="time" value="${ (nowTime - stdTime) / 1000 / 60 * 100000}" integerOnly="false" />
+		       	  			<c:set var="interval"><fmt:formatNumber value="${time}" pattern=" "/></c:set>
+
+							<div id="dayGraph" class="subtop_graph" style="margin-top:15px"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeDayKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
+							<div id="weekGraph" class="subtop_graph" style="margin-top:15px;display:none"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeWeekKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
+							<div id="oneMonthGraph" class="subtop_graph" style="margin-top:15px;display:none"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeOneMonthKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
+							<div id="threeMonthGraph" class="subtop_graph" style="margin-top:15px;display:none"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeThreeMonthKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+       	 	<!-- 네이버 금융 -->
        	 				      
+       	 	<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>			      
+       	 				      
+       	 				   
 		      <h2>Section title</h2>
 		      <div class="table-responsive">
 		        <table class="table table-striped table-sm">
