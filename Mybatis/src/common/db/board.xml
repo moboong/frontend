@@ -3,16 +3,99 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board.BoardDAO">
+	
+	<sql id="selectBoard">
+		select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date
+		 from t_board
+	</sql>
+
 	<!-- <insert id="newBoard" parameterType="kr.ac.kopo.board.BoardVO"> mybatis-config.xml은 환경설정 거기서 타입 별명짓기 -->
 	<insert id="newBoard" parameterType="boardVO">
 		insert into t_board(no, title, writer, content)
-		 values(301, #{title}, #{writer}, #{content})
+		 values(seq_t_board_no.nextval, #{title}, #{writer}, #{content})
 		 <!-- values(seq_t_board_no.nextval, '${title}', '${writer}', '${content}') -->
 	</insert>
+	
+	<resultMap type="boardVO" id="boardMap">
+		<result column="view_cnt" property="viewCnt" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+	
+	
+	<select id="selectAllMap" resultMap="boardMap">
+		select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date
+		 from t_board
+		order by no desc
+	</select>
 	
 	<select id="selectAll" resultType="boardVO">
 		select no, title, writer, content, view_cnt as viewCnt, to_char(reg_date, 'yyyy-mm-dd') as regDate
 		 from t_board
 		order by no desc
 	</select>
+	
+	<select id="selectOne" parameterType="boardVO" resultMap="boardMap">
+		select no, title, writer, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date
+		from t_board
+		where no = #{no}
+	</select>
+	
+	<select id="selectOne2" parameterType="int" resultMap="boardMap">
+		select no, title, writer, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date
+		from t_board
+		where no = #{WhateverYouWant}
+	</select>
+	
+	<select id="selectOne3" parameterType="int" resultMap="boardMap">
+		<include refid="selectBoard"/>
+		where no = #{WYW}
+	</select>
+	
+	<select id="selectOne4" parameterType="int" resultType="hashmap">
+		<include refid="selectBoard"/>
+		where no = #{no}
+	</select>
+	
+	<select id="selectNos" parameterType="boardVO" resultMap="boardMap">
+		<include refid="selectBoard"/>
+		where no in
+		<foreach collection="nos" item="bno" separator="," open="(" close=")">
+			#{bno}
+		</foreach>
+	</select>
+	
+	<select id="selectNos2" parameterType="java.util.List" resultMap="boardMap">
+		<include refid="selectBoard"/>
+		where no in
+		<foreach collection="list" item="bno" separator="," open="(" close=")">
+			#{bno}
+		</foreach>
+	</select>
+	
+	<select id="selectNos3" parameterType="int[]" resultMap="boardMap">
+		<include refid="selectBoard"/>
+		where no in
+		<foreach collection="array" item="bno" separator="," open="(" close=")">
+			#{bno}
+		</foreach>
+	</select>
+	
+	<select id="selectWhere" parameterType="string" resultMap="boardMap">
+		<include refid="selectBoard" />
+		where title like '${title}%'
+	</select>
+	<!-- pstmt가 아니라(#이 아니라) stmt로 해주면 된다.($) 문자열처리가 돼서 %가 붙어서 정상 작동 -->
+	
+	<select id="selectWhere2" parameterType="boardVO" resultMap="boardMap">
+		<include refid="selectBoard" />
+		<where>
+			<if test="title != null">
+				title like '${title}%' 
+			</if>
+			<if test="writer != null">
+				and writer = #{writer}
+			</if>
+		</where>
+	</select>
+	
 </mapper>

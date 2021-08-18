@@ -7,6 +7,14 @@ public class BoardVO {
 	private String content;
 	private int viewCnt;
 	private String regDate;
+	private int[] nos;
+
+	
+	public BoardVO() {
+		
+	}
+
+	
 	public int getNo() {
 		return no;
 	}
@@ -43,9 +51,12 @@ public class BoardVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	public BoardVO() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	public int[] getNos() {
+		return nos;
+	}
+	public void setNos(int[] nos) {
+		this.nos = nos;
 	}
 	@Override
 	public String toString() {

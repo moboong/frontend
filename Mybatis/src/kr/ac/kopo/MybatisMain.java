@@ -7,7 +7,7 @@ public class MybatisMain {
 	public static void main(String[] args) {
 		
 		BoardDAO dao = new BoardDAO();
-		dao.work();
+		dao.work3();
 		
 	}
 }
