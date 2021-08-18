@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.BoardDAO">
+	<!-- <insert id="newBoard" parameterType="kr.ac.kopo.board.BoardVO"> mybatis-config.xml은 환경설정 거기서 타입 별명짓기 -->
+	<insert id="newBoard" parameterType="boardVO">
+		insert into t_board(no, title, writer, content)
+		 values(301, #{title}, #{writer}, #{content})
+		 <!-- values(seq_t_board_no.nextval, '${title}', '${writer}', '${content}') -->
+	</insert>
+	
+	<select id="selectAll" resultType="boardVO">
+		select no, title, writer, content, view_cnt as viewCnt, to_char(reg_date, 'yyyy-mm-dd') as regDate
+		 from t_board
+		order by no desc
+	</select>
+</mapper>
