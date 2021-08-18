@@ -64,6 +64,41 @@
 	    }
 	 	// 기준시 1990-08-26 21:48:00
 		
+	 	
+	 	function switchImg(target) {
+	 		$('button[name=btnNews]').attr('class','nav-link')
+			$('#' + target).attr('class','nav-link active');
+	 		$('#newsImg').attr('src', 'http://localhost:9999/spring-mvc02/img/exchange/' + target + '.png')
+	 		
+		}
+	 	
+	 	function switchGraph(target) {
+	 		$('button[name=btnKospi]').attr('class','nav-link')
+			$('#' + target + 'Ko').attr('class','nav-link active');
+	 		$('#kospiImg').attr('src', 'http://localhost:9999/spring-mvc02/img/exchange/' + target + '.png')
+	 		
+		}
+	 	
+	 	
+	 	let page = 1;
+	 	
+	 	function back() {
+	 		if(page != 1){
+	 			page = page - 1
+	 		}
+	 		$('button[name=btnSignal]').attr('class','nav-link')
+			$('#back').attr('class','nav-link active');
+	 		$('#signalImg').attr('src', 'http://localhost:9999/spring-mvc02/img/exchange/signal/' + page + '.png')
+		}
+	 	
+	 	function forward() {
+	 		if(page != 13){
+	 			page = page + 1
+	 		}
+	 		$('button[name=btnSignal]').attr('class','nav-link')
+			$('#forward').attr('class','nav-link active');
+	 		$('#signalImg').attr('src', 'http://localhost:9999/spring-mvc02/img/exchange/signal/' + page + '.png')
+		}
 	</script>
     
   </head>
@@ -72,7 +107,6 @@
   <header>
 	<jsp:include page="../include/top.jsp" />
   </header>
-	
 	
 	<main class="flex-shrink-0" style="margin-top: 56px">
 		<button class="navbar-toggler position-fixed d-md-none collapsed navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white-space; z-index: 100">
@@ -99,7 +133,23 @@
 		      </div>
 		
 		      
-			
+			<div class="container" style="padding-top: 0px;">
+				<h4 class="h4">환율 시그널 살펴보기</h4>
+				<div class="chart_control_area">
+		            <dl class="line">
+		                <dd>
+		                    <ul class="nav nav-tabs" role="tablist">
+		                        <li class="back" role="presentation"><button id="back" name="btnSignal" class="nav-link" onclick="back();">앞</button></li>
+		                        <li class="forward" role="presentation"><button id="forward" name="btnSignal" class="nav-link" onclick="forward();">뒤</button></li>
+		                    </ul>
+		                </dd>
+		            </dl>
+		        </div>
+		      
+		        <div class="flash_area">
+            		<img id="signalImg" src="${pageContext.request.contextPath}/img/exchange/signal/1.png" width="600" alt="">
+       	 		</div>
+       	 	</div>
 			
 			<!-- 네이버 금융 -->	
 			<div class="container">
@@ -159,8 +209,53 @@
 				</div>
 			</div>
        	 	<!-- 네이버 금융 -->
+       	 	
+       	 	
+       	 	<div class="container">
+				<h4 class="h4">코스피</h4>
+				<div class="chart_control_area">
+		            <dl class="line">
+		                <dd>
+		                    <ul class="nav nav-tabs" role="tablist">
+		                        <li class="day" role="presentation"><button id="dayKo" name="btnKospi" class="nav-link active" onclick="switchGraph('day');">1일</button></li>
+		                        <li class="day5" role="presentation"><button id="day5Ko" name="btnKospi" class="nav-link" onclick="switchGraph('day5');">5일</button></li>
+		                        <li class="month" role="presentation"><button id="monthKo" name="btnKospi" class="nav-link" onclick="switchGraph('month');">1개월</button></li>
+		                        <li class="month6" role="presentation"><button id="month6Ko" name="btnKospi" class="nav-link" onclick="switchGraph('month6');">6개월</button></li>
+								<li class="year" role="presentation"><button id="yearKo" name="btnKospi" class="nav-link" onclick="switchGraph('year');">연중</button></li>
+		                    </ul>
+		                </dd>
+		            </dl>
+		        </div>
+		      
+		        <div class="flash_area">
+            		<img id="kospiImg" src="${pageContext.request.contextPath}/img/exchange/day.png" width="700" alt="">
+       	 		</div>
+       	 	</div>
+       	 	
+       	 	<div class="container">
+				<h4 class="h4">환율시그널 관련 뉴스</h4>
+				<div class="chart_control_area">
+		            <dl class="line">
+		                <dd>
+		                    <ul class="nav nav-tabs" role="tablist">
+		                        <li class="exch" role="presentation"><button id="exch" name="btnNews" class="nav-link active" onclick="switchImg('exch');">환율</button></li>
+		                        <li class="fori" role="presentation"><button id="fori" name="btnNews" class="nav-link" onclick="switchImg('fori');">외국인 매매동향</button></li>
+		                        <li class="expo" role="presentation"><button id="expo" name="btnNews" class="nav-link" onclick="switchImg('expo');">수출입 동향</button></li>
+		                        <li class="" role="presentation"><button id="" name="btnNews" class="nav-link"><span data-feather="plus-circle"></button></li>
+		                    </ul>
+		                </dd>
+		            </dl>
+		        </div>
+		      
+		        <div class="flash_area">
+            		<img id="newsImg" src="${pageContext.request.contextPath}/img/exchange/exch.png" width="700" alt="">
+       	 		</div>
+       	 	</div>
+       	 	
+       	 	
        	 				      
        	 	<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>			      
+       	 	
        	 				      
        	 				   
 		      <h2>Section title</h2>
