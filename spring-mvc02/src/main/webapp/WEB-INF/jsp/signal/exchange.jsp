@@ -135,15 +135,15 @@
 		      
 			<div class="container" style="padding-top: 0px;">
 				<h4 class="h4">환율 시그널 살펴보기</h4>
-				<div class="chart_control_area">
-	         		<ul class="nav nav-tabs" role="tablist">
-		               	<li class="back" role="presentation"><button id="back" name="btnSignal" class="nav-link" onclick="back();">앞</button></li>
-		                <li class="forward" role="presentation"><button id="forward" name="btnSignal" class="nav-link" onclick="forward();">뒤</button></li>
+				<div class="chart_control_area" style="width: 1000px">
+	         		<ul class="nav nav-tabs justify-content-center" role="tablist">
+		               	<li class="back" role="presentation"><button id="back" name="btnSignal" class="nav-link" onclick="back();"><span data-feather="arrow-left"></button></li>
+		                <li class="forward" role="presentation"><button id="forward" name="btnSignal" class="nav-link" onclick="forward();"><span data-feather="arrow-right"></button></li>
 		            </ul>
 		        </div>
 		      
 		        <div class="">
-            		<img id="signalImg" src="${pageContext.request.contextPath}/img/exchange/signal/1.png" width="600" alt="">
+            		<img id="signalImg" src="${pageContext.request.contextPath}/img/exchange/signal/1.png" width="1000" alt="">
        	 		</div>
        	 	</div>
 			
