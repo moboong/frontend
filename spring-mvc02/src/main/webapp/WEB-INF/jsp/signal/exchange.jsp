@@ -92,7 +92,7 @@
 		}
 	 	
 	 	function forward() {
-	 		if(page != 13){
+	 		if(page != 14){
 	 			page = page + 1
 	 		}
 	 		$('button[name=btnSignal]').attr('class','nav-link')
