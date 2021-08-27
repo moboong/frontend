@@ -76,7 +76,6 @@ public class RestBodyController {
 			list.add(vo);
 		}
 		
-		
 		return list;
 	}
 	
