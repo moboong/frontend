@@ -13,4 +13,6 @@ public class HelloController {
 		mav.addObject("msg","hi 스프링 MVC02~~");
 		return mav;
 	}
+	
+	
 }

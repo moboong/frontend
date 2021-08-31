@@ -25,5 +25,11 @@
 	<mvc:view-controller path="/signal/commodity.do" view-name="signal/commodity"/>
 	<mvc:view-controller path="/signal/metal.do" view-name="signal/metal"/>
 	<mvc:view-controller path="/signal/market.do" view-name="signal/market"/>
-
+	
+	<mvc:view-controller path="/signal/innerbar/exchangebar.do" view-name="signal/innerbar/exchangebar"/>
+	<mvc:view-controller path="/signal/innerbar/ratebar.do" view-name="signal/innerbar/ratebar"/>
+	<mvc:view-controller path="/signal/innerbar/oilbar.do" view-name="signal/innerbar/oilbar"/>
+	<mvc:view-controller path="/signal/innerbar/commoditybar.do" view-name="signal/innerbar/commoditybar"/>
+	<mvc:view-controller path="/signal/innerbar/metalbar.do" view-name="signal/innerbar/metalbar"/>
+	<mvc:view-controller path="/signal/innerbar/marketbar.do" view-name="signal/innerbar/marketbar"/>
 </beans>

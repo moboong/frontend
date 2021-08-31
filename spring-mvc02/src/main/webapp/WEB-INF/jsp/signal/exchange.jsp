@@ -24,6 +24,22 @@
 		$(document).ready(function() {
 			$('#signals').attr('class','nav-link dropdown-toggle active')
 			$('#exchange').attr('class','nav-link active')
+			
+			fetch('${pageContext.request.contextPath}/signal/innerbar/exchangebar.do').then(function(response){
+				response.text().then(function(text){
+					document.querySelector('#innerbar').innerHTML = text;
+				})
+			})
+		/* 	$.ajax({
+				type : 'GET',
+				url : '${pageContext.request.contextPath}/signal/innerbar/exchangebar.do',
+				success : function(data) {
+					$('#innerbar').html(data)
+				}, 'error' : function() {
+					alert('실패')
+				}
+			}) */
+			
 		})
 		
 		
@@ -174,9 +190,12 @@
        	 		</div>
        	 	</div>
        	 	<!-- 네이버 금융 -->
-       	 		
+       	 	
+       	 	
        	 	<!-- 네이버 금융 -->
        	 	<div class="container">
+       	 		<h2 class="h2">환율과 함께 봐야할 지표들<button type="button" class="btn btn-link"><span style="width: 25px; height: 25px;" data-feather="plus-circle"></span></button></h2>
+       	 		<hr>
 				<h4 class="h4">투자자매매동향(외국인 매도수 현황)</h4>
 				<div class="box_top_sub">
 					<div id="type_0">

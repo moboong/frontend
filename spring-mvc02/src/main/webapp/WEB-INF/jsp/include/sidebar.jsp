@@ -36,19 +36,8 @@
 			class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 			<span>시그널 관련 부가 서비스</span> <span data-feather="plus-circle"></span>
 		</h6>
-		<ul class="nav flex-column mb-2">
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span>환율 계산기
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span>은행별 환율 비교
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span> Social engagement
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span> Year-end sale
-			</a></li>
+		<ul id="innerbar" class="nav flex-column mb-2">
+			
 		</ul>
 	</div>
 </nav>

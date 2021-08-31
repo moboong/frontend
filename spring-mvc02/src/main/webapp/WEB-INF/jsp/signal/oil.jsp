@@ -24,6 +24,11 @@
 		$(document).ready(function() {
 			$('#signals').attr('class','nav-link dropdown-toggle active')
 			$('#oil').attr('class','nav-link active')
+			fetch('${pageContext.request.contextPath}/signal/innerbar/oilbar.do').then(function(response){
+				response.text().then(function(text){
+					document.querySelector('#innerbar').innerHTML = text;
+				})
+			})
 		})
 		
 		// 선 차트 노출

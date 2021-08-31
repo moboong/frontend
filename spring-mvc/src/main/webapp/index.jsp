@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 	<a href="<%= request.getContextPath() %>/hello/hello.do">hello</a>
 	<a href="<%= request.getContextPath() %>/method/method.do">method</a>
 	<a href="<%= request.getContextPath() %>/form/joinForm.do">form</a>

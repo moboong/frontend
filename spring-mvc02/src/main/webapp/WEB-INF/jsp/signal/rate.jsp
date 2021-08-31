@@ -24,6 +24,11 @@
 		$(document).ready(function() {
 			$('#signals').attr('class','nav-link dropdown-toggle active')
 			$('#rate').attr('class','nav-link active')
+			fetch('${pageContext.request.contextPath}/signal/innerbar/ratebar.do').then(function(response){
+				response.text().then(function(text){
+					document.querySelector('#innerbar').innerHTML = text;
+				})
+			})
 		})
 		
 		
