@@ -68,14 +68,17 @@
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/login"/>
 			<mvc:exclude-mapping path="/signup"/>
-			<mvc:exclude-mapping path="/resources/**"/>
+			<mvc:exclude-mapping path="/assets/**"/>
+			<mvc:exclude-mapping path="/custom/**"/>
 			<mvc:exclude-mapping path="/"/>
 			<mvc:exclude-mapping path="/board"/>
 			<mvc:exclude-mapping path="/signal/**"/>
+			<mvc:exclude-mapping path="/show/**"/>
 			<ref bean="loginInterceptor"/>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/show/**"/>
 			<ref bean="MsgInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

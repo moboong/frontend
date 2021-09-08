@@ -2,168 +2,495 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring-MVC 메인페이지</title>
-<jsp:include page="include/head.jsp" />
+    <title>메인페이지</title>
+    <jsp:include page="include/head2.jsp"></jsp:include>
+    
+    <script>
+	  	if ('${ msg }') {
+	  		alert('${ msg }')
+	  	}
+    </script>
+  </head>
 
-<!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/resources/css/carousel.css" rel="stylesheet">
+  <body>
+  <!-- Pre-loader start -->
+  <jsp:include page="include/preloader.jsp"></jsp:include>
+  <!-- Pre-loader end -->
+  <div id="pcoded" class="pcoded">
+      <div class="pcoded-overlay-box"></div>
+      <div class="pcoded-container navbar-wrapper">
+          <!-- nav-top start -->
+          <jsp:include page="include/navtop.jsp"/>
+		  <!-- nav-top end -->
+          <div class="pcoded-main-container">
+              <div class="pcoded-wrapper">
+                  <!-- nav-side start -->
+                  <jsp:include page="include/navside.jsp"/>
+                  <!-- nav-side end -->
+                  
+                  <!-- 해당 페이지 시작 -->
+                  <div class="pcoded-content">
+                      <!-- Page-header start -->
+                      <div class="page-header">
+                          <div class="page-block">
+                              <div class="row align-items-center">
+                                  <div class="col-md-8">
+                                      <div class="page-header-title">
+                                          <h5 class="m-b-10">메인페이지</h5>
+                                          <p class="m-b-0">Welcome to Stock Signal</p>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <ul class="breadcrumb-title">
+                                          <li class="breadcrumb-item">
+                                              <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                          </li>
+                                          <li class="breadcrumb-item"><a href="#!">메인페이지</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Page-header end -->
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page-body start -->
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <!-- task, page, download counter  start -->
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-purple">$30200</h4>
+                                                                <h6 class="text-muted m-b-0">All Earnings</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-bar-chart f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-purple">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">% change</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-green">290+</h4>
+                                                                <h6 class="text-muted m-b-0">Page Views</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-file-text-o f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-green">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">% change</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-red">145</h4>
+                                                                <h6 class="text-muted m-b-0">Task Completed</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-calendar-check-o f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-red">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">% change</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-blue">500</h4>
+                                                                <h6 class="text-muted m-b-0">Downloads</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-hand-o-down f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-blue">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">% change</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- task, page, download counter  end -->
+    
+                                            <!--  sale analytics start -->
+                                            <div class="col-xl-8 col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Sales Analytics</h5>
+                                                        <span class="text-muted">Get 15% Off on <a href="https://www.amcharts.com/" target="_blank">amCharts</a> licences. Use code "codedthemes" and get the discount.</span>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                                                <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                                                <li><i class="fa fa-trash close-card"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div id="sales-analytics" style="height: 400px;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-md-12">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <h4>$256.23</h4>
+                                                                <p class="text-muted">This Month</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <label class="label label-success">+20%</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <canvas id="this-month" style="height: 150px;"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card quater-card">
+                                                    <div class="card-block">
+                                                        <h6 class="text-muted m-b-15">This Quarter</h6>
+                                                        <h4>$3,9452.50</h4>
+                                                        <p class="text-muted">$3,9452.50</p>
+                                                        <h5>87</h5>
+                                                        <p class="text-muted">Online Revenue<span class="f-right">80%</span></p>
+                                                        <div class="progress"><div class="progress-bar bg-c-blue" style="width: 80%"></div></div>
+                                                        <h5 class="m-t-15">68</h5>
+                                                        <p class="text-muted">Offline Revenue<span class="f-right">50%</span></p>
+                                                        <div class="progress"><div class="progress-bar bg-c-green" style="width: 50%"></div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  sale analytics end -->
+    
+                                            <!--  project and team member start -->
+                                            <div class="col-xl-8 col-md-12">
+                                                <div class="card table-card">
+                                                    <div class="card-header">
+                                                        <h5>Projects</h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                                                <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                                                <li><i class="fa fa-trash close-card"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                            <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                        </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        Assigned</th>
+                                                                    <th>Name</th>
+                                                                    <th>Due Date</th>
+                                                                    <th class="text-right">Priority</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                            </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>John Deo</h6>
+                                                                                <p class="text-muted m-b-0">Graphics Designer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Able Pro</td>
+                                                                    <td>Jun, 26</td>
+                                                                    <td class="text-right"><label class="label label-danger">Low</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                            </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>Jenifer Vintage</h6>
+                                                                                <p class="text-muted m-b-0">Web Designer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Mashable</td>
+                                                                    <td>March, 31</td>
+                                                                    <td class="text-right"><label class="label label-primary">high</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                            </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>William Jem</h6>
+                                                                                <p class="text-muted m-b-0">Developer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Flatable</td>
+                                                                    <td>Aug, 02</td>
+                                                                    <td class="text-right"><label class="label label-success">medium</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                            </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>David Jones</h6>
+                                                                                <p class="text-muted m-b-0">Developer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Guruable</td>
+                                                                    <td>Sep, 22</td>
+                                                                    <td class="text-right"><label class="label label-primary">high</label></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="text-right m-r-20">
+                                                                <a href="#!" class=" b-b-primary text-primary">View all Projects</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-md-12">
+                                                <div class="card ">
+                                                    <div class="card-header">
+                                                        <h5>Team Members</h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                                                <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                                                <li><i class="fa fa-trash close-card"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="align-middle m-b-30">
+                                                            <img src="assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <div class="d-inline-block">
+                                                                <h6>David Jones</h6>
+                                                                <p class="text-muted m-b-0">Developer</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="align-middle m-b-30">
+                                                            <img src="assets/images/avatar-1.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <div class="d-inline-block">
+                                                                <h6>David Jones</h6>
+                                                                <p class="text-muted m-b-0">Developer</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="align-middle m-b-30">
+                                                            <img src="assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <div class="d-inline-block">
+                                                                <h6>David Jones</h6>
+                                                                <p class="text-muted m-b-0">Developer</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="align-middle m-b-30">
+                                                            <img src="assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <div class="d-inline-block">
+                                                                <h6>David Jones</h6>
+                                                                <p class="text-muted m-b-0">Developer</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="align-middle m-b-10">
+                                                            <img src="assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <div class="d-inline-block">
+                                                                <h6>David Jones</h6>
+                                                                <p class="text-muted m-b-0">Developer</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <a href="#!" class="b-b-primary text-primary">View all Projects</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  project and team member end -->
+                                        </div>
+                                    </div>
+                                    <!-- Page-body end -->
+                                </div>
+                                <div id="styleSelector"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- 지표 추가 Modal -->    
+<jsp:include page="modal/addgraph.jsp" />
+<!-- 지표 추가 Modal -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-	if ('${ msg }') {
-		alert('${ msg }')
-	}
-</script>
-</head>
-<body class="d-flex flex-column h-100">
-	
-	<jsp:include page="include/top.jsp" />
-	
-	<main class="flex-shrink-0" style="margin-top: 8px;">
 
-	  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-	    <div class="carousel-indicators">
-	      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-	      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-	      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-	    </div>
-	    <div class="carousel-inner">
-	      <div class="carousel-item active">
-	        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-	
-	        <div class="container">
-	          <div class="carousel-caption text-start">
-	            <h1>Example headline.</h1>
-	            <p>Some representative placeholder content for the first slide of the carousel.</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="carousel-item">
-	        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-	
-	        <div class="container">
-	          <div class="carousel-caption">
-	            <h1>Another example headline.</h1>
-	            <p>Some representative placeholder content for the second slide of the carousel.</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="carousel-item">
-	        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-	
-	        <div class="container">
-	          <div class="carousel-caption text-end">
-	            <h1>One more for good measure.</h1>
-	            <p>Some representative placeholder content for the third slide of this carousel.</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-	      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	      <span class="visually-hidden">Previous</span>
-	    </button>
-	    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-	      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	      <span class="visually-hidden">Next</span>
-	    </button>
-	  </div>
-	
-	
-	  <!-- Marketing messaging and featurettes
-	  ================================================== -->
-	  <!-- Wrap the rest of the page in another container to center all the content. -->
-	
-	  <div class="container marketing">
-	
-	    <!-- Three columns of text below the carousel -->
-	    <div class="row">
-	      <div class="col-lg-4">
-	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-	
-	        <h2>Heading</h2>
-	        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-	        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-	      </div><!-- /.col-lg-4 -->
-	      <div class="col-lg-4">
-	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-	
-	        <h2>Heading</h2>
-	        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-	        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-	      </div><!-- /.col-lg-4 -->
-	      <div class="col-lg-4">
-	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-	
-	        <h2>Heading</h2>
-	        <p>And lastly this, the third column of representative placeholder content.</p>
-	        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-	      </div><!-- /.col-lg-4 -->
-	    </div><!-- /.row -->
-	
-	
-	    <!-- START THE FEATURETTES -->
-	
-	    <hr class="featurette-divider">
-	
-	    <div class="row featurette">
-	      <div class="col-md-7">
-	        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">lets blow your mind.</span></h2>
-	        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-	      </div>
-	      <div class="col-md-5">
-	        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-	
-	      </div>
-	    </div>
-	
-	    <hr class="featurette-divider">
-	
-	    <div class="row featurette">
-	      <div class="col-md-7 order-md-2">
-	        <h2 class="featurette-heading">Oh yeah, that good. <span class="text-muted">See for yourself.</span></h2>
-	        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-	      </div>
-	      <div class="col-md-5 order-md-1">
-	        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-	
-	      </div>
-	    </div>
-	
-	    <hr class="featurette-divider">
-	
-	    <div class="row featurette">
-	      <div class="col-md-7">
-	        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-	        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-	      </div>
-	      <div class="col-md-5">
-	        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-	
-	      </div>
-	    </div>
-	
-	    <hr class="featurette-divider">
-	
-	    <!-- /END THE FEATURETTES -->
-	
-	  </div><!-- /.container -->
-	
-	  <!-- FOOTER -->
-	  <footer class="container">
-	    <p class="float-end"><a href="#">Back to top</a></p>
-	    <p>&copy;2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-	  </footer>
-	</main>
-	
-	<jsp:include page="include/bottom.jsp" />
-	
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 10]>
+    <div class="ie-warning">
+        <h1>Warning!!</h1>
+        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+        <div class="iew-container">
+            <ul class="iew-download">
+                <li>
+                    <a href="http://www.google.com/chrome/">
+                        <img src="assets/images/browser/chrome.png" alt="Chrome">
+                        <div>Chrome</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.mozilla.org/en-US/firefox/new/">
+                        <img src="assets/images/browser/firefox.png" alt="Firefox">
+                        <div>Firefox</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.opera.com">
+                        <img src="assets/images/browser/opera.png" alt="Opera">
+                        <div>Opera</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.apple.com/safari/">
+                        <img src="assets/images/browser/safari.png" alt="Safari">
+                        <div>Safari</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                        <img src="assets/images/browser/ie.png" alt="">
+                        <div>IE (9 & above)</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p>Sorry for the inconvenience!</p>
+    </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+    
+    <jsp:include page="include/bottom2.jsp"/>
+	<script>
+		$(document).ready(function() {
+			$('#index').attr('class', 'active');
+		})
+	</script>
 </body>
+
 </html>

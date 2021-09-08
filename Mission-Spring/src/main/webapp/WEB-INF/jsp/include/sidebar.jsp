@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<nav id="sidebarMenu"
-	class="col-md-3 col-lg-2 d-md-block sidebar collapse"
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse"
 	style="z-index: 1; top: 56px; background-color: white;">
 	<div class="position-sticky pt-3">
 		<ul class="nav flex-column">

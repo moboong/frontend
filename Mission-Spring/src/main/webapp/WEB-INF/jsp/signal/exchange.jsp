@@ -1,75 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!doctype html>
-<html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>환율 페이지</title>
-	<jsp:include page="../include/head.jsp" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>환율 시그널</title>
+    <jsp:include page="../include/head2.jsp"></jsp:include>
 
-    <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet">
-    
- 
-    <!-- 네이버금융 -->
-    <script type="text/javascript" src="https://ssl.pstatic.net/imgstock/static.pc/20210813130554/js/info/jindo.min.ns.1.5.3.euckr.js"></script>
-	<script type="text/javascript" src="https://ssl.pstatic.net/imgstock/static.pc/20210813130554/js/jindo.1.5.3.element-text-patch.js"></script>
-    
-    
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#signals').attr('class','nav-link dropdown-toggle active')
-			$('#exchange').attr('class','nav-link active')
-			$('.exchangebar').attr('style','display: block;')
-			
-			
-			/*  
-			fetch('${pageContext.request.contextPath}/signal/innerbar/exchangebar').then(function(response){
-				response.text().then(function(text){
-					document.querySelector('#innerbar').innerHTML = text;
-				})
-			})
-			
-			$.ajax({
-				type : 'GET',
-				url : '${pageContext.request.contextPath}/signal/innerbar/exchangebar',
-				success : function(data) {
-					$('#innerbar').html(data)
-				}, 'error' : function() {
-					alert('실패')
-				}
-			}) 
-			*/
-			
-		})
-		
-		
-		jindo.$Fn(function () {
-        	jindo.$$('title')[0].innerHTML = "미국 달러 : 네이버 금융";
-    	}).attach(document, "domready");
+      <script>
+     	
+	    if ('${ msg }') {
+	  		alert('${ msg }')
+	  	}
+      
+        let page = 1;
+	 	
+	 	function back() {
+	 		if(page != 1){
+	 			page = page - 1
+	 		}
+	 		$('#signalImg').attr('src', '${pageContext.request.contextPath}/assets/images/exchange/' + page + '.png')
+		}
+	 	function forward() {
+	 		if(page != 14){
+	 			page = page + 1
+	 		}
+	 		$('#signalImg').attr('src', '${pageContext.request.contextPath}/assets/images/exchange/' + page + '.png')
+		}
 
-		// 선 차트 노출
-	    function showChart(target) {
-			
-			$('button[name=btnDate]').attr('class','nav-link')
-			$('#' + target).attr('class','nav-link active');
-			
-	        jindo.$A(jindo.$$("dl.line dd ul li")).forEach(function (v) {
-	            if (jindo.$Element(v).className() == target) {
-	                jindo.$Element(v).child()[0].addClass("on");
-	                var welChart = jindo.$Element(jindo.$$.getSingle("div.flash_area img"));
-	                welChart.attr("src", "https://ssl.pstatic.net/imgfinance/chart/marketindex/area/" + target + "/FX_USDKRW.png?sidcode=" + jindo.$Date(new Date()).format("Ymd"));
-	            } else {
-	                jindo.$Element(v).child()[0].removeClass("on");
-	            }
-	        });
-	    }
-		
-	 	// 외국인 그래프
+        // 외국인 그래프
 	    function changeChart(type) {
 	 		
 	    	$('#tab > li > a').attr('class','nav-link')
@@ -84,341 +43,382 @@
 
 	    }
 	 	// 기준시 1990-08-26 21:48:00
-		
-	 	
-	 	function switchImg(target) {
-	 		$('button[name=btnNews]').attr('class','nav-link')
-			$('#' + target).attr('class','nav-link active');
-	 		$('#newsImg').attr('src', '${pageContext.request.contextPath}/resources/img/exchange/' + target + '.png')
-	 		
-		}
-	 	
-	 	function switchGraph(target) {
-	 		$('button[name=btnKospi]').attr('class','nav-link')
-			$('#' + target + 'Ko').attr('class','nav-link active');
-	 		$('#kospiImg').attr('src', '${pageContext.request.contextPath}/resources/img/exchange/' + target + '.png')
-	 		
-		}
-	 	
-	 	
-	 	let page = 1;
-	 	
-	 	function back() {
-	 		if(page != 1){
-	 			page = page - 1
-	 		}
-	 		$('button[name=btnSignal]').attr('class','nav-link')
-			$('#back').attr('class','nav-link active');
-	 		$('#signalImg').attr('src', '${pageContext.request.contextPath}/resources/img/exchange/signal/' + page + '.png')
-		}
-	 	
-	 	function forward() {
-	 		if(page != 14){
-	 			page = page + 1
-	 		}
-	 		$('button[name=btnSignal]').attr('class','nav-link')
-			$('#forward').attr('class','nav-link active');
-	 		$('#signalImg').attr('src', '${pageContext.request.contextPath}/resources/img/exchange/signal/' + page + '.png')
-		}
-	</script>
-    
+
+      </script>
   </head>
-  <body class="d-flex flex-column h-100 bg-light">
-  
-  <header>
-	<jsp:include page="../include/top.jsp" />
-  </header>
-	
-	<main class="flex-shrink-0" style="margin-top: 56px">
-		<button class="navbar-toggler position-fixed d-md-none collapsed navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white-space; z-index: 100">
-    		<span class="navbar-toggler-icon"></span>
-  		</button>
-		<div class="container-fluid" style="z-index: 1">
-		  <div class="row">
-		    
-		    <jsp:include page="../include/sidebar.jsp" />
-		
-		    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-		      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-		        <h1 class="h2">환율 시그널</h1>
-		        <div class="btn-toolbar mb-2 mb-md-0">
-		          <div class="btn-group me-2">
-		            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-		            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-		          </div>
-		          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-		            <span data-feather="calendar"></span>
-		            This week
-		          </button>
-		        </div>
-		      </div>
-		
-		      
-			<div class="container" style="padding-top: 0px;">
-				<h4 class="h4">환율 시그널 살펴보기</h4>
-				<div class="chart_control_area" style="width: 100%">
-	         		<ul class="nav nav-tabs justify-content-center" role="tablist">
-		               	<li class="back" role="presentation"><button id="back" name="btnSignal" class="nav-link" onclick="back();"><span data-feather="arrow-left"></span></button></li>
-		                <li class="forward" role="presentation"><button id="forward" name="btnSignal" class="nav-link" onclick="forward();"><span data-feather="arrow-right"></span></button></li>
-		            </ul>
-		        </div>
-		      
-		        <div class="">
-            		<img id="signalImg" src="${pageContext.request.contextPath}/resources/img/exchange/signal/1.png" width="100%" alt="">
-       	 		</div>
-       	 	</div>
-			
-			<!-- 네이버 금융 -->	
-			<div class="container">
-				<h4 class="h4">원/달러 환율</h4>
-				
-				
-				<div class="chart_control_area">
-		            <dl class="line">
-		                <dd>
-		                    <ul class="nav nav-tabs" role="tablist">
-		                        <li class="month" role="presentation"><button id="month" name="btnDate" class="nav-link" onclick="showChart('month');">1개월</button></li>
-		                        <li class="month3" role="presentation"><button id="month3" name="btnDate" class="nav-link active" onclick="showChart('month3');">3개월</button></li>
-		                        <li class="year" role="presentation"><button id="year" name="btnDate" class="nav-link" onclick="showChart('year');">1년</button></li>
-		                        <li class="year3" role="presentation"><button id="year3" name="btnDate" class="nav-link" onclick="showChart('year3');">3년</button></li>
-		                        <li class="year5" role="presentation"><button id="year5" name="btnDate" class="nav-link" onclick="showChart('year5');">5년</button></li>
-		                        <li class="year10" role="presentation"><button id="year10" name="btnDate" class="nav-link" onclick="showChart('year10');">10년</button></li>             
-		                    </ul>
-		                </dd>
-		            </dl>
-		        </div>
-		      
-		        <div class="flash_area">
-		        	<c:set var="now" value="<%=new java.util.Date()%>" />
-		       	  	<c:set var="sysDate"><fmt:formatDate value="${now}" pattern="yyyyMMdd" /></c:set>
-            		<img src="https://ssl.pstatic.net/imgfinance/chart/marketindex/area/month3/FX_USDKRW.png?sidcode=<c:out value="${sysDate}" />" width="700" alt="차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x243.gif'">
-       	 		</div>
-       	 	</div>
-       	 	<!-- 네이버 금융 -->
-       	 	
-       	 	
-       	 	<!-- 네이버 금융 -->
-       	 	<div class="container">
-       	 		<h2 class="h2">환율과 함께 봐야할 지표들<button type="button" class="btn btn-link"><span style="width: 25px; height: 25px;" data-feather="plus-circle"></span></button></h2>
-       	 		<hr>
-				<h4 class="h4">투자자매매동향(외국인 매도수 현황)</h4>
-				<div class="box_top_sub">
-					<div id="type_0">
-						<img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="rb"><img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="lb"><img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="rt"><img src="https://ssl.pstatic.net/imgstock/images5/blank.gif" alt="" class="lt">
-						<div class="subtop_sise_graph2">
-							<div class="tab_toptit">
-								<ul id="tab" class="nav nav-tabs" role="tablist">
-									<li id="dayTab"><a class="nav-link active" href="javascript:changeChart('day');"><span>1일(1분)</span></a></li>
-									<li id="weekTab"><a class="nav-link" href="javascript:changeChart('week');"><span>1주일</span></a></li>
-									<li id="oneMonthTab"><a class="nav-link" href="javascript:changeChart('oneMonth');"><span>1개월</span></a></li>
-									<li id="threeMonthTab"><a class="nav-link" href="javascript:changeChart('threeMonth');"><span>3개월</span></a></li>
-								</ul>
-							</div>
-														
-							<c:set var="nowTime" value="<%=new java.util.Date().getTime() %>" />
-							<c:set var="stdTime" value="<%=new java.util.Date(651678500000L).getTime() %>" />
-		       	  			<fmt:parseNumber var="time" value="${ (nowTime - stdTime) / 1000 / 60 * 100000}" integerOnly="false" />
-		       	  			<c:set var="interval"><fmt:formatNumber value="${time}" pattern=" "/></c:set>
 
-							<div id="dayGraph" class="subtop_graph" style="margin-top:15px"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeDayKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
-							<div id="weekGraph" class="subtop_graph" style="margin-top:15px;display:none"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeWeekKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
-							<div id="oneMonthGraph" class="subtop_graph" style="margin-top:15px;display:none"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeOneMonthKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
-							<div id="threeMonthGraph" class="subtop_graph" style="margin-top:15px;display:none"><img src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeThreeMonthKOSPI.png?sid=<c:out value="${interval}" />" border="0" alt="그래프"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-       	 	<!-- 네이버 금융 -->
-       	 	
-       	 	
-       	 	<div class="container">
-				<h4 class="h4">코스피</h4>
-				<div class="chart_control_area">
-		            <dl class="line">
-		                <dd>
-		                    <ul class="nav nav-tabs" role="tablist">
-		                        <li class="day" role="presentation"><button id="dayKo" name="btnKospi" class="nav-link active" onclick="switchGraph('day');">1일</button></li>
-		                        <li class="day5" role="presentation"><button id="day5Ko" name="btnKospi" class="nav-link" onclick="switchGraph('day5');">5일</button></li>
-		                        <li class="month" role="presentation"><button id="monthKo" name="btnKospi" class="nav-link" onclick="switchGraph('month');">1개월</button></li>
-		                        <li class="month6" role="presentation"><button id="month6Ko" name="btnKospi" class="nav-link" onclick="switchGraph('month6');">6개월</button></li>
-								<li class="year" role="presentation"><button id="yearKo" name="btnKospi" class="nav-link" onclick="switchGraph('year');">연중</button></li>
-		                    </ul>
-		                </dd>
-		            </dl>
-		        </div>
-		      
-		        <div class="flash_area">
-            		<img id="kospiImg" src="${pageContext.request.contextPath}/resources/img/exchange/day.png" width="700" alt="">
-       	 		</div>
-       	 	</div>
-       	 	
-       	 	<div class="container">
-				<h4 class="h4">환율시그널 관련 뉴스</h4>
-				<div class="chart_control_area">
-		            <dl class="line">
-		                <dd>
-		                    <ul class="nav nav-tabs" role="tablist">
-		                        <li class="exch" role="presentation"><button id="exch" name="btnNews" class="nav-link active" onclick="switchImg('exch');">환율</button></li>
-		                        <li class="fori" role="presentation"><button id="fori" name="btnNews" class="nav-link" onclick="switchImg('fori');">외국인 매매동향</button></li>
-		                        <li class="expo" role="presentation"><button id="expo" name="btnNews" class="nav-link" onclick="switchImg('expo');">수출입 동향</button></li>
-		                        <li class="" role="presentation"><button id="" name="btnNews" class="nav-link"><span data-feather="plus-circle"></span></button></li>
-		                    </ul>
-		                </dd>
-		            </dl>
-		        </div>
-		      
-		        <div class="flash_area">
-            		<img id="newsImg" src="${pageContext.request.contextPath}/resources/img/exchange/exch.png" width="700" alt="">
-       	 		</div>
-       	 	</div>
-       	 	
-       	 	
-       	 				      
-       	 	<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>			      
-       	 	
-       	 				      
-       	 				   
-		      <h2>Section title</h2>
-		      <div class="table-responsive">
-		        <table class="table table-striped table-sm">
-		          <thead>
-		            <tr>
-		              <th scope="col">#</th>
-		              <th scope="col">Header</th>
-		              <th scope="col">Header</th>
-		              <th scope="col">Header</th>
-		              <th scope="col">Header</th>
-		            </tr>
-		          </thead>
-		          <tbody>
-		            <tr>
-		              <td>1,001</td>
-		              <td>random</td>
-		              <td>data</td>
-		              <td>placeholder</td>
-		              <td>text</td>
-		            </tr>
-		            <tr>
-		              <td>1,002</td>
-		              <td>placeholder</td>
-		              <td>irrelevant</td>
-		              <td>visual</td>
-		              <td>layout</td>
-		            </tr>
-		            <tr>
-		              <td>1,003</td>
-		              <td>data</td>
-		              <td>rich</td>
-		              <td>dashboard</td>
-		              <td>tabular</td>
-		            </tr>
-		            <tr>
-		              <td>1,003</td>
-		              <td>information</td>
-		              <td>placeholder</td>
-		              <td>illustrative</td>
-		              <td>data</td>
-		            </tr>
-		            <tr>
-		              <td>1,004</td>
-		              <td>text</td>
-		              <td>random</td>
-		              <td>layout</td>
-		              <td>dashboard</td>
-		            </tr>
-		            <tr>
-		              <td>1,005</td>
-		              <td>dashboard</td>
-		              <td>irrelevant</td>
-		              <td>text</td>
-		              <td>placeholder</td>
-		            </tr>
-		            <tr>
-		              <td>1,006</td>
-		              <td>dashboard</td>
-		              <td>illustrative</td>
-		              <td>rich</td>
-		              <td>data</td>
-		            </tr>
-		            <tr>
-		              <td>1,007</td>
-		              <td>placeholder</td>
-		              <td>tabular</td>
-		              <td>information</td>
-		              <td>irrelevant</td>
-		            </tr>
-		            <tr>
-		              <td>1,008</td>
-		              <td>random</td>
-		              <td>data</td>
-		              <td>placeholder</td>
-		              <td>text</td>
-		            </tr>
-		            <tr>
-		              <td>1,009</td>
-		              <td>placeholder</td>
-		              <td>irrelevant</td>
-		              <td>visual</td>
-		              <td>layout</td>
-		            </tr>
-		            <tr>
-		              <td>1,010</td>
-		              <td>data</td>
-		              <td>rich</td>
-		              <td>dashboard</td>
-		              <td>tabular</td>
-		            </tr>
-		            <tr>
-		              <td>1,011</td>
-		              <td>information</td>
-		              <td>placeholder</td>
-		              <td>illustrative</td>
-		              <td>data</td>
-		            </tr>
-		            <tr>
-		              <td>1,012</td>
-		              <td>text</td>
-		              <td>placeholder</td>
-		              <td>layout</td>
-		              <td>dashboard</td>
-		            </tr>
-		            <tr>
-		              <td>1,013</td>
-		              <td>dashboard</td>
-		              <td>irrelevant</td>
-		              <td>text</td>
-		              <td>visual</td>
-		            </tr>
-		            <tr>
-		              <td>1,014</td>
-		              <td>dashboard</td>
-		              <td>illustrative</td>
-		              <td>rich</td>
-		              <td>data</td>
-		            </tr>
-		            <tr>
-		              <td>1,015</td>
-		              <td>random</td>
-		              <td>tabular</td>
-		              <td>information</td>
-		              <td>text</td>
-		            </tr>
-		          </tbody>
-		        </table>
-		      </div>
-			  <jsp:include page="../include/bottom.jsp" />
-		    </main>
-		  </div>
-		</div>
+  <body>
+  <!-- Pre-loader start -->
+  <jsp:include page="../include/preloader.jsp"/>
+  <!-- Pre-loader end -->
+  <div id="pcoded" class="pcoded">
+      <div class="pcoded-overlay-box"></div>
+      <div class="pcoded-container navbar-wrapper">
+          <!-- nav-top start -->
+          <jsp:include page="../include/navtop.jsp"/>
+		  <!-- nav-top end -->
+          <div class="pcoded-main-container">
+              <div class="pcoded-wrapper">
+                  <!-- nav-side start -->
+                  <jsp:include page="../include/navside.jsp"/>
+                  <!-- nav-side end -->
+                  
+                  <!-- 해당 페이지 시작 -->
+                  <div class="pcoded-content">
+                      <!-- Page-header start -->
+                      <div class="page-header">
+                          <div class="page-block">
+                              <div class="row align-items-center">
+                                  <div class="col-md-8">
+                                      <div class="page-header-title">
+                                          <h5 class="m-b-10">환율 시그널</h5>
+                                          <p class="m-b-0">Exchange Signal</p>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <ul class="breadcrumb-title">
+                                          <li class="breadcrumb-item">
+                                              <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                          </li>
+                                          <li class="breadcrumb-item"><a href="#!">환율시그널</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Page-header end -->
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page-body start -->
+                                    <div class="page-body">
+                                        <!-- Inverse-color Breadcrumb card start -->
+                                        <div class="card borderless-card">
+                                            <div class="card-block inverse-breadcrumb">
+                                                <div class="breadcrumb-header">
+                                                    <h5>STEP 1 : 환율과 주가에 어떤 관계가 있는지 알아보기</h5>
+                                                    <span>Stock Signal With Exchange</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Inverse-color Breadcrumb card end -->
+                                        <div class="row">
+                                            <!-- task, page, download counter  start -->
+                                            
+                                            <!-- task, page, download counter  end -->
+    
+                                            <!--  sale analytics start -->
+                                            <div class="col-xl-5 col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>환율 시그널</h5>
+                                                        <span class="text-muted">환율이 내 주식에 어떤 영향을 미치는 걸까?</span>
+                                                        <div class="card-header-right">
+                                                            <i class="fa fa-window-maximize full-card"></i>
+                                                            <i class="fa fa-minus minimize-card"></i>
+                                                            <i class="fa fa-refresh reload-card"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block" style="min-height:400px; background-color:#D3F1EC">
+                                                        <div style="max-height:500px;" class="row align-items-center">
+                                                            <div class="container">
+                                                                <img id="signalImg" src="${pageContext.request.contextPath}/assets/images/exchange/1.png" class="card-img rounded mx-auto d-block" style="max-height:500px; max-width:500px;">
+                                                            </div>
+                                                        </div>
+                                                        <div style="position:absolute; top:55%; left:3%"><button class="btn waves-effect waves-dark btn-inverse btn-outline-inverse btn-icon" onclick="back();"><i class="ti-angle-double-left"></i></button></div>
+                                                        <div style="position:absolute; top:55%; right:3%"><button class="btn waves-effect waves-dark btn-inverse btn-outline-inverse btn-icon" onclick="forward();"><i class="ti-angle-double-right"></i></button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-	</main>
-	
-	
-	<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" ></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-<!-- 	<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script> -->
-	<script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
-	
-  </body>
+                                            <!-- LINE CHART start -->
+                                            <div class="col-xl-7 col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>달러환율 - 코스피 상관관계</h5>
+                                                        <span class="text-muted">실제 환율과 주가는 어떤 관계가 있는가?</span>
+                                                        <div class="card-header-right">
+                                                            <i class="fa fa-window-maximize full-card"></i>
+                                                            <i class="fa fa-minus minimize-card"></i>
+                                                            <i class="fa fa-refresh reload-card"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div id="line-example"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- LINE CHART Ends -->
+                                        </div>
+
+                                                    
+                                        <!-- Inverse-color Breadcrumb card start -->
+                                        <div class="card borderless-card">
+                                            <div class="card-block inverse-breadcrumb">
+                                                <div class="breadcrumb-header">
+                                                    <h5>STEP 2 : 환율 실시간 동향 파악</h5>
+                                                    <span>Stock Signal With Exchange</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Inverse-color Breadcrumb card end -->
+                                        <div class="row">   
+                                            <div class="col-xl-7 col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>미국 USD 환율</h5>
+                                                        <span class="text-muted">2021.09.01 14:57 하나은행 | 고시회차 323회</span>
+                                                        
+                                                        
+                                                        <div class="card-header-right">
+                                                            <i class="fa fa-window-maximize full-card"></i>
+                                                            <i class="fa fa-minus minimize-card"></i>
+                                                            <i class="fa fa-refresh reload-card"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <!-- Nav tabs -->
+                                                        <div class="col-xl-12 col-md-12">
+                                                            <ul class="nav nav-tabs md-tabs" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">미국달러</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">중국위안</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#messages3" role="tab">일본엔</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#settings3" role="tab">유럽유로</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#settings3" role="tab">영국파운드</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#settings3" role="tab">+</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- Nav tabs -->
+                                                        <div id="sales-analytics" style="height: 400px;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  sale analytics end -->
+    
+                                            <!--  project and team member start -->
+                                            <div class="col-xl-5 col-md-12">
+                                                <div class="card table-card">
+                                                    <div class="card-header">
+                                                        <h5>환율시그널 관련 뉴스</h5>
+                                                        <span class="text-muted">최근 업데이트 시간 - 14:57</span>
+                                                        <div class="card-header-right">
+                                                            <i class="fa fa-window-maximize full-card"></i>
+                                                            <i class="fa fa-minus minimize-card"></i>
+                                                            <i class="fa fa-refresh reload-card"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <!-- Nav tabs -->
+                                                        <div class="col-xl-12 col-md-12">
+                                                            <ul class="nav nav-tabs md-tabs" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">환율</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">수출입동향</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#messages3" role="tab">외국인매매</a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#settings3" role="tab"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                                                                    <div class="slide"></div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- Nav tabs -->
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                            <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                        </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        Assigned</th>
+                                                                    <th>Name</th>
+                                                                    <th>Due Date</th>
+                                                                    <th class="text-right">Priority</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                            </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>John Deo</h6>
+                                                                                <p class="text-muted m-b-0">Graphics Designer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Able Pro</td>
+                                                                    <td>Jun, 26</td>
+                                                                    <td class="text-right"><label class="label label-danger">Low</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+																			<div class="checkbox-fade fade-in-primary">
+																				<label class="check-task"> 
+																				<input type="checkbox" value="">
+																				<span class="cr">
+																					<i class="cr-icon fa fa-check txt-default"></i>
+																				</span>
+																				</label>
+																			</div>
+																		</div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>Jenifer Vintage</h6>
+                                                                                <p class="text-muted m-b-0">Web Designer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Mashable</td>
+                                                                    <td>March, 31</td>
+                                                                    <td class="text-right"><label class="label label-primary">high</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                            </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>William Jem</h6>
+                                                                                <p class="text-muted m-b-0">Developer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Flatable</td>
+                                                                    <td>Aug, 02</td>
+                                                                    <td class="text-right"><label class="label label-success">medium</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="chk-option">
+                                                                            <div class="checkbox-fade fade-in-primary">
+                                                                                <label class="check-task">
+                                                                                    <input type="checkbox" value="">
+                                                                                    <span class="cr">
+                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
+                                                                                            </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-inline-block align-middle">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <div class="d-inline-block">
+                                                                                <h6>David Jones</h6>
+                                                                                <p class="text-muted m-b-0">Developer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Guruable</td>
+                                                                    <td>Sep, 22</td>
+                                                                    <td class="text-right"><label class="label label-primary">high</label></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="text-right m-r-20">
+                                                                <a href="#!" class=" b-b-primary text-primary">View all Projects</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  project and team member end -->
+
+                                        </div>
+                                        <!-- Inverse-color Breadcrumb card start 커스터마이징 시작 -->
+                                        <div class="card borderless-card">
+                                            <div class="card-block inverse-breadcrumb">
+                                                <div class="breadcrumb-header">
+                                                    <h5>STEP 3 : 환율과 함께 봐야할 시그널 지표들</h5>
+                                                    <span>Stock Signal With Exchange</span> 
+                                                </div>                                              
+                                                <div class="col align-self-end" align="right" >
+                                                    <button class="btn btn-primary btn-round waves-effect waves-light" type="button" id="btnAdd" data-toggle="modal" data-target=".bd-example-modal-lg" style="display:none;">지표 추가하기</button>                                                                                           
+                                                    <button class="btn btn-primary btn-round waves-effect waves-light" id="btnCust" onclick="updateMenu();">수정하기</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Inverse-color Breadcrumb card end -->
+                                        <div id="custompage" class="row">
+                                        	
+                                        </div>
+                                    </div>
+                                    <!-- Page-body end -->
+                                </div>
+                                <div id="styleSelector"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- 지표 추가 Modal -->    
+<jsp:include page="../modal/addgraph.jsp" />
+<!-- 지표 추가 Modal --> 
+    
+	<jsp:include page="../include/bottom2.jsp"/>
+	<script>
+		$(document).ready(function() {
+			$('#exchange').attr('class', 'active');
+		})
+	</script>
+</body>
+
 </html>

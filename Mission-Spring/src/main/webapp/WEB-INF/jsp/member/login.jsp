@@ -41,11 +41,11 @@
 	    	<h1 class="h3 mb-3 fw-normal">로그인을 해주세요</h1>
 	
 	    	<div class="form-floating">
-	      		<input type="text" class="form-control" id="floatingInput" placeholder="ID" name="id">
+	      		<input type="text" class="form-control" id="floatingInput" placeholder="ID" name="id" required="required">
 	      		<label for="floatingInput">아이디</label>
 	    	</div>
 	    	<div class="form-floating">
-	      		<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+	      		<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required="required">
 	      		<label for="floatingPassword">비밀번호</label>
 	    	</div>
 	

@@ -22,13 +22,15 @@ public interface BoardDAO {
 	
 	/**
 	 * 상세게시글 삭제
-	 * @return DB에서 조회된 BoardVO board
+	 * @param no
+	 * @return 성공여부
 	 */
 	int deleteOne(int no);
 	
 	/**
 	 * 게시글 추가
-	 * @return DB에 BoardVO board 삽입
+	 * @param boardVO
+	 * @return 성공여부
 	 */
 	int insertOne(BoardVO boardVO);
 }

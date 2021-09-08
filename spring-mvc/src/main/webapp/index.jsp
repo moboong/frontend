@@ -27,6 +27,8 @@
 	
 	<a href="<%= request.getContextPath() %>/file/uploadForm.do">파일 업로드</a>
 	
+	<a href="<%= request.getContextPath() %>/ajax/jsonList.json">환율</a>
+	
 </body>
 </body>
 

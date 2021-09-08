@@ -12,10 +12,18 @@ public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public MemberVO login(MemberVO member) {
-		
-		MemberVO userVO = sqlSessionTemplate.selectOne("member.MemberDAO.login", member);
-		
+	public MemberVO login(MemberVO memberVO) {
+		MemberVO userVO = sqlSessionTemplate.selectOne("member.MemberDAO.login", memberVO);
 		return userVO;
+	}
+	
+	public String getStruct(MemberVO memberVO) {
+		String result = sqlSessionTemplate.selectOne("member.MemberDAO.getStruct", memberVO);
+		return result;
+	}
+
+	public int setStruct(MemberVO memberVO) {
+		int result = sqlSessionTemplate.update("member.MemberDAO.setStruct", memberVO);
+		return result; 
 	}
 }

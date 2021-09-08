@@ -3,24 +3,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>회원가입</title>
-	<jsp:include page="../include/head.jsp" />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>회원가입</title>
+<jsp:include page="../include/head.jsp" />
 
-    <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/resources/css/form-validation.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="${pageContext.request.contextPath}/resources/css/form-validation.css" rel="stylesheet">
     
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#login-signup').attr('class','nav-link dropdown-toggle active')
-		})
-	</script>    
-    
-  </head>
-  <body class="d-flex flex-column h-100 bg-light">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#login-signup').attr('class','nav-link dropdown-toggle active')
+	})
+</script>    
+</head>
+<body class="d-flex flex-column h-100" style="background-color : #f5f5f5;">
   
   	<jsp:include page="../include/top.jsp" />
 
@@ -33,54 +32,7 @@
 		      <p class="lead">스톡시그널에 오신 것을 환영합니다. 회원가입을 진행해주세요.</p>
 		    </div>
 		
-		    <div class="row g-5">
-		      <div class="col-md-5 col-lg-4 order-md-last">
-		        <h4 class="d-flex justify-content-between align-items-center mb-3">
-		          <span class="text-primary">Your cart</span>
-		          <span class="badge bg-primary rounded-pill">3</span>
-		        </h4>
-		        <ul class="list-group mb-3">
-		          <li class="list-group-item d-flex justify-content-between lh-sm">
-		            <div>
-		              <h6 class="my-0">Product name</h6>
-		              <small class="text-muted">Brief description</small>
-		            </div>
-		            <span class="text-muted">$12</span>
-		          </li>
-		          <li class="list-group-item d-flex justify-content-between lh-sm">
-		            <div>
-		              <h6 class="my-0">Second product</h6>
-		              <small class="text-muted">Brief description</small>
-		            </div>
-		            <span class="text-muted">$8</span>
-		          </li>
-		          <li class="list-group-item d-flex justify-content-between lh-sm">
-		            <div>
-		              <h6 class="my-0">Third item</h6>
-		              <small class="text-muted">Brief description</small>
-		            </div>
-		            <span class="text-muted">$5</span>
-		          </li>
-		          <li class="list-group-item d-flex justify-content-between bg-light">
-		            <div class="text-success">
-		              <h6 class="my-0">Promo code</h6>
-		              <small>EXAMPLECODE</small>
-		            </div>
-		            <span class="text-success">â$5</span>
-		          </li>
-		          <li class="list-group-item d-flex justify-content-between">
-		            <span>Total (USD)</span>
-		            <strong>$20</strong>
-		          </li>
-		        </ul>
-		
-		        <form class="card p-2">
-		          <div class="input-group">
-		            <input type="text" class="form-control" placeholder="Promo code">
-		            <button type="submit" class="btn btn-secondary">Redeem</button>
-		          </div>
-		        </form>
-		      </div>
+		    <div class="row justify-content-md-center">
 		      <div class="col-md-7 col-lg-8">
 		        <h4 class="mb-3">Billing address</h4>
 		        <form class="needs-validation" novalidate>
@@ -239,19 +191,12 @@
 		  </main>
 		
 		  <footer class="my-5 pt-5 text-muted text-center text-small">
-		    <p class="mb-1">&copy; 2021 Stock Signal</p>
-		    <ul class="list-inline">
-		      <li class="list-inline-item"><a href="#">Privacy</a></li>
-		      <li class="list-inline-item"><a href="#">Terms</a></li>
-		      <li class="list-inline-item"><a href="#">Support</a></li>
-		    </ul>
+		  	<p class="mb-1">&copy; Stock Signal</p>
 		  </footer>
 		</div>
 	</main>
 	
-	
 	<jsp:include page="../include/bottom.jsp" />
-	
 	
 	<script src="${pageContext.request.contextPath}/resources/js/form-validation.js"></script>
   </body>

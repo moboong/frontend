@@ -5,6 +5,7 @@ public class MemberVO {
 	private String password;
 	private String name;
 	private String type;
+	private String struct;
 	
 	public MemberVO() {
 		super();
@@ -35,9 +36,18 @@ public class MemberVO {
 		this.password = password;
 	}
 
+	public String getStruct() {
+		return struct;
+	}
+
+	public void setStruct(String struct) {
+		this.struct = struct;
+	}
+
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", type=" + type + "]";
+		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", type=" + type + ", struct="
+				+ struct + "]";
 	}
-	
+
 }

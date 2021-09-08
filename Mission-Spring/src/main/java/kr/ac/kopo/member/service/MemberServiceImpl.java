@@ -13,11 +13,21 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memberDAO;
 	
 	@Override
-	public MemberVO login(MemberVO member) {
-		
-		MemberVO userVO = memberDAO.login(member);
-		
+	public MemberVO login(MemberVO memberVO) {
+		MemberVO userVO = memberDAO.login(memberVO);
 		return userVO;
 	}
 
+	@Override
+	public int setStruct(MemberVO memberVO) {
+		int result = memberDAO.setStruct(memberVO);
+		return result;
+	}
+
+	@Override
+	public String getStruct(MemberVO memberVO) {
+		String result = memberDAO.getStruct(memberVO);
+		return result;
+	}
+	
 }
