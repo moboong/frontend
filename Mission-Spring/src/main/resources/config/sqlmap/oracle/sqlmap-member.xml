@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.MemberDAO">
 	
+	<resultMap type="memberVO" id="memberMap">
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+	
 	<select id="login" parameterType="memberVO" resultType="memberVO">
 		select id, name, password, type
 		  from t_member
@@ -20,5 +24,15 @@
 		update t_member set struct = #{struct}
 		where id = #{id}
 	</update>
+	
+	<insert id="signup" parameterType="memberVO">
+		insert into t_member(id, name, password, email, tel, agree)
+		 values(#{id}, #{name}, #{password}, #{email}, #{tel}, #{agree})
+	</insert>
+	
+	<select id="getAllStruct" resultType="String">
+		select struct
+		  from t_member
+	</select>
 	
 </mapper>

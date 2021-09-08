@@ -1,5 +1,7 @@
 package kr.ac.kopo.member.dao;
 
+import java.util.List;
+
 import kr.ac.kopo.member.vo.MemberVO;
 
 public interface MemberDAO {
@@ -23,4 +25,18 @@ public interface MemberDAO {
 	 * @return DB에서 조회된 구조jsonString
 	 */
 	String getStruct(MemberVO memberVO);
+	
+	/**
+	 * 회원가입
+	 * @param memberVO
+	 * @return 성공여부
+	 */
+	int signup(MemberVO memberVO);
+	
+	
+	/**
+	 * 지표 픽 데이터 전부 가져오기
+	 * @return lists
+	 */
+	List<String> getAllStruct();
 }

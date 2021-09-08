@@ -126,11 +126,11 @@ public class BoardController {
 	@PostMapping("/board/write")
 	public String write(@Valid BoardVO board, Errors error, HttpSession session) {	//그냥 BoardVO 넣어주면 알아서 넣어줌... //붙어있으어햠. 에러
 		
-		System.out.println(board); //알아서 매핑돼서 입력받은 값이 board포장됨.
+		//System.out.println(board); //알아서 매핑돼서 입력받은 값이 board포장됨.
 		
 		//error.hasErrors() 귀찮은 조건식 나열? ㄴㄴ 이거 하나면 충분.
 		if(error.hasErrors()) {
-			System.out.println("오류발생!!!");
+			System.out.println("게시물 생성 오류발생!!!");
 			return "board/write";
 		}
 		

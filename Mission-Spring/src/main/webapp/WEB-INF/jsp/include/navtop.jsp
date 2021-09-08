@@ -63,10 +63,9 @@
 									src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg"
 									alt="Generic placeholder image">
 								<div class="media-body">
-									<h5 class="notification-user">황준호</h5>
-									<p class="notification-msg">Lorem ipsum dolor sit amet,
-										consectetuer elit.</p>
-									<span class="notification-time">30 minutes ago</span>
+									<h5 class="notification-user">이기찬</h5>
+									<p class="notification-msg">내 게시글에 댓글을 달았습니다.</p>
+									<span class="notification-time">30분 전</span>
 								</div>
 							</div>
 						</li>
@@ -76,9 +75,8 @@
 									src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg"
 									alt="Generic placeholder image">
 								<div class="media-body">
-									<h5 class="notification-user">Joseph William</h5>
-									<p class="notification-msg">Lorem ipsum dolor sit amet,
-										consectetuer elit.</p>
+									<h5 class="notification-user">제라드</h5>
+									<p class="notification-msg">내 게시글에 좋아요를 눌렀습니다.</p>
 									<span class="notification-time">30 minutes ago</span>
 								</div>
 							</div>
@@ -89,10 +87,9 @@
 									src="${pageContext.request.contextPath}/assets/images/avatar-3.jpg"
 									alt="Generic placeholder image">
 								<div class="media-body">
-									<h5 class="notification-user">Sara Soudein</h5>
-									<p class="notification-msg">Lorem ipsum dolor sit amet,
-										consectetuer elit.</p>
-									<span class="notification-time">30 minutes ago</span>
+									<h5 class="notification-user">드록바</h5>
+									<p class="notification-msg">내 게시글에 댓글을 달았습니다.</p>
+									<span class="notification-time">1시간 전</span>
 								</div>
 							</div>
 						</li>
@@ -105,21 +102,17 @@
 				</a>
 					<ul class="show-notification profile-notification">
 						<li class="waves-effect waves-light"><a href="#!"> <i
-								class="ti-settings"></i> Settings
+								class="ti-settings"></i> 설정
 						</a></li>
 						<li class="waves-effect waves-light"><a
-							href="user-profile.html"> <i class="ti-user"></i> Profile
+							href="${pageContext.request.contextPath}"> <i class="ti-user"></i> 프로필
 						</a></li>
 						<li class="waves-effect waves-light"><a
-							href="email-inbox.html"> <i class="ti-email"></i> My Messages
+							href="${pageContext.request.contextPath}"> <i class="ti-email"></i> 채팅하기
 						</a></li>
 						<li class="waves-effect waves-light"><a
-							href="auth-lock-screen.html"> <i class="ti-lock"></i> Lock
-								Screen
-						</a></li>
-						<li class="waves-effect waves-light"><a
-							href="auth-normal-sign-in.html"> <i
-								class="ti-layout-sidebar-left"></i> Logout
+							href="${pageContext.request.contextPath}/logout"> <i
+								class="ti-layout-sidebar-left"></i> 로그아웃
 						</a></li>
 					</ul></li>
 			</ul>

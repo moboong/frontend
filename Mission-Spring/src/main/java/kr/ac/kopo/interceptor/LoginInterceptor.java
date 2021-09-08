@@ -14,7 +14,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("로그인 요구 인터셉터 처리");
+		System.out.println(request.getRequestURI() + " : 로그인요구 인터셉터 처리");
 		
 		HttpSession session = request.getSession();
 		MemberVO userVO = (MemberVO)session.getAttribute("userVO");
@@ -26,7 +26,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			// request.getQueryString() 얘도 필요함.
 			// if(query != null) uri = uri + "?" + query
 			
-			System.out.println(uri);
 			session.setAttribute("dest", uri);
 			session.setAttribute("msg", "로그인이 필요한 서비스입니다.");
 			

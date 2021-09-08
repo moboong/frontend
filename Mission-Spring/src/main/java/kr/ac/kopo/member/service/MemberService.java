@@ -1,5 +1,7 @@
 package kr.ac.kopo.member.service;
 
+import java.util.List;
+
 import kr.ac.kopo.member.vo.MemberVO;
 
 public interface MemberService {
@@ -9,4 +11,8 @@ public interface MemberService {
 	int setStruct(MemberVO memberVO);
 	
 	String getStruct(MemberVO memberVO);
+	
+	int signup(MemberVO memberVO);
+	
+	List<String> getAllStruct();
 }

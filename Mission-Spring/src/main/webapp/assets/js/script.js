@@ -6,7 +6,7 @@ var idx = 0;
 function updateMenu() {
 	var icons = $("#custompage .card-header-right");
 
-	if (icons.css('display') == 'none') {
+	if (icons.css('display') == 'none' || $("#btnCust").text() == '수정하기') {
 		$("#btnAdd").css('display', 'inline-block');
 		$("#btnCust").text('저장하기');
 		icons.css('display', 'inline-block');
@@ -40,7 +40,7 @@ function updateMenu() {
 			console.log(struct);
 
 			$.ajax({
-				url: 'http://192.168.217.48:9999/Mission-Spring/custom/userpage',
+				url: '/Mission-Spring/custom/userpage',
 				type: 'POST',
 				dataType: 'json',
 				data: {
@@ -50,7 +50,7 @@ function updateMenu() {
 				success: function(data) {
 					alert(data)
 				}, error: function() {
-					alert('통신 실패')
+					alert('POST 커스텀 메뉴 저장실패')
 				}
 			})
 		}
@@ -59,9 +59,9 @@ function updateMenu() {
 
 /* 그래프 추가 함수 */
 function addGraph() {
-
+	
 	let value = $('input:checkbox[name="checkbox_add"]:checked').val();
-	$.get("http://localhost:9999/Mission-Spring/custom/graph/" + value, function(data) {
+	$.get("/Mission-Spring/custom/graph/" + value, function(data) {
 		$("#custompage").append(data);
 		$("#custompage .card-header-right").css('display', 'inline-block');
 		/* 그래프 추가 후에 버튼 리스너 활성화 -> 리로드 겁나 비효율 */
@@ -109,23 +109,7 @@ function addGraph() {
 
 
 $(document).ready(function() {
-	//java에서 include하면 삭제하셈
-	//$("#custompage").load('custom/userpage/struct-default.html');
-
-	$.ajax({
-		type: 'GET',
-		async: false,
-		url: 'http://192.168.217.48:9999/Mission-Spring/custom/userpage',
-		success: function(data) {
-			$("#custompage").append(data);
-			for (var i = 0; i < arr.length; i++) {
-				$(".custcard").eq(i).attr('class', 'col-xl-' + arr[i] + ' col-md-12 custcard');
-			}
-		}, error: function() {
-			alert('실패')
-		}
-	})
-
+	
 	// card js start
 	$(".card-header-right .plussize-card").on('click', function() {
 		var $this = $(this);

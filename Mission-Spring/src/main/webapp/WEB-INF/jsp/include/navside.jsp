@@ -50,19 +50,19 @@
 					class="pcoded-mcaret"></span>
 			</a>
 				<ul class="pcoded-submenu">
-					<li class=" "><a href="${pageContext.request.contextPath}"
+					<li class=" "><a href="${pageContext.request.contextPath}/signup"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
 							data-i18n="nav.basic-components.alert">회원가입</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
+					<li class=" "><a href="${pageContext.request.contextPath}/login"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
 							data-i18n="nav.basic-components.breadcrumbs">로그인</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
+					<li class=" "><a href="${pageContext.request.contextPath}/logout"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
 							data-i18n="nav.basic-components.alert">로그아웃</span> <span

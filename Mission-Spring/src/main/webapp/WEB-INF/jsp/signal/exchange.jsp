@@ -397,6 +397,126 @@
                                         <div id="custompage" class="row">
                                         	
                                         </div>
+                                        
+                                        <!-- Inverse-color Breadcrumb card start -->
+                                        <div class="card borderless-card">
+                                            <div class="card-block inverse-breadcrumb">
+                                                <div class="breadcrumb-header">
+                                                    <h5>STEP 4 : 결론</h5>
+                                                    <span>Stock Signal With Exchange</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Inverse-color Breadcrumb card end -->
+                                        
+                                        <div class="row">
+                                        	<!-- task, page, download counter  start -->
+                                        	<div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-red">+213p</h4>
+                                                                <h6 class="text-muted m-b-0">전일 대비 USD 환율</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-money f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-red">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">환율 상승</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-caret-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        	
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-purple">+213p</h4>
+                                                                <h6 class="text-muted m-b-0">전일 대비 USD 환율</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-bar-chart f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-purple">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">% change</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-green">290+</h4>
+                                                                <h6 class="text-muted m-b-0">Page Views</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-file-text-o f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-green">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">% change</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-blue">500</h4>
+                                                                <h6 class="text-muted m-b-0">Downloads</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-hand-o-down f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-blue">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">% change</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- task, page, download counter  end -->
+                                        </div>
+                                        
                                     </div>
                                     <!-- Page-body end -->
                                 </div>
@@ -410,13 +530,78 @@
     </div>
 
 <!-- 지표 추가 Modal -->    
-<jsp:include page="../modal/addgraph.jsp" />
+<%-- <jsp:include page="../modal/addgraph.jsp" /> --%>
 <!-- 지표 추가 Modal --> 
     
 	<jsp:include page="../include/bottom2.jsp"/>
 	<script>
 		$(document).ready(function() {
+			//지표 선택율 받아오기
+			$.ajax({
+				type: 'GET',
+				async: false,
+				url: '${pageContext.request.contextPath}/custom/pickrate',
+				success: function(data) {
+					$("body").append(data);
+					console.log('GET 모달 로드 성공')
+				}, error: function() {
+					alert('GET 비동기 모달값 넣기 실패')
+				}
+			})
+			
 			$('#exchange').attr('class', 'active');
+			
+			//개인 커스텀 메뉴 받아오기
+			$.ajax({
+				type: 'GET',
+				async: false,
+				url: '${pageContext.request.contextPath}/custom/userpage',
+				success: function(data) {
+					$("#custompage").append(data);
+					for (var i = 0; i < arr.length; i++) {
+						$(".custcard").eq(i).attr('class', 'col-xl-' + arr[i] + ' col-md-12 custcard');
+					}
+					console.log('GET 커스텀 메뉴 성공')
+				}, error: function() {
+					alert('GET 커스텀 메뉴 실패')
+				}
+			})
+			
+			/* 그래프 추가 후에 버튼 리스너 활성화 -> 리로드 겁나 비효율 */
+			$(".card-header-right .plussize-card").on('click', function() {
+				var $this = $(this);
+				var size = $this.parents('.custcard');
+				var str = size.attr('class');
+				var num = Number(str.substring(7, 9));
+				if (num < 12) {
+					num += 2;
+				}
+				size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
+			});
+			$(".card-header-right .minussize-card").on('click', function() {
+				var $this = $(this);
+				var size = $this.parents('.custcard');
+				var str = size.attr('class');
+				var num = Number(str.substring(7, 9));
+				if (num > 4) {
+					num -= 2;
+				}
+				size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
+			});
+
+			$(".card-header-right .close-card").on('click', function() {
+				var $this = $(this);
+				$this.parents('.custcard').animate({
+					'opacity': '0',
+					'-webkit-transform': 'scale3d(.3, .3, .3)',
+					'transform': 'scale3d(.3, .3, .3)'
+				});
+
+				setTimeout(function() {
+					$this.parents('.custcard').remove();
+				}, 800);
+			});
+			/* 리로드 */
 		})
 	</script>
 </body>

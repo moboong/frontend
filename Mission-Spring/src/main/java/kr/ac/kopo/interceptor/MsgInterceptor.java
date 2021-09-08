@@ -12,7 +12,8 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("전 페이지 메세지 인터셉터 처리");
+		String uri = request.getRequestURI();
+		System.out.println(uri + " : 메세지 인터셉터 처리");
 		
 		HttpSession session = request.getSession();
 		String msg = (String)session.getAttribute("msg");

@@ -67,17 +67,21 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/member/login"/>
 			<mvc:exclude-mapping path="/signup"/>
+			<mvc:exclude-mapping path="/member/signup"/>
 			<mvc:exclude-mapping path="/assets/**"/>
 			<mvc:exclude-mapping path="/custom/**"/>
 			<mvc:exclude-mapping path="/"/>
 			<mvc:exclude-mapping path="/board"/>
-			<mvc:exclude-mapping path="/signal/**"/>
 			<mvc:exclude-mapping path="/show/**"/>
+			<mvc:exclude-mapping path="/modal/**"/>
 			<ref bean="loginInterceptor"/>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/assets/**"/>
+			<mvc:exclude-mapping path="/custom/**"/>
 			<mvc:exclude-mapping path="/show/**"/>
 			<ref bean="MsgInterceptor"/>
 		</mvc:interceptor>

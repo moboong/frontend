@@ -1,5 +1,7 @@
 package kr.ac.kopo.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +32,15 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 	
+	@Override
+	public int signup(MemberVO memberVO) {
+		int result = memberDAO.signup(memberVO);
+		return result;
+	}
+	
+	@Override
+	public List<String> getAllStruct() {
+		List<String> list = memberDAO.getAllStruct();
+		return list;
+	}
 }

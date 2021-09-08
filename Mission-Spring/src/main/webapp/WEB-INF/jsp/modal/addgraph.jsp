@@ -26,7 +26,7 @@
 											<th>지표유형</th>
 											<th>시그널 요약</th>
 											<th class="text-right">지표 선택율</th>
-											<th class="text-right">상관성 분석</th>
+											<th class="text-right">연관성 분석</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -52,8 +52,31 @@
 											</td>
 											<td><i class="fa fa-bar-chart fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">76%</td>
-											<td class="text-right"><label class="label label-danger">High</label></td>
+											<td class="text-right">${ pickrateVO.g1 }% 
+												<c:choose>
+													<c:when test="${ pickrateVO.g1 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g1 > 30 and pickrateVO.g1 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose></td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g1 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g1 > 30 and pickrateVO.g1 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -77,9 +100,32 @@
 											</td>
 											<td><i class="fa fa-table fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">43%</td>
-											<td class="text-right"><label
-												class="label label-success">medium</label></td>
+											<td class="text-right">${ pickrateVO.g2 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g2 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g2 > 30 and pickrateVO.g2 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g2 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g2 > 30 and pickrateVO.g2 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -103,8 +149,32 @@
 											</td>
 											<td><i class="fa fa-bar-chart fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">68%</td>
-											<td class="text-right"><label class="label label-danger">High</label></td>
+											<td class="text-right">${ pickrateVO.g3 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g3 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g3 > 30 and pickrateVO.g3 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g3 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g3 > 30 and pickrateVO.g3 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -128,9 +198,32 @@
 											</td>
 											<td><i class="fa fa-line-chart fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">16%</td>
-											<td class="text-right"><label
-												class="label label-primary">low</label></td>
+											<td class="text-right">${ pickrateVO.g4 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g4 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g4 > 30 and pickrateVO.g4 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g4 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g4 > 30 and pickrateVO.g4 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -154,9 +247,32 @@
 											</td>
 											<td><i class="fa fa-pie-chart fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">50%</td>
-											<td class="text-right"><label
-												class="label label-success">medium</label></td>
+											<td class="text-right">${ pickrateVO.g5 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g5 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g5 > 30 and pickrateVO.g5 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g5 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g5 > 30 and pickrateVO.g5 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -180,9 +296,32 @@
 											</td>
 											<td><i class="fa fa-bar-chart fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">12%</td>
-											<td class="text-right"><label
-												class="label label-primary">low</label></td>
+											<td class="text-right">${ pickrateVO.g6 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g6 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g6 > 30 and pickrateVO.g6 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g6 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g6 > 30 and pickrateVO.g6 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -206,9 +345,32 @@
 											</td>
 											<td><i class="fa fa-line-chart fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">46%</td>
-											<td class="text-right"><label
-												class="label label-success">medium</label></td>
+											<td class="text-right">${ pickrateVO.g7 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g7 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g7 > 30 and pickrateVO.g7 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g7 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g7 > 30 and pickrateVO.g7 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -232,9 +394,32 @@
 											</td>
 											<td><i class="fa fa-bar-chart fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">22%</td>
-											<td class="text-right"><label
-												class="label label-primary">low</label></td>
+											<td class="text-right">${ pickrateVO.g8 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g8 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g8 > 30 and pickrateVO.g8 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g9 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g9 > 30 and pickrateVO.g9 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<tr>
 											<td>
@@ -258,9 +443,32 @@
 											</td>
 											<td><i class="fa fa-table fa-2x"></i></td>
 											<td><a href="#!">같이 봐야하는 이유</a></td>
-											<td class="text-right">6%</td>
-											<td class="text-right"><label
-												class="label label-primary">low</label></td>
+											<td class="text-right">${ pickrateVO.g9 }%
+												<c:choose>
+													<c:when test="${ pickrateVO.g9 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g9 > 30 and pickrateVO.g9 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td class="text-right">??%
+												<c:choose>
+													<c:when test="${ pickrateVO.g9 <= 30 }">
+														<label class="label label-primary">low</label>
+													</c:when>
+													<c:when test="${ pickrateVO.g9 > 30 and pickrateVO.g9 <= 70 }">
+														<label class="label label-success">medium</label>
+													</c:when>
+													<c:otherwise>
+														<label class="label label-danger">High</label>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 
 									</tbody>

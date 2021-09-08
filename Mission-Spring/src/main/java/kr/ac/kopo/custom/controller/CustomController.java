@@ -2,8 +2,9 @@ package kr.ac.kopo.custom.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,16 +19,18 @@ import kr.ac.kopo.custom.vo.CustomVO;
 import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
 
-@Controller
+//@Controller
 public class CustomController {
 	
 	@Autowired
 	private MemberService service;
 	
 	@GetMapping("/custom/userpage")
-	public ModelAndView getStruct() {
+	public ModelAndView getStruct(HttpSession session) {
 		
-		//MemberVO member = (MemberVO)session.getAttribute("userVO");
+		MemberVO userVO = (MemberVO)session.getAttribute("userVO");
+		System.out.println(userVO);
+		
 		MemberVO member = new MemberVO();
 		member.setId("messi10");
 		
@@ -43,11 +46,9 @@ public class CustomController {
 	
 	@PostMapping("/custom/userpage")
 	@ResponseBody
-	public String setStruct(@RequestParam("struct") String struct) {
+	public String setStruct(@RequestParam("struct") String struct, HttpSession session) {
 		
-		//MemberVO member = (MemberVO)session.getAttribute("userVO");
-		MemberVO member = new MemberVO();
-		member.setId("messi10");
+		MemberVO member = (MemberVO)session.getAttribute("userVO");
 		member.setStruct(struct);
 		
 		//서비스 불러서 디비 드가서 등록하고 int 로 반환하기

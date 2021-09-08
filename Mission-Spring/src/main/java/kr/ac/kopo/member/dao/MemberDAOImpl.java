@@ -1,5 +1,7 @@
 package kr.ac.kopo.member.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,5 +27,15 @@ public class MemberDAOImpl implements MemberDAO {
 	public int setStruct(MemberVO memberVO) {
 		int result = sqlSessionTemplate.update("member.MemberDAO.setStruct", memberVO);
 		return result; 
+	}
+	
+	public int signup(MemberVO memberVO) {
+		int result = sqlSessionTemplate.insert("member.MemberDAO.signup", memberVO);
+		return result;
+	}
+	
+	public List<String> getAllStruct() {
+		List<String> list = sqlSessionTemplate.selectList("member.MemberDAO.getAllStruct");
+		return list;
 	}
 }
