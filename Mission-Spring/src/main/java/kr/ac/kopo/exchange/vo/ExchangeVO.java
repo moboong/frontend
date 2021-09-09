@@ -4,9 +4,19 @@ public class ExchangeVO {
 	private String regDate;
 	private double stdRate;
 	private double variation;
-	
+
+	private double endPrice;
+
 	public ExchangeVO() {
 		super();
+	}
+
+	public double getEndPrice() {
+		return endPrice;
+	}
+
+	public void setEndPrice(double endPrice) {
+		this.endPrice = endPrice;
 	}
 
 	public String getRegDate() {
@@ -35,8 +45,8 @@ public class ExchangeVO {
 
 	@Override
 	public String toString() {
-		return "ExchangeVO [regDate=" + regDate + ", stdRate=" + stdRate + ", variation=" + variation + "]";
+		return "ExchangeVO [regDate=" + regDate + ", stdRate=" + stdRate + ", variation=" + variation + ", endPrice="
+				+ endPrice + "]";
 	}
 
-	
 }

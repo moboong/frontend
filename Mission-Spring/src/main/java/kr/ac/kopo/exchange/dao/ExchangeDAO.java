@@ -8,7 +8,7 @@ public interface ExchangeDAO {
 	
 	/**
 	 * 환율정보 크롤링 후 디비저장
-	 * @param exchangeVO
+	 * @param exchangeVOs
 	 * @return 성공여부
 	 */
 	int insertAll(List<ExchangeVO> exchangeVOs);
@@ -18,4 +18,10 @@ public interface ExchangeDAO {
 	 * @return DB에서 조회된 ExchangeVO List
 	 */
 	List<ExchangeVO> searchAll();
+	
+	/**
+	 * 1년 환율 조회
+	 * @return DB에서 조회된 ExchangeVO List
+	 */
+	List<ExchangeVO> searchYear();
 }

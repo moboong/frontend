@@ -9,4 +9,6 @@ public interface ExchangeService {
 	int insertAllExchange(List<ExchangeVO> exchangeVOs);
 
 	List<ExchangeVO> searchAllExchange();
+	
+	List<ExchangeVO> searchYearExchange();
 }

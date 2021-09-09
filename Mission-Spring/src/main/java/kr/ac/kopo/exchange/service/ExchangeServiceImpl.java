@@ -23,5 +23,10 @@ public class ExchangeServiceImpl implements ExchangeService {
 		List<ExchangeVO> exchangeVOs = exchangeDAO.searchAll();
 		return exchangeVOs;
 	}
-
+	
+	
+	public List<ExchangeVO> searchYearExchange() {
+		List<ExchangeVO> exchangeVOs = exchangeDAO.searchYear();
+		return exchangeVOs;
+	}
 }

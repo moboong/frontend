@@ -2,32 +2,32 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="exchange.ExchangeDAO">
+<mapper namespace="kospi.KospiDAO">
 
-	<resultMap type="exchangeVO" id="exchangeMap">
+	<resultMap type="kospiVO" id="kospiMap">
 		<result column="reg_date" property="regDate" />
-		<result column="std_rate" property="stdRate" />
 		<result column="end_price" property="endPrice" />
+		<result column="nas_price" property="nasPrice" />
 	</resultMap>
 
 	<update id="insertAll" parameterType="java.util.List">
 		<foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
-			INTO t_exchange_d(reg_date, std_rate, variation)
-				values (#{item.regDate},#{item.stdRate},#{item.variation})
+			INTO t_kospi_d(reg_date, end_price, variation)
+				values (#{item.regDate},#{item.endPrice},#{item.variation})
 		</foreach>
 	</update>
 
-	<select id="selectAll" resultMap="exchangeMap">
-		select a.reg_date, a.std_rate, b.std_rate+300 as end_price
-			from t_exchange_d a, t_exchange_d b
+	<select id="selectAll" resultMap="kospiMap">
+		select a.reg_date, a.end_price, b.end_price+300 as nas_price
+			from t_kospi_d a, t_kospi_d b
 		where a.reg_date = b.reg_date
 			and a.reg_date >= '2004-04-12'
 		order by reg_date asc
 	</select>
 	
-	<select id="selectYear" resultMap="exchangeMap">
-		select reg_date, std_rate
-			from t_exchange_d
+	<select id="selectYear" resultMap="kospiMap">
+		select reg_date, end_price
+			from t_kospi_d
 		where reg_date > sysdate - 365
 		order by reg_date asc
 	</select>

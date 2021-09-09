@@ -13,15 +13,22 @@ public class ExchangeDAOImpl implements ExchangeDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlsessionTemplate;
-
+	
+	@Override
 	public int insertAll(List<ExchangeVO> exchangeVOs) {
 		int result = sqlsessionTemplate.insert("exchange.ExchangeDAO.insertAll", exchangeVOs);
 		return result;
 	}
-
+	
+	@Override
 	public List<ExchangeVO> searchAll() {
 		List<ExchangeVO> list = sqlsessionTemplate.selectList("exchange.ExchangeDAO.selectAll");
 		return list;
 	}
-
+	
+	@Override
+	public List<ExchangeVO> searchYear() {
+		List<ExchangeVO> list = sqlsessionTemplate.selectList("exchange.ExchangeDAO.selectYear");
+		return list;
+	}
 }

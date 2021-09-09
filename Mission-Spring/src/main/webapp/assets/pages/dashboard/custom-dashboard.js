@@ -6,11 +6,12 @@ $(document).ready(function() {
     $.ajax({
         type : 'GET',
         async : false,
-        url : 'http://192.168.217.48:9999/spring-mvc/ajax/jsonList.json',
+        url : '/Mission-Spring/show/exchange/year',
         success : function(data) {
             exchangeData = JSON.parse(data)
+			console.log('GET 환율1년 성공')
         }, 'error' : function() {
-            alert('실패')
+            console.log('GET 환율1년 실패')
         }
     })
     
@@ -22,7 +23,7 @@ $(document).ready(function() {
         "marginRight": 40,
         "marginLeft": 60,
         "autoMarginOffset": 20,
-        "dataDateFormat": "YYYY-MM-DD",
+        "dataDateFormat": "MM-DD",
         "valueAxes": [ {
             "id": "v1",
             "axisAlpha": 0,
@@ -51,7 +52,7 @@ $(document).ready(function() {
             "lineThickness": 3,
             "title": "red line",
             "useLineColorForBulletBorder": true,
-            "valueField": "value",
+            "valueField": "stdRate",
             "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
         } ],
         "chartCursor": {
@@ -68,9 +69,9 @@ $(document).ready(function() {
             "oppositeAxis": true,
             "scrollbarHeight": 90
         },
-        "categoryField": "date",
+        "categoryField": "regDate",
         "categoryAxis": {
-            "parseDates": true,
+            "parseDates": false,
             "dashLength": 1,
             "minorGridEnabled": true
         },

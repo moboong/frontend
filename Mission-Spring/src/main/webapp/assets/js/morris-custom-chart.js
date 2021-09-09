@@ -1,30 +1,30 @@
-"use strict";
+/*"use strict";*/
 $(document).ready(function() {
-
-    var lineData
-
-    // $.ajax({
-    //     type : 'GET',
-    //     async : false,
-    //     url : 'http://192.168.217.48:9999/Mission-Spring/show/exchange',
-    //     success : function(data) {
-    //         lineData = JSON.parse(data)
-    //     }, 'error' : function() {
-    //         alert('실패')
-    //     }
-    // })
+	
+	var lineData
+	
+    $.ajax({
+         type : 'GET',
+         async : false,
+         url : '/Mission-Spring/show/exchange',
+         success : function(data) {
+            lineData = JSON.parse(data);
+			console.log('GET 환율 전체데이터 성공');
+         }, 'error' : function() {
+            console.log('GET 환율 전체데이터 실패');
+         }
+    })
 
     lineChart(lineData);
-    areaChart();
-    donutChart();
+    //areaChart();
+    //donutChart();
 
     $(window).on('resize',function() {
         window.lineChart.redraw();
-        window.areaChart.redraw();
-        window.donutChart.redraw();
+        //window.areaChart.redraw();
+        //window.donutChart.redraw();
     });
 });
-
 
 
 /*Line chart*/
@@ -39,10 +39,10 @@ function lineChart(lineData) {
         resize: true,
         ymax: 'auto',
         ymin: 'auto',
-        ykeys: ['stdRate'],
+        ykeys: ['stdRate', 'endPrice'],
         hideHover: 'auto',
         labels: ['USD', 'KOSPI'],
-        lineColors: ['#B4C1D7', '#FF9F55']
+        lineColors: ['#455a64', '#448aff']
     });
 }
 
@@ -108,7 +108,7 @@ function donutChart() {
 }
 
 // Morris bar chart
-Morris.Bar({
+/*Morris.Bar({
     element: 'morris-bar-chart',
     data: [{
         y: '2006',
@@ -153,7 +153,7 @@ Morris.Bar({
     hideHover: 'auto',
     gridLineColor: '#eef0f2',
     resize: true
-});
+});*/
 // Extra chart
 Morris.Area({
     element: 'morris-extra-area',

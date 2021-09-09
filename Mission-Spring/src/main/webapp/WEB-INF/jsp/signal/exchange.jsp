@@ -402,21 +402,139 @@
                                         <div class="card borderless-card">
                                             <div class="card-block inverse-breadcrumb">
                                                 <div class="breadcrumb-header">
-                                                    <h5>STEP 4 : 결론</h5>
+                                                    <h5>STEP 4 : 전문가의 이론(룰)과 현실 비교하기</h5>
                                                     <span>Stock Signal With Exchange</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Inverse-color Breadcrumb card end -->
                                         
+                                        <!-- Simple Breadcrumb card start -->
+                                        <div class="card">
+                                            <div class="card-block">
+                                                <h5>Expert`s Theory : 전문가의 환율과 주가에 대한 이론 (트리플 약세)</h5>
+                                            </div>
+                                        </div>
+                                        <!-- Simple Breadcrumb card start -->
+                                        
                                         <div class="row">
+                                        	
+                                        	<!-- task, page, download counter  start -->
+                                        	<div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-12">
+                                                                <h6 class="text-c-red">환율 상승 = 원화가치 하락</h6>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-red">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">환율 상승</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-level-up text-white f-20"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        	
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-12">
+                                                                <h6 class="text-c-purple">환율 상승의 원인이 외국인투자 감소?</h6>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-purple">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">외국인 매수세 감소</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-level-down text-white f-20"></i>
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-12">
+                                                                <h6 class="text-c-purple">환율 상승 = 원화가치 하락</h6>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-purple">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">원화가치 하락</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-level-down text-white f-20"></i>
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-12">
+                                                                <h6 class="text-c-purple">트리플 약세는 주가하락 신호</h6>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-purple">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">코스피 하락</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-level-down text-white f-20"></i>
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- task, page, download counter  end -->
+                                        </div>
+                                        
+                                        
+                                        <!-- Simple Breadcrumb card start -->
+	                                    <div class="card">
+	                                        <div class="card-block">
+	                                            <h5>Reality : 현실에서는?</h5>
+	                                        </div>
+	                                    </div>
+	                                    <!-- Simple Breadcrumb card start -->
+                                        <div class="row"> 
+
                                         	<!-- task, page, download counter  start -->
                                         	<div class="col-xl-3 col-md-6">
                                                 <div class="card">
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             <div class="col-8">
-                                                                <h4 class="text-c-red">+213p</h4>
+                                                                <h4 class="text-c-red">+0.16%</h4>
                                                                 <h6 class="text-muted m-b-0">전일 대비 USD 환율</h6>
                                                             </div>
                                                             <div class="col-4 text-right">
@@ -430,7 +548,7 @@
                                                                 <p class="text-white m-b-0">환율 상승</p>
                                                             </div>
                                                             <div class="col-3 text-right">
-                                                                <i class="fa fa-caret-up text-white f-16"></i>
+                                                                <i class="fa fa-level-up text-white f-20"></i>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -442,21 +560,21 @@
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             <div class="col-8">
-                                                                <h4 class="text-c-purple">+213p</h4>
-                                                                <h6 class="text-muted m-b-0">전일 대비 USD 환율</h6>
+                                                                <h4 class="text-c-purple">-2,229억</h4>
+                                                                <h6 class="text-muted m-b-0">전일 외국인매도세</h6>
                                                             </div>
                                                             <div class="col-4 text-right">
-                                                                <i class="fa fa-bar-chart f-28"></i>
+                                                                <i class="fa fa-line-chart f-28"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer bg-c-purple">
                                                         <div class="row align-items-center">
                                                             <div class="col-9">
-                                                                <p class="text-white m-b-0">% change</p>
+                                                                <p class="text-white m-b-0">외국인 매수세 감소</p>
                                                             </div>
                                                             <div class="col-3 text-right">
-                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                                <i class="fa fa-level-down text-white f-20"></i>
                                                             </div>
                                                         </div>
             
@@ -468,8 +586,8 @@
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             <div class="col-8">
-                                                                <h4 class="text-c-green">290+</h4>
-                                                                <h6 class="text-muted m-b-0">Page Views</h6>
+                                                                <h4 class="text-c-green">-</h4>
+                                                                <h6 class="text-muted m-b-0">전년 동기 대비 수출입동향</h6>
                                                             </div>
                                                             <div class="col-4 text-right">
                                                                 <i class="fa fa-file-text-o f-28"></i>
@@ -479,10 +597,10 @@
                                                     <div class="card-footer bg-c-green">
                                                         <div class="row align-items-center">
                                                             <div class="col-9">
-                                                                <p class="text-white m-b-0">% change</p>
+                                                                <p class="text-white m-b-0">수출입지수 변화없음</p>
                                                             </div>
                                                             <div class="col-3 text-right">
-                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                                <i class="fa fa-window-minimize text-white f-16"></i>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -494,23 +612,24 @@
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             <div class="col-8">
-                                                                <h4 class="text-c-blue">500</h4>
-                                                                <h6 class="text-muted m-b-0">Downloads</h6>
+                                                                <h4 class="text-c-purple">-0.77%</h4>
+                                                                <h6 class="text-muted m-b-0">전일 대비 KOSPI 지수</h6>
                                                             </div>
                                                             <div class="col-4 text-right">
-                                                                <i class="fa fa-hand-o-down f-28"></i>
+                                                                <i class="fa fa-line-chart f-28"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer bg-c-blue">
+                                                    <div class="card-footer bg-c-purple">
                                                         <div class="row align-items-center">
                                                             <div class="col-9">
-                                                                <p class="text-white m-b-0">% change</p>
+                                                                <p class="text-white m-b-0">코스피 하락</p>
                                                             </div>
                                                             <div class="col-3 text-right">
-                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                                <i class="fa fa-level-down text-white f-20"></i>
                                                             </div>
                                                         </div>
+            
                                                     </div>
                                                 </div>
                                             </div>
@@ -532,7 +651,7 @@
 <!-- 지표 추가 Modal -->    
 <%-- <jsp:include page="../modal/addgraph.jsp" /> --%>
 <!-- 지표 추가 Modal --> 
-    
+	
 	<jsp:include page="../include/bottom2.jsp"/>
 	<script>
 		$(document).ready(function() {
@@ -545,7 +664,7 @@
 					$("body").append(data);
 					console.log('GET 모달 로드 성공')
 				}, error: function() {
-					alert('GET 비동기 모달값 넣기 실패')
+					console.log('GET 비동기 모달값 넣기 실패')
 				}
 			})
 			
@@ -563,7 +682,7 @@
 					}
 					console.log('GET 커스텀 메뉴 성공')
 				}, error: function() {
-					alert('GET 커스텀 메뉴 실패')
+					console.log('GET 커스텀 메뉴 실패')
 				}
 			})
 			
@@ -604,6 +723,7 @@
 			/* 리로드 */
 		})
 	</script>
+	
 </body>
 
 </html>

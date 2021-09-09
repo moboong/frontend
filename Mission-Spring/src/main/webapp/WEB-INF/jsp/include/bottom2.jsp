@@ -36,4 +36,3 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-dashboard.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/script.js "></script>
     
-    

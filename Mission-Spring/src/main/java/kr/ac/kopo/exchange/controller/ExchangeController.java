@@ -10,7 +10,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -73,11 +72,19 @@ public class ExchangeController {
 		return msg;
 	}
 	
-	@CrossOrigin
+	//@CrossOrigin
 	@RequestMapping("/show/exchange")
 	@ResponseBody
 	public List<ExchangeVO> selectAll() {
+		//안에 코스피 바인드 돼있음.
 		List<ExchangeVO> exchangeVOs = service.searchAllExchange();
+		return exchangeVOs;
+	}
+	
+	@RequestMapping("/show/exchange/year")
+	@ResponseBody
+	public List<ExchangeVO> selectYear() {
+		List<ExchangeVO> exchangeVOs = service.searchYearExchange();
 		return exchangeVOs;
 	}
 }
