@@ -21,10 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import kr.ac.kopo.custom.vo.CustomVO;
-import kr.ac.kopo.custom.vo.PickrateVO;
 import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.signal.vo.CustomVO;
+import kr.ac.kopo.signal.vo.PickrateVO;
 
 @SessionAttributes({ "userVO" }) // 이 어노테이션만 있으면, 리퀘스트가 아니라 세션에 올라가
 @Controller
@@ -125,15 +125,20 @@ public class MemberController {
 	@GetMapping("/custom/userpage")
 	public ModelAndView getStruct(HttpSession session) {
 
+		ModelAndView mav = new ModelAndView("custom/userpage/struct-default");
+
 		MemberVO member = (MemberVO) session.getAttribute("userVO");
 
-		String struct = service.getStruct(member);
-		Gson gson = new Gson();
-		List<CustomVO> list = gson.fromJson(struct, new TypeToken<List<CustomVO>>() {
-		}.getType());
+		if (member != null) {
 
-		ModelAndView mav = new ModelAndView("custom/userpage/struct-default");
-		mav.addObject("list", list);
+			String struct = service.getStruct(member);
+			Gson gson = new Gson();
+			List<CustomVO> list = gson.fromJson(struct, new TypeToken<List<CustomVO>>() {
+			}.getType());
+
+			mav.addObject("list", list);
+
+		}
 
 		return mav;
 	}
@@ -142,17 +147,20 @@ public class MemberController {
 	@ResponseBody
 	public String setStruct(@RequestParam("struct") String struct, HttpSession session) {
 
-		MemberVO member = (MemberVO) session.getAttribute("userVO");
-		member.setStruct(struct);
+		int result = 0;
 
-		// 서비스 불러서 디비 드가서 등록하고 int 로 반환하기
-		int result = service.setStruct(member);
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		if (member != null) {
+			member.setStruct(struct);
+			// 서비스 불러서 디비 드가서 등록하고 int 로 반환하기
+			result = service.setStruct(member);
+		}
 
 		String msg = "";
 		if (result != 0) {
 			msg = "저장 성공";
 		} else {
-			msg = "저장 실패";
+			msg = "저장 실패 or 비로그인";
 		}
 
 		return msg;
@@ -180,10 +188,11 @@ public class MemberController {
 		for (int j = 0; j < all; j++) {
 
 			String one = structList.get(j);
-			List<CustomVO> list = gson.fromJson(one, new TypeToken<List<CustomVO>>() {}.getType());
-			
-			if(list != null) {
-	
+			List<CustomVO> list = gson.fromJson(one, new TypeToken<List<CustomVO>>() {
+			}.getType());
+
+			if (list != null) {
+
 				for (int i = 0; i < list.size(); i++) {
 					String no = list.get(i).getNo();
 					switch (no) {
@@ -221,14 +230,14 @@ public class MemberController {
 				}
 			}
 		}
-		
+
 		System.out.println("계산전:" + pickrateVO);
 		pickrateVO.getRate(all);
 		System.out.println("계산후:" + pickrateVO);
-		
+
 		ModelAndView mav = new ModelAndView("modal/addgraph");
 		mav.addObject("pickrateVO", pickrateVO);
-		
+
 		return mav;
 	}
 }

@@ -34,7 +34,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example1" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -82,7 +82,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example2" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -131,7 +131,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example3" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -180,7 +180,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example4" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -229,7 +229,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example5" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -278,7 +278,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example6" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -327,7 +327,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example7" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -376,7 +376,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example8" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>
@@ -425,7 +425,7 @@
 											<td>
 												<div class="chk-option">
 													<div class="checkbox-fade fade-in-primary">
-														<label class="check-task"> <input type="checkbox"
+														<label class="check-task"> <input type="radio"
 															value="example9" name="checkbox_add"> <span
 															class="cr"> <i
 																class="cr-icon fa fa-check txt-default"></i>

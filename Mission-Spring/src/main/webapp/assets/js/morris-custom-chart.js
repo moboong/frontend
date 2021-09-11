@@ -1,5 +1,5 @@
 /*"use strict";*/
-$(document).ready(function() {
+/*$(document).ready(function() {
 	
 	var lineData
 	
@@ -24,7 +24,7 @@ $(document).ready(function() {
         //window.areaChart.redraw();
         //window.donutChart.redraw();
     });
-});
+});*/
 
 
 /*Line chart*/
@@ -39,10 +39,11 @@ function lineChart(lineData) {
         resize: true,
         ymax: 'auto',
         ymin: 'auto',
-        ykeys: ['stdRate', 'endPrice'],
+        ykeys: ['stdRate'],
         hideHover: 'auto',
-        labels: ['USD', 'KOSPI'],
-        lineColors: ['#455a64', '#448aff']
+        labels: ['USD'],
+		xLabels : 'year',
+        lineColors: ['#228B22']
     });
 }
 

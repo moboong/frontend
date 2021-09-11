@@ -60,78 +60,79 @@ function updateMenu() {
 /* 그래프 추가 함수 */
 function addGraph() {
 	
-	let value = $('input:checkbox[name="checkbox_add"]:checked').val();
-	$.get("/Mission-Spring/custom/graph/" + value, function(data) {
-		$("#custompage").append(data);
-		$("#custompage .card-header-right").css('display', 'inline-block');
-		/* 그래프 추가 후에 버튼 리스너 활성화 -> 리로드 겁나 비효율 */
-		$(".card-header-right .plussize-card").on('click', function() {
-			var $this = $(this);
-			var size = $this.parents('.custcard');
-			var str = size.attr('class');
-			var num = Number(str.substring(7, 9));
-			if (num < 12) {
-				num += 2;
-			}
-			size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
-		});
-		$(".card-header-right .minussize-card").on('click', function() {
-			var $this = $(this);
-			var size = $this.parents('.custcard');
-			var str = size.attr('class');
-			var num = Number(str.substring(7, 9));
-			if (num > 4) {
-				num -= 2;
-			}
-			size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
-		});
-
-		$(".card-header-right .close-card").on('click', function() {
-			var $this = $(this);
-			$this.parents('.custcard').animate({
-				'opacity': '0',
-				'-webkit-transform': 'scale3d(.3, .3, .3)',
-				'transform': 'scale3d(.3, .3, .3)'
+	let graph = $('.custcard');
+	let leng = graph.length;
+	let value = $('input[name="checkbox_add"]:checked').val();
+	let gid = value.substring(7,value.length);
+	
+	let bool = true;
+	
+	for(let i = 0; i < leng; i++){
+		if(gid == graph.eq(i).attr('id')){
+			bool = false;
+		}
+	}
+	
+	if(bool){
+		
+		$.get("/Mission-Spring/custom/graph/" + value, function(data) {
+			
+			$("#custompage").append(data);
+			
+			/* 그래프 추가 후에 버튼 리스너 활성화 -> 리로드 겁나 비효율 */
+			$("#" + gid + " .card-header-right").css('display', 'inline-block');
+			$("#" + gid + " .card-header-right .plussize-card").on('click', function() {
+				var $this = $(this);
+				var size = $this.parents('.custcard');
+				var str = size.attr('class');
+				var num = Number(str.substring(7, 9));
+				if (num < 12) {
+					num += 2;
+				}
+				size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
 			});
-
-			setTimeout(function() {
-				$this.parents('.custcard').remove();
-			}, 800);
+			$("#" + gid + " .card-header-right .minussize-card").on('click', function() {
+				var $this = $(this);
+				var size = $this.parents('.custcard');
+				var str = size.attr('class');
+				var num = Number(str.substring(7, 9));
+				
+				if (num > 4) {
+					num -= 2;
+				}
+				size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
+			});
+	
+			$("#" + gid + " .card-header-right .close-card").on('click', function() {
+				var $this = $(this);
+				$this.parents('.custcard').animate({
+					'opacity': '0',
+					'-webkit-transform': 'scale3d(.3, .3, .3)',
+					'transform': 'scale3d(.3, .3, .3)'
+				});
+	
+				setTimeout(function() {
+					$this.parents('.custcard').remove();
+				}, 800);
+			});
+			/* 리로드 */
+	
 		});
-		/* 리로드 */
-
-	})
-	$('#myModal').modal('hide')
-
-	//이 구조 파일 저장하고
-	//페이지 새로고침
+		
+		$('#myModal').modal('hide')
+		
+	} else {
+		
+		alert('이미 추가한 지표입니다.');
+	}
+	
 }
 
 
 $(document).ready(function() {
 	
 	// card js start
-	$(".card-header-right .plussize-card").on('click', function() {
-		var $this = $(this);
-		var size = $this.parents('.custcard');
-		var str = size.attr('class');
-		var num = Number(str.substring(7, 9));
-		if (num < 12) {
-			num += 2;
-		}
-		size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
-	});
-	$(".card-header-right .minussize-card").on('click', function() {
-		var $this = $(this);
-		var size = $this.parents('.custcard');
-		var str = size.attr('class');
-		var num = Number(str.substring(7, 9));
-		if (num > 4) {
-			num -= 2;
-		}
-		size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
-	});
-
+	
 	$(".card-header-right .close-card").on('click', function() {
 		var $this = $(this);
 		$this.parents('.custcard').animate({

@@ -1,4 +1,4 @@
-package kr.ac.kopo.custom.vo;
+package kr.ac.kopo.signal.vo;
 
 public class PickrateVO {
 	private int g1;

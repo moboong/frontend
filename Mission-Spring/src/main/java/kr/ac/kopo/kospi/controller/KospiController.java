@@ -88,8 +88,17 @@ public class KospiController {
 		return msg;
 	}
 	
-	public static void main(String[] args) {
-		KospiController controller = new KospiController();
-		controller.insertAll();
+	@RequestMapping("/show/kospi")
+	@ResponseBody
+	public List<KospiVO> selectAll() {
+		List<KospiVO> kospiVOs = service.searchAllKospi();
+		return kospiVOs;
+	}
+	
+	@RequestMapping("/show/kospi/year")
+	@ResponseBody
+	public List<KospiVO> selectYear() {
+		List<KospiVO> kospiVOs = service.searchYearKospi();
+		return kospiVOs;
 	}
 }

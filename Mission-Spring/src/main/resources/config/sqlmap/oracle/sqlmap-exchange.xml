@@ -18,8 +18,8 @@
 	</update>
 
 	<select id="selectAll" resultMap="exchangeMap">
-		select a.reg_date, a.std_rate, b.std_rate+300 as end_price
-			from t_exchange_d a, t_exchange_d b
+		select a.reg_date, a.std_rate, b.end_price
+			from t_exchange_d a, t_kospi_d b
 		where a.reg_date = b.reg_date
 			and a.reg_date >= '2004-04-12'
 		order by reg_date asc
