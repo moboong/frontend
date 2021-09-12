@@ -44,8 +44,8 @@ function updateMenu() {
 				type: 'POST',
 				dataType: 'json',
 				data: {
-					"struct" : 	struct
-				} 
+					"struct": struct
+				}
 				,
 				success: function(data) {
 					alert(data)
@@ -59,26 +59,26 @@ function updateMenu() {
 
 /* 그래프 추가 함수 */
 function addGraph() {
-	
+
 	let graph = $('.custcard');
 	let leng = graph.length;
 	let value = $('input[name="checkbox_add"]:checked').val();
-	let gid = value.substring(7,value.length);
-	
+	let gid = value.substring(7, value.length);
+
 	let bool = true;
-	
-	for(let i = 0; i < leng; i++){
-		if(gid == graph.eq(i).attr('id')){
+
+	for (let i = 0; i < leng; i++) {
+		if (gid == graph.eq(i).attr('id')) {
 			bool = false;
 		}
 	}
-	
-	if(bool){
-		
+
+	if (bool) {
+
 		$.get("/Mission-Spring/custom/graph/" + value, function(data) {
-			
+
 			$("#custompage").append(data);
-			
+
 			/* 그래프 추가 후에 버튼 리스너 활성화 -> 리로드 겁나 비효율 */
 			$("#" + gid + " .card-header-right").css('display', 'inline-block');
 			$("#" + gid + " .card-header-right .plussize-card").on('click', function() {
@@ -96,13 +96,13 @@ function addGraph() {
 				var size = $this.parents('.custcard');
 				var str = size.attr('class');
 				var num = Number(str.substring(7, 9));
-				
+
 				if (num > 4) {
 					num -= 2;
 				}
 				size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
 			});
-	
+
 			$("#" + gid + " .card-header-right .close-card").on('click', function() {
 				var $this = $(this);
 				$this.parents('.custcard').animate({
@@ -110,29 +110,80 @@ function addGraph() {
 					'-webkit-transform': 'scale3d(.3, .3, .3)',
 					'transform': 'scale3d(.3, .3, .3)'
 				});
-	
+
 				setTimeout(function() {
 					$this.parents('.custcard').remove();
 				}, 800);
 			});
 			/* 리로드 */
-	
+
 		});
-		
+
 		$('#myModal').modal('hide')
-		
+
 	} else {
-		
+
 		alert('이미 추가한 지표입니다.');
+	}
+
+}
+
+/* 뉴스 가져오기 함수 */
+function getNews(pk, pp) {
+
+	let keyword = pk;
+	let page = pp;
+
+	$.ajax({
+		type: 'GET',
+		async: true,
+		url: '/Mission-Spring/news/' + keyword + '/' + page,
+		success: function(data) {
+			$("#news-table-body").html(data);
+			console.log('GET 비동기 뉴스 받기 성공');
+		},
+		error: function() {
+			console.log('GET 비동기 뉴스 받기 실패');
+		}
+	});
+
+}
+
+/* 뉴스 추가 모달 */
+function showModal() {
+	$('#newsModal').modal('show');
+	$('input[name="keyword"]').val("");
+}
+
+
+/* 뉴스 키워드 메뉴 추가 */
+function addKeyword() {
+	
+	let kw = $('input[name="keyword"]').val();
+	if(kw == ""){
+		alert('키워드를 입력하세요')
+	} else {
+
+		let bool = confirm('정말 저장하시겠습니까?');
+		if(bool){
+			$('#plusNav').remove();
+				
+			$('#newsNav').append('<li class="nav-item"><a class="nav-link" data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews(\''+ kw +'\',1);">'+ kw +'</a><div class="slide"></div></li><li id="plusNav" class="nav-item"><a class="nav-link" data-toggle="tab" href="javascript:void(0);" role="tab" onclick="showModal();"><i class="fa fa-plus-square" aria-hidden="true"></i></a><div class="slide"></div></li>');
+		}
+		
+		$('#newsModal').modal('hide')
+		
 	}
 	
 }
 
 
+
+
 $(document).ready(function() {
-	
+
 	// card js start
-	
+
 	$(".card-header-right .close-card").on('click', function() {
 		var $this = $(this);
 		$this.parents('.custcard').animate({

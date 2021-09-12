@@ -237,51 +237,37 @@
 												<div class="card table-card">
 													<div class="card-header">
 														<h5>환율시그널 관련 뉴스</h5>
-														<span class="text-muted">최근 업데이트 시간 : ${ latestTime }</span>
+														<span class="text-muted">환율 관련 뉴스들을 살펴보자</span>
 														<div class="card-header-right">
 															<i class="fa fa-window-maximize full-card"></i> <i
 																class="fa fa-minus minimize-card"></i> <i
 																class="fa fa-refresh reload-card"></i>
 														</div>
-													</div>
-													<div class="card-block" style="max-height: 500px; overflow-y: auto;">
+														
 														<!-- Nav tabs -->
 														<div class="col-xl-12 col-md-12">
-															<ul class="nav nav-tabs md-tabs" role="tablist">
+															<ul id="newsNav" class="nav nav-tabs md-tabs" role="tablist">
 																<li class="nav-item"><a class="nav-link active"
-																	data-toggle="tab" href="#home3" role="tab">환율</a>
+																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('환율',1);">환율</a>
 																	<div class="slide"></div></li>
 																<li class="nav-item"><a class="nav-link"
-																	data-toggle="tab" href="#profile3" role="tab">수출입동향</a>
+																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('수출입동향',1);">수출입동향</a>
 																	<div class="slide"></div></li>
 																<li class="nav-item"><a class="nav-link"
-																	data-toggle="tab" href="#messages3" role="tab">외국인매매</a>
+																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('외국인매매',1);">외국인매매</a>
 																	<div class="slide"></div></li>
-																<li class="nav-item"><a class="nav-link"
-																	data-toggle="tab" href="#settings3" role="tab"><i
+																<li id="plusNav" class="nav-item"><a class="nav-link"
+																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="showModal();"><i
 																		class="fa fa-plus-square" aria-hidden="true"></i></a>
 																	<div class="slide"></div></li>
 															</ul>
 														</div>
 														<!-- Nav tabs -->
-														<div class="table-responsive">
-															<table class="table table-hover">
-																<thead>
-																	<tr>
-																		<th>사진</th>
-																		<th>환율 기사</th>																		
-																	</tr>
-																</thead>
-																<tbody id="news-table-body">
-																	
-																	
-																</tbody>
-															</table>
-															<div class="text-center">
-                                                            	<a href="#!" class="b-b-primary text-primary">View all Projects</a>
-                                                        	</div>
-														</div>
+														
 													</div>
+													
+													<div id="news-table-body"></div>													
+													
 												</div>
 											</div>
 										</div>
@@ -562,115 +548,107 @@
 
 	<!-- 지표 추가 Modal -->
 	<%-- <jsp:include page="../modal/addgraph.jsp" /> --%>
+	<jsp:include page="../modal/addnews.jsp" />
 	<!-- 지표 추가 Modal -->
 
 	<jsp:include page="../include/bottom2.jsp" />
+	
 	<script>
-		$(document).ready(function() {
-							//지표 선택율 받아오기
-							$.ajax({
-										type : 'GET',
-										async : true,
-										url : '${pageContext.request.contextPath}/custom/pickrate',
-										success : function(data) {
-											$("body").append(data);
-											console.log('GET 모달 로드 성공')
-										},
-										error : function() {
-											console.log('GET 비동기 모달값 넣기 실패')
-										}
-									})
+	$(document).ready(function() {
+		
+		//지표 선택율 받아오기
+		$.ajax({
+			type: 'GET',
+			async: true,
+			url: '${pageContext.request.contextPath}/custom/pickrate',
+			success: function(data) {
+				$("body").append(data);
+				console.log('GET 모달 로드 성공')
+			},
+			error: function() {
+				console.log('GET 비동기 모달값 넣기 실패')
+			}
+		})
 
-							$('#exchange').attr('class', 'active');
+		$('#exchange').attr('class', 'active');
 
-							//개인 커스텀 메뉴 받아오기
-							$.ajax({
-										type : 'GET',
-										async : false,
-										url : '${pageContext.request.contextPath}/custom/userpage',
-										success : function(data) {
-											$("#custompage").append(data);
-											for (var i = 0; i < arr.length; i++) {
-												$(".custcard")
-														.eq(i)
-														.attr(
-																'class',
-																'col-xl-'
-																		+ arr[i]
-																		+ ' col-md-12 custcard');
-											}
-											console
-													.log('GET 커스텀 메뉴 성공 or 비로그인(공백)')
-										},
-										error : function() {
-											console.log('GET 커스텀 메뉴 실패')
-										}
-									})
+		//개인 커스텀 메뉴 받아오기
+		$.ajax({
+			type: 'GET',
+			async: false,
+			url: '${pageContext.request.contextPath}/custom/userpage',
+			success: function(data) {
+				$("#custompage").append(data);
+				for (var i = 0; i < arr.length; i++) {
+					$(".custcard")
+						.eq(i)
+						.attr(
+							'class',
+							'col-xl-'
+							+ arr[i]
+							+ ' col-md-12 custcard');
+				}
+				console
+					.log('GET 커스텀 메뉴 성공 or 비로그인(공백)')
+			},
+			error: function() {
+				console.log('GET 커스텀 메뉴 실패')
+			}
+		})
 
-							/* 그래프 추가 후에 버튼 리스너 활성화 -> 리로드 겁나 비효율 */
-							$(".card-header-right .plussize-card").on(
-									'click',
-									function() {
-										var $this = $(this);
-										var size = $this.parents('.custcard');
-										var str = size.attr('class');
-										var num = Number(str.substring(7, 9));
-										if (num < 12) {
-											num += 2;
-										}
-										size.attr('class', 'col-xl-' + num
-												+ ' col-md-12 custcard');
-									});
-							$(".card-header-right .minussize-card").on(
-									'click',
-									function() {
-										var $this = $(this);
-										var size = $this.parents('.custcard');
-										var str = size.attr('class');
-										var num = Number(str.substring(7, 9));
-										if (num > 4) {
-											num -= 2;
-										}
-										size.attr('class', 'col-xl-' + num
-												+ ' col-md-12 custcard');
-									});
+		/* 그래프 추가 후에 버튼 리스너 활성화 -> 리로드 겁나 비효율 */
+		$(".card-header-right .plussize-card").on(
+			'click',
+			function() {
+				var $this = $(this);
+				var size = $this.parents('.custcard');
+				var str = size.attr('class');
+				var num = Number(str.substring(7, 9));
+				if (num < 12) {
+					num += 2;
+				}
+				size.attr('class', 'col-xl-' + num
+					+ ' col-md-12 custcard');
+			});
+		$(".card-header-right .minussize-card").on(
+			'click',
+			function() {
+				var $this = $(this);
+				var size = $this.parents('.custcard');
+				var str = size.attr('class');
+				var num = Number(str.substring(7, 9));
+				if (num > 4) {
+					num -= 2;
+				}
+				size.attr('class', 'col-xl-' + num
+					+ ' col-md-12 custcard');
+			});
 
-							$(".card-header-right .close-card").on(
-											'click',
-											function() {
-												var $this = $(this);
-												$this
-														.parents('.custcard')
-														.animate(
-																{
-																	'opacity' : '0',
-																	'-webkit-transform' : 'scale3d(.3, .3, .3)',
-																	'transform' : 'scale3d(.3, .3, .3)'
-																});
-
-												setTimeout(function() {
-													$this.parents('.custcard')
-															.remove();
-												}, 800);
-											});
-							/* 리로드 끝 */
-							
-							
-							/* 뉴스 받아오기 */
-								$.ajax({
-										type : 'GET',
-										async : true,
-										url : '${pageContext.request.contextPath}/news/exchange',
-										success : function(data) {
-											$("#news-table-body").html(data);
-											console.log('GET 비동기 뉴스 받기 성공')
-										},
-										error : function() {
-											console.log('GET 비동기 뉴스 받기 실패')
-										}
-								})
-							
+		$(".card-header-right .close-card").on(
+			'click',
+			function() {
+				var $this = $(this);
+				$this
+					.parents('.custcard')
+					.animate(
+						{
+							'opacity': '0',
+							'-webkit-transform': 'scale3d(.3, .3, .3)',
+							'transform': 'scale3d(.3, .3, .3)'
 						});
+
+				setTimeout(function() {
+					$this.parents('.custcard')
+						.remove();
+				}, 800);
+			});
+		/* 리로드 끝 */
+
+
+		/* 뉴스 받아오기 */
+		getNews('환율', 1)
+		
+	});
 	</script>
 
 </body>

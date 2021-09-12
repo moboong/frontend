@@ -9,6 +9,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,14 +18,11 @@ import kr.ac.kopo.signal.vo.NewsVO;
 @Controller
 public class NewsController {
 	
-	@RequestMapping("/news/exchange")
-	public ModelAndView exchangeNews() {
+	@RequestMapping("/news/{keyword}/{page}")
+	public ModelAndView exchangeNews(@PathVariable("keyword") String keyword, @PathVariable("page") int page) {
 		
 		ModelAndView mav = new ModelAndView("ajax/newslist");
 		
-		
-		String keyword = "환율";
-		int page = 1;
 		String url = "https://search.naver.com/search.naver?where=news&sm=tab_jum&query=" + keyword + "&start=" + page;
 		Document doc = null;
 		try {
@@ -40,7 +38,8 @@ public class NewsController {
 		//공유영역 등록하기
 		System.out.println("최근 시간 : " + latestTime);
 		mav.addObject("latestTime", latestTime);
-
+		mav.addObject("keyword", keyword);
+		
 		
 		//항목별 출력
 		Iterator<Element> title = elements.select("a[class='news_tit']").iterator();
