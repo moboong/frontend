@@ -4,6 +4,23 @@ var arr = [];
 var idx = 0;
 
 function updateMenu() {
+	
+	/* 모달 초기화 */
+	$.ajax({
+		type: 'GET',
+		async: true,
+		url: '/Mission-Spring/custom/pickrate',
+		success: function(data) {
+			$('#myModal').remove();
+			$("body").append(data);
+			console.log('GET 모달 로드 성공')
+		},
+		error: function() {
+			console.log('GET 비동기 모달값 넣기 실패')
+		}
+	})
+	/* 모달 초기화 */
+	
 	var icons = $("#custompage .card-header-right");
 
 	if (icons.css('display') == 'none' || $("#btnCust").text() == '수정하기') {
@@ -47,12 +64,13 @@ function updateMenu() {
 					"struct": struct
 				}
 				,
-				success: function(data) {
-					alert(data)
+				success: function(msg) {
+					alert(msg)
 				}, error: function() {
 					alert('POST 커스텀 메뉴 저장실패')
 				}
 			})
+			
 		}
 	}
 }

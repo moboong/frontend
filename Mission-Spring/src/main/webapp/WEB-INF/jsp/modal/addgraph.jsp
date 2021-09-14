@@ -64,15 +64,22 @@
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose></td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g1 <= 30 }">
+													<c:when test="${ corelateVO.g1 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g1 <= 30 }">
+														<c:out value="${ corelateVO.g1 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g1 > 30 and pickrateVO.g1 <= 70 }">
+													<c:when test="${ corelateVO.g1 > 30 and corelateVO.g1 <= 70 }">
+														<c:out value="${ corelateVO.g1 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g1 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -113,15 +120,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g2 <= 30 }">
+													<c:when test="${ corelateVO.g2 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g2 <= 30 }">
+														<c:out value="${ corelateVO.g2 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g2 > 30 and pickrateVO.g2 <= 70 }">
+													<c:when test="${ corelateVO.g2 > 30 and corelateVO.g2 <= 70 }">
+														<c:out value="${ corelateVO.g2 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g2 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -162,15 +176,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g3 <= 30 }">
+													<c:when test="${ corelateVO.g3 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g3 <= 30 }">
+														<c:out value="${ corelateVO.g3 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g3 > 30 and pickrateVO.g3 <= 70 }">
+													<c:when test="${ corelateVO.g3 > 30 and corelateVO.g3 <= 70 }">
+														<c:out value="${ corelateVO.g3 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g3 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -211,15 +232,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g4 <= 30 }">
+													<c:when test="${ corelateVO.g4 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g4 <= 30 }">
+														<c:out value="${ corelateVO.g4 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g4 > 30 and pickrateVO.g4 <= 70 }">
+													<c:when test="${ corelateVO.g4 > 30 and corelateVO.g4 <= 70 }">
+														<c:out value="${ corelateVO.g4 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g4 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -260,15 +288,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g5 <= 30 }">
+													<c:when test="${ corelateVO.g5 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g5 <= 30 }">
+														<c:out value="${ corelateVO.g5 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g5 > 30 and pickrateVO.g5 <= 70 }">
+													<c:when test="${ corelateVO.g5 > 30 and corelateVO.g5 <= 70 }">
+														<c:out value="${ corelateVO.g5 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g5 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -309,15 +344,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g6 <= 30 }">
+													<c:when test="${ corelateVO.g6 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g6 <= 30 }">
+														<c:out value="${ corelateVO.g6 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g6 > 30 and pickrateVO.g6 <= 70 }">
+													<c:when test="${ corelateVO.g6 > 30 and corelateVO.g6 <= 70 }">
+														<c:out value="${ corelateVO.g6 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g6 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -358,15 +400,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g7 <= 30 }">
+													<c:when test="${ corelateVO.g7 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g7 <= 30 }">
+														<c:out value="${ corelateVO.g7 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g7 > 30 and pickrateVO.g7 <= 70 }">
+													<c:when test="${ corelateVO.g7 > 30 and corelateVO.g7 <= 70 }">
+														<c:out value="${ corelateVO.g7 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g7 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -407,15 +456,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g9 <= 30 }">
+													<c:when test="${ corelateVO.g8 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g8 <= 30 }">
+														<c:out value="${ corelateVO.g8 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g9 > 30 and pickrateVO.g9 <= 70 }">
+													<c:when test="${ corelateVO.g8 > 30 and corelateVO.g8 <= 70 }">
+														<c:out value="${ corelateVO.g8 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g8 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>
@@ -456,15 +512,22 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-right">??%
+											<td class="text-right">
 												<c:choose>
-													<c:when test="${ pickrateVO.g9 <= 30 }">
+													<c:when test="${ corelateVO.g9 == -1 }">
+														
+														<label class="label label-inverse">이미 추가됨</label>
+													</c:when>
+													<c:when test="${ corelateVO.g9 <= 30 }">
+														<c:out value="${ corelateVO.g9 }"/>%
 														<label class="label label-primary">low</label>
 													</c:when>
-													<c:when test="${ pickrateVO.g9 > 30 and pickrateVO.g9 <= 70 }">
+													<c:when test="${ corelateVO.g9 > 30 and corelateVO.g9 <= 70 }">
+														<c:out value="${ corelateVO.g9 }"/>%
 														<label class="label label-success">medium</label>
 													</c:when>
 													<c:otherwise>
+														<c:out value="${ corelateVO.g9 }"/>%
 														<label class="label label-danger">High</label>
 													</c:otherwise>
 												</c:choose>

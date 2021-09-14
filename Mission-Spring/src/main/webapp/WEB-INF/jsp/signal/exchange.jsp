@@ -186,11 +186,11 @@
 										</div>
 										<!-- Inverse-color Breadcrumb card end -->
 										<div class="row">
-											<div class="col-xl-7 col-md-12">
+											<div class="col-xl-6 col-md-12">
 												<div class="card">
 													<div class="card-header">
 														<h5>미국 USD 환율</h5>
-														<span class="text-muted">2021.09.01 14:57 하나은행 |
+														<span class="text-muted">2021.09.13 14:57 하나은행 |
 															고시회차 323회</span>
 
 
@@ -233,7 +233,7 @@
 											<!--  sale analytics end -->
 
 											<!--  project and team member start -->
-											<div class="col-xl-5 col-md-12">
+											<div class="col-xl-6 col-md-12">
 												<div class="card table-card">
 													<div class="card-header">
 														<h5>환율시그널 관련 뉴스</h5>
@@ -254,7 +254,7 @@
 																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('수출입동향',1);">수출입동향</a>
 																	<div class="slide"></div></li>
 																<li class="nav-item"><a class="nav-link"
-																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('외국인매매',1);">외국인매매</a>
+																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('외국인 매도세',1);">외국인 매도세</a>
 																	<div class="slide"></div></li>
 																<li id="plusNav" class="nav-item"><a class="nav-link"
 																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="showModal();"><i
@@ -650,6 +650,7 @@
 		
 	});
 	</script>
+	<script src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-exchange.js"></script>
 
 </body>
 
