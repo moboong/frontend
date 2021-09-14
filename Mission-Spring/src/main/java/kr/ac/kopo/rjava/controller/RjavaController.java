@@ -82,10 +82,7 @@ public class RjavaController {
 			
 		}
 		
-		System.out.println(paraStr); //{1,2,3}
-		
-		
-		
+		System.out.println(paraStr); //{1,2,3}		
 		
 		RConnection connection = null;
 		
@@ -99,61 +96,8 @@ public class RjavaController {
 		
 		System.out.println("ListSize : " + rlist.size()); //8
 		System.out.println("ListLength : " + rlist.at(0).length()); //18
-		/*
-		 * int leng = rlist.at(0).length();
-		 * 
-		 * 
-		 * String [] temp = rlist.at(4).asStrings();
-		 * 
-		 * String [] temp2 = rlist.at(0).asStrings();
-		 * 
-		 * String [] temp3 = rlist.at(2).asStrings();
-		 * 
-		 * CorelateVO corelateVO = new CorelateVO();
-		 */
-		/*for (int i = 0; i < leng; i++) {
-
-			if (temp2[i].equals(paraStr)) {
-				System.out.println(temp2[i] + " => " + temp3[i] + " : " + temp[i] + " ");
-
-				double confidence = Double.parseDouble(temp[i]);
-
-				switch (temp3[i]) {
-				case "{1}":
-					corelateVO.setG1(confidence);
-					break;
-				case "{2}":
-					corelateVO.setG2(confidence);
-					break;
-				case "{3}":
-					corelateVO.setG3(confidence);
-					break;
-				case "{4}":
-					corelateVO.setG4(confidence);
-					break;
-				case "{5}":
-					corelateVO.setG5(confidence);
-					break;
-				case "{6}":
-					corelateVO.setG6(confidence);
-					break;
-				case "{7}":
-					corelateVO.setG7(confidence);
-					break;
-				case "{8}":
-					corelateVO.setG8(confidence);
-					break;
-				case "{9}":
-					corelateVO.setG9(confidence);
-					break;
-				default:
-					System.out.println("이상값 발생");
-					break;
-				}
-			}
-		}*/
-
-		// mav.addObject("corelateVO", corelateVO);
+	
+		
 	}
 	
 	
