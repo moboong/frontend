@@ -2,6 +2,8 @@ package kr.ac.kopo.kospi.dao;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,6 +14,7 @@ import kr.ac.kopo.kospi.vo.KospiVO;
 public class KospiDAOImpl implements KospiDAO {
 	
 	@Autowired
+	@Resource(name="sqlSessionTemplate")
 	private SqlSessionTemplate sqlsessionTemplate;
 	
 	@Override

@@ -14,4 +14,6 @@ public interface BoardService {
 	
 	int insertOneBoard(BoardVO boardVO);
 	
+//	List<BoardVO> selectAllBoardHsql();
+	
 }

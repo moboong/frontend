@@ -2,6 +2,8 @@ package kr.ac.kopo.board.dao;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,7 +15,14 @@ import kr.ac.kopo.board.vo.BoardVO;
 public class BoardDAOImpl implements BoardDAO {
 	
 	@Autowired
+	@Resource(name="sqlSessionTemplate")
 	private SqlSessionTemplate sqlsessionTemplate;
+	
+	//hsql
+//	@Autowired
+//	@Resource(name="hsqlSessionTemplate")
+//	private SqlSessionTemplate hsqlsessionTemplate;
+	
 	
 	public List<BoardVO> searchAll() {
 		List<BoardVO> list = sqlsessionTemplate.selectList("board.BoardDAO.selectAll");
@@ -34,4 +43,10 @@ public class BoardDAOImpl implements BoardDAO {
 		int result = sqlsessionTemplate.insert("board.BoardDAO.insertOne", boardVO);
 		return result;
 	}
+	
+	//hsql
+//	public List<BoardVO> searchAllHsql() {
+//		List<BoardVO> list = hsqlsessionTemplate.selectList("board.BoardDAO.list");
+//		return list;
+//	}
 }

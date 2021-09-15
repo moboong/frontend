@@ -33,4 +33,8 @@ public interface BoardDAO {
 	 * @return 성공여부
 	 */
 	int insertOne(BoardVO boardVO);
+	
+	
+	//hsql
+//	List<BoardVO> searchAllHsql();
 }

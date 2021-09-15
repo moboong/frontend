@@ -28,6 +28,18 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
+//	@RequestMapping("/hsql")
+//	public ModelAndView selectAllHsql() {
+//		List<BoardVO> boardList = service.selectAllBoard();
+//		
+//		ModelAndView mav = new ModelAndView("board/list");
+//		mav.addObject("list", boardList);
+//		System.out.println(boardList);
+//		
+//		return mav;
+//	}
+	
+	
 	@RequestMapping("/board")
 	public ModelAndView selectAll() {
 		List<BoardVO> boardList = service.selectAllBoard();

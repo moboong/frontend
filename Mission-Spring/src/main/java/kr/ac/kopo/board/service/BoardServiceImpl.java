@@ -33,4 +33,9 @@ public class BoardServiceImpl implements BoardService {
 		int result = boardDAO.insertOne(boardVO);
 		return result;
 	}
+	
+//	public List<BoardVO> selectAllBoardHsql(){
+//		List<BoardVO> boardList = boardDAO.searchAll();
+//		return boardList;
+//	}
 }

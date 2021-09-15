@@ -5,13 +5,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context   
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd
-    http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd">
+    http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
+    http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
 
 	<context:component-scan base-package="kr.ac.kopo" />
 	<mvc:annotation-driven>
@@ -57,6 +59,23 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- HSQL -->
+	<jdbc:embedded-database id="embdDataSorce" type="HSQL">
+        <jdbc:script location="classpath:config/hsql/Schema.sql" encoding="UTF-8"/>
+        <jdbc:script location="classpath:config/hsql/Data.sql" encoding="UTF-8"/>
+    </jdbc:embedded-database>
+    
+    <bean id="hsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="embdDataSorce"/>
+		<property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml"/>
+		<property name="mapperLocations" value="classpath:config/sqlmap/hsql/*.xml"/>
+	</bean>
+    
+    <bean id="hsqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="hsqlSessionFactory" />
+	</bean>
+	<!-- HSQL -->
+	
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
 	</mvc:view-resolvers>
@@ -97,5 +116,7 @@
                 class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
         </websocket:handshake-interceptors>
     </websocket:handlers>
+	<!-- websocket handler -->
 	
+    
 </beans>

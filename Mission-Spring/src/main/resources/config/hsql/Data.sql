@@ -1,0 +1,14 @@
+
+
+
+INSERT INTO EXCHANGE (stdRate, regDate, variation)
+VALUES (1200.20, SYSDATE, 20.94)
+
+INSERT INTO EXCHANGE (stdRate, regDate, variation)
+VALUES (1300.20, SYSDATE, 120.34)
+
+INSERT INTO EXCHANGE (stdRate, regDate, variation)
+VALUES (1400.20, SYSDATE, 100.73)
+
+INSERT INTO EXCHANGE (stdRate, regDate, variation)
+VALUES (1500.20, SYSDATE, 88.22)
