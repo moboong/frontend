@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <title>환율 시그널</title>
-<jsp:include page="../include/head2.jsp"></jsp:include>
+<jsp:include page="../include/head.jsp"></jsp:include>
 
 <script>
 	if ('${ msg }') {
@@ -551,7 +551,7 @@
 	<jsp:include page="../modal/addnews.jsp" />
 	<!-- 지표 추가 Modal -->
 
-	<jsp:include page="../include/bottom2.jsp" />
+	<jsp:include page="../include/bottom.jsp" />
 	
 	<script>
 	$(document).ready(function() {

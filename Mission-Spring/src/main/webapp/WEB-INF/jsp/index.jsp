@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <title>메인페이지</title>
-    <jsp:include page="include/head2.jsp"></jsp:include>
+    <jsp:include page="include/head.jsp"></jsp:include>
     
     <script>
 	  	if ('${ msg }') {
@@ -485,7 +485,7 @@
     <![endif]-->
     <!-- Warning Section Ends -->
     
-    <jsp:include page="include/bottom2.jsp"/>
+    <jsp:include page="include/bottom.jsp"/>
 	<script>
 		$(document).ready(function() {
 			$('#index').attr('class', 'active');
