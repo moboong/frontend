@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>주가지수 페이지</title>
-	<jsp:include page="../include/head.jsp" />
+	<%-- <jsp:include page="../include/head.jsp" /> --%>
 
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet">
@@ -33,7 +33,7 @@
   <body class="d-flex flex-column h-100 bg-light">
   
   <header>
-	<jsp:include page="../include/top.jsp" />
+	<%-- <jsp:include page="../include/top.jsp" /> --%>
   </header>
   
 	
@@ -44,7 +44,7 @@
 		<div class="container-fluid" style="z-index: 1">
 		  <div class="row">
 		    
-		    <jsp:include page="../include/sidebar.jsp" />
+		    <%-- <jsp:include page="../include/sidebar.jsp" /> --%>
 		
 		    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 		      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -211,7 +211,7 @@
 		          </tbody>
 		        </table>
 		      </div>
-			  <jsp:include page="../include/bottom.jsp" />
+			  <%-- <jsp:include page="../include/bottom.jsp" /> --%>
 		    </main>
 		  </div>
 		</div>

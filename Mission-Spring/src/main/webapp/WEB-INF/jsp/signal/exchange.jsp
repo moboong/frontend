@@ -563,10 +563,10 @@
 			url: '${pageContext.request.contextPath}/custom/pickrate',
 			success: function(data) {
 				$("body").append(data);
-				console.log('GET 모달 로드 성공')
+				console.log('ready: GET 모달 로드 성공')
 			},
 			error: function() {
-				console.log('GET 비동기 모달값 넣기 실패')
+				console.log('ready: GET 비동기 모달값 넣기 실패')
 			}
 		})
 
@@ -580,19 +580,12 @@
 			success: function(data) {
 				$("#custompage").append(data);
 				for (var i = 0; i < arr.length; i++) {
-					$(".custcard")
-						.eq(i)
-						.attr(
-							'class',
-							'col-xl-'
-							+ arr[i]
-							+ ' col-md-12 custcard');
+					$(".custcard").eq(i).attr('class', 'col-xl-' + arr[i] + ' col-md-12 custcard');
 				}
-				console
-					.log('GET 커스텀 메뉴 성공 or 비로그인(공백)')
+				console.log('ready: GET 커스텀 메뉴 성공 or 비로그인(공백)')
 			},
 			error: function() {
-				console.log('GET 커스텀 메뉴 실패')
+				console.log('ready: GET 커스텀 메뉴 실패')
 			}
 		})
 
@@ -620,8 +613,7 @@
 				if (num > 4) {
 					num -= 2;
 				}
-				size.attr('class', 'col-xl-' + num
-					+ ' col-md-12 custcard');
+				size.attr('class', 'col-xl-' + num + ' col-md-12 custcard');
 			});
 
 		$(".card-header-right .close-card").on(

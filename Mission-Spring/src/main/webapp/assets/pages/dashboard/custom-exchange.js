@@ -8,9 +8,9 @@ $(document).ready(function() {
 		url: '/Mission-Spring/show/exchange',
 		success: function(data) {
 			exchangeKospiData = JSON.parse(data)
-			console.log('GET 환-코 전체 성공')
+			console.log('ready: GET 환-코 전체 성공')
 		}, 'error': function() {
-			console.log('GET 환-코 전체 실패')
+			console.log('ready: GET 환-코 전체 실패')
 		}
 	});
 	
@@ -22,9 +22,9 @@ $(document).ready(function() {
 		url: '/Mission-Spring/show/exchange/year',
 		success: function(data) {
 			exchangeData = JSON.parse(data);
-			console.log('GET 환율1년 성공');
+			console.log('ready: GET 환율1년 성공');
 		}, 'error': function() {
-			console.log('GET 환율1년 실패');
+			console.log('ready: GET 환율1년 실패');
 		}
 	});
 

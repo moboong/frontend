@@ -13,7 +13,7 @@ function updateMenu() {
 		success: function(data) {
 			$('#myModal').remove();
 			$("body").append(data);
-			console.log('GET 모달 로드 성공')
+			console.log('GET 비동기 모달 로드 성공')
 		},
 		error: function() {
 			console.log('GET 비동기 모달값 넣기 실패')
