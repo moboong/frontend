@@ -66,7 +66,7 @@ $(document).ready(function() {
 				"color": "#ffffff",
 				"type": "smoothedLine"
 			},
-			"fillAlphas": 0,
+			"fillAlphas": 0.1,
 			"bullet": "round",
 			"bulletBorderAlpha": 1,
 			"bulletColor": "#FFFFFF",
@@ -87,7 +87,7 @@ $(document).ready(function() {
 				"color": "#ffffff",
 				"type": "smoothedLine"
 			},
-			"fillAlphas": 0,
+			"fillAlphas": 0.2,
 			"bullet": "round",
 			"bulletBorderAlpha": 1,
 			"bulletColor": "#FFFFFF",
@@ -106,7 +106,8 @@ $(document).ready(function() {
 			"cursorAlpha": 0,
 			"zoomable": false,
 			"valueZoomable": true,
-			"valueLineAlpha": 0.5
+			"valueLineAlpha": 0.5,
+			"categoryBalloonDateFormat": "YYYY-MM-DD"
 		},
 		"chartScrollbar": {
 			"autoGridCount": true,
@@ -175,7 +176,8 @@ $(document).ready(function() {
 			"cursorAlpha": 0,
 			"zoomable": false,
 			"valueZoomable": true,
-			"valueLineAlpha": 0.5
+			"valueLineAlpha": 0.5,
+			"categoryBalloonDateFormat": "YYYY-MM-DD"
 		},
 		"chartScrollbar": {
 			"autoGridCount": true,

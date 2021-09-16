@@ -16,6 +16,11 @@
 				values (#{item.regDate},#{item.endPrice},#{item.variation})
 		</foreach>
 	</update>
+	
+	<insert id="insertOne" parameterType="kospiVO">
+		insert into t_kospi_d(reg_date, end_price, variation)
+			values (#{regDate},#{endPrice},#{variation})
+	</insert>
 
 	<select id="selectAll" resultMap="kospiMap">
 		select a.reg_date, a.end_price, b.end_price+300 as nas_price
@@ -31,5 +36,11 @@
 		where reg_date > sysdate - 365
 		order by reg_date asc
 	</select>
+	
+	<select id="getSeq" resultType="String">
+		select MAX(reg_date)
+			from t_kospi_d
+	</select>
+	
 	
 </mapper>

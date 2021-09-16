@@ -19,9 +19,61 @@ public class KospiController {
 
 	@Autowired
 	private KospiService service;
-
-	@RequestMapping("/insert/kospi")
+	
+	// 일별 코스피 주기적으로 넣기(주기적으로 사용)
+	@RequestMapping("/insertOne/kospi")
 	@ResponseBody
+	public String insertOne() {
+		
+		String latest = service.getSeq();
+		System.out.println("저장된 가장 최근 날짜" + latest);
+		
+		int page = 1;
+		int result = 0;
+		loop: while (true) {
+			String url = "https://finance.naver.com/sise/sise_index_day.nhn?code=KOSPI&page=" + page;
+			Document doc = null;
+			try {
+				doc = Jsoup.connect(url).get();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			Elements elements = doc.select("td[class='date']");
+			
+			String[] str = elements.text().split(" ");
+
+			for(int i = 0; i < str.length; i++) {
+				KospiVO kospiVO = new KospiVO();
+				String regDate = str[i].replace('.', '-');
+				
+				if(regDate.equals(latest)) {
+					break loop;
+				}
+				
+				kospiVO.setRegDate(regDate);
+				
+				elements = doc.select("tr:contains(" + str[i] + ")");
+				
+				kospiVO.setEndPrice(Double.parseDouble(elements.text().split(" ")[1].replaceAll(",", "")));
+				kospiVO.setVariation(Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", "")));
+				
+				result += service.insertOneKospi(kospiVO);
+			}
+			
+			page++;
+		}
+		
+		
+		String msg = "삽입된 열의 개수: " + result;
+		
+		return msg;
+	}
+	
+	
+	// 전체 일별 코스피 넣기(1회용)
+	//@RequestMapping("/insertAll/kospi")
+	//@ResponseBody
 	public String insertAll() {
 		
 		int page = 1;
@@ -51,13 +103,10 @@ public class KospiController {
 			}
 			
 			elements = doc2.select("td[class='date']");
-			//System.out.println(elements.text());
 			
 			String[] str = elements.text().split(" ");
-			//System.out.println(str.length);
 			
 			List<KospiVO> list = new ArrayList<KospiVO>();
-			//System.out.println("담기전 : " + list);
 			for(int i = 0; i < str.length; i++) {
 				KospiVO kospiVO = new KospiVO();
 				String regDate = str[i].replace('.', '-');
@@ -65,11 +114,9 @@ public class KospiController {
 				kospiVO.setRegDate(regDate);
 				
 				elements = doc2.select("tr:contains(" + str[i] + ")");
-				//System.out.println(elements.text());
 				kospiVO.setEndPrice(Double.parseDouble(elements.text().split(" ")[1].replaceAll(",", "")));
 				kospiVO.setVariation(Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", "")));
 				
-				//System.out.println(kospiVO);
 				list.add(kospiVO);
 			}
 			

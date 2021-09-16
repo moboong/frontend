@@ -13,18 +13,32 @@ public class ExchangeServiceImpl implements ExchangeService {
 
 	@Autowired
 	private ExchangeDAO exchangeDAO;
-
+	
+	@Override
+	public String getSeq() {
+		String latest = exchangeDAO.getSeq();
+		return latest;
+	}
+	
+	@Override
 	public int insertAllExchange(List<ExchangeVO> exchangeVOs) {
 		int result = exchangeDAO.insertAll(exchangeVOs);
 		return result;
 	}
-
+	
+	@Override
+	public int insertOneExchange(ExchangeVO exchangeVO) {
+		int result = exchangeDAO.insertOne(exchangeVO);
+		return result;
+	}
+	
+	@Override
 	public List<ExchangeVO> searchAllExchange() {
 		List<ExchangeVO> exchangeVOs = exchangeDAO.searchAll();
 		return exchangeVOs;
 	}
 	
-	
+	@Override
 	public List<ExchangeVO> searchYearExchange() {
 		List<ExchangeVO> exchangeVOs = exchangeDAO.searchYear();
 		return exchangeVOs;

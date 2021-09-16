@@ -16,7 +16,12 @@
 				values (#{item.regDate},#{item.stdRate},#{item.variation})
 		</foreach>
 	</update>
-
+	
+	<insert id="insertOne" parameterType="exchangeVO">
+		insert into t_exchange_d(reg_date, std_rate, variation)
+			values (#{regDate},#{stdRate},#{variation})
+	</insert>
+	
 	<select id="selectAll" resultMap="exchangeMap">
 		select a.reg_date, a.std_rate, b.end_price
 			from t_exchange_d a, t_kospi_d b
@@ -30,6 +35,11 @@
 			from t_exchange_d
 		where reg_date > sysdate - 365
 		order by reg_date asc
+	</select>
+	
+	<select id="getSeq" resultType="String">
+		select MAX(reg_date)
+			from t_exchange_d
 	</select>
 	
 </mapper>

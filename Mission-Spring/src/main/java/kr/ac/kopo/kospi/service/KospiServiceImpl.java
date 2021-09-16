@@ -15,11 +15,23 @@ public class KospiServiceImpl implements KospiService {
 	private KospiDAO kospiDAO;
 	
 	@Override
+	public String getSeq() {
+		String latest = kospiDAO.getSeq();
+		return latest;
+	}
+	
+	@Override
 	public int insertAllKospi(List<KospiVO> kospiVOs) {
 		int result = kospiDAO.insertAll(kospiVOs);
 		return result;
 	}
-
+	
+	@Override
+	public int insertOneKospi(KospiVO kospiVO) {
+		int result = kospiDAO.insertOne(kospiVO);
+		return result;
+	}
+	
 	@Override
 	public List<KospiVO> searchAllKospi() {
 		List<KospiVO> kospiVOs = kospiDAO.searchAll();

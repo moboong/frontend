@@ -1,44 +1,44 @@
-package kr.ac.kopo;
+package kr.ac.kopo.inmemory.controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.exchange.vo.ExchangeVO;
+import kr.ac.kopo.inmemory.service.InmemoryService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/resources/config/spring/spring-mvc.xml")
-public class HsqlTest {
+@Controller
+public class InmemoryController {
 
-	@Resource(name = "hsqlSessionTemplate")
-	private SqlSessionTemplate hsqlsessionTemplate;
+	@Autowired
+	private InmemoryService service;
 	
-	@Test
-	public void test() {
+	@RequestMapping("/inmemory/selectAll")
+	@ResponseBody
+	public List<ExchangeVO> selectAll() {
+		List<ExchangeVO> exchangeVOs = service.searchAllExchange();
+		return exchangeVOs;
+	}
+	
 
-		// select
-		List<ExchangeVO> elist = hsqlsessionTemplate.selectList("exchange.ExchangeDAO.elist");
-		System.out.println(elist);
+	@RequestMapping("/inmemory/insertAll")
+	@ResponseBody
+	public String insertAll() {
 
-		
-		
 		// insertAll
 		int result = 0;
 		int page = 1;
 		List<ExchangeVO> list = new ArrayList<ExchangeVO>();
-		
+
 		while (true) {
 
 			String url = "https://finance.naver.com/marketindex/exchangeDegreeCountQuote.nhn?marketindexCd=FX_USDKRW&page="
@@ -56,12 +56,11 @@ public class HsqlTest {
 
 			Iterator<Element> element = elements.select("tr").iterator();
 
-			//List<ExchangeVO> list = new ArrayList<ExchangeVO>();
 			while (element.hasNext()) {
 
 				String str = element.next().text();
 				String[] strlist = str.split(" ");
-				String regDate = strlist[0]; //strlist[0].replace('.', '-')
+				String regDate = strlist[0];
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
 				double variation = Double.parseDouble(strlist[2].replaceAll(",", ""));
 
@@ -71,30 +70,31 @@ public class HsqlTest {
 				exchangeVO.setVariation(variation);
 
 				list.add(exchangeVO);
-				
-				//하나씩 넣기
-				//hsqlsessionTemplate.insert("exchange.ExchangeDAO.insertOne", exchangeVO);
 			}
 			page++;
 		}
-		//크롤링 출력
-		System.out.println("그냥" + list);
-		result = hsqlsessionTemplate.update("exchange.ExchangeDAO.insertAll", list);
-		System.out.println("입력된 열: "+ result);
 		
-		//inmemory에서 가져오기
-		List<ExchangeVO> elist2 = hsqlsessionTemplate.selectList("exchange.ExchangeDAO.elist");
-		System.out.println("in-memory" + elist2);
-		
-		
-		String latest = hsqlsessionTemplate.selectOne("exchange.ExchangeDAO.getSeq");
+		//고시회차 전체 삽입
+		result = service.insertAllExchange(list);
+
+		String msg = "삽입된 열의 개수: " + result;
+
+		return msg;
+	}
+
+	
+
+	@RequestMapping("/inmemory/insertOne")
+	@ResponseBody
+	public String insertOne() {
+
+		String latest = service.getSeq();
 		System.out.println("저장된 가장 최근 회차" + latest);
 		
-		
-		
+		int result = 0;
 		// 추가로 불러오기
 		int firstpage = 1;
-		loop:while (true) {
+		loop: while (true) {
 			String url = "https://finance.naver.com/marketindex/exchangeDegreeCountQuote.nhn?marketindexCd=FX_USDKRW&page="
 					+ firstpage;
 			Document doc = null;
@@ -107,20 +107,21 @@ public class HsqlTest {
 			if (elements.text().length() == 0) {
 				break;
 			}
-
+			
 			Iterator<Element> element = elements.select("tr").iterator();
 			
-			int enterCnt = 1;
 			while (element.hasNext()) {
-
+				
+				//하락 or 상승 구분하기
+				//element.next().attr("class");
 				String str = element.next().text();
 				String[] strlist = str.split(" ");
 				String regDate = strlist[0];
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
 				double variation = Double.parseDouble(strlist[2].replaceAll(",", ""));
 				
-				//230회부터 들어올거고 228만나면 정지
-				if(regDate.equals(latest)) {
+				// 230회부터 들어올거고 228만나면 정지
+				if (regDate.equals(latest)) {
 					break loop;
 				}
 				
@@ -128,15 +129,22 @@ public class HsqlTest {
 				exchangeVO.setRegDate(regDate);
 				exchangeVO.setStdRate(stdRate);
 				exchangeVO.setVariation(variation);
+
+				// 하나씩 넣기
+				result += service.insertOneExchange(exchangeVO);
 				
-				//하나씩 넣기
-				hsqlsessionTemplate.insert("exchange.ExchangeDAO.insertOne", exchangeVO);
-				System.out.println("추가하기 : " + enterCnt);
-				enterCnt++;
 			}
 			firstpage++;
 		}
-		System.out.println("끝:" + firstpage);
+		System.out.println("다음페이지 갔나?(1이면 안간거):" + firstpage);
+
+		String msg = "삽입된 열의 개수: " + result;
 		
+		//상위 5개 변동이 5이상이면 알람.
+		
+		
+		
+		return msg;
 	}
+
 }
