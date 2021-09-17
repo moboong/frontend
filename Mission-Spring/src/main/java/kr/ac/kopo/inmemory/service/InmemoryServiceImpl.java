@@ -14,8 +14,8 @@ public class InmemoryServiceImpl implements InmemoryService {
 	@Autowired
 	private InmemoryDAO inmemoryDAO;
 
-	public String getSeq() {
-		String latest = inmemoryDAO.getSeq();
+	public int getSeq() {
+		int latest = inmemoryDAO.getSeq();
 		return latest;
 	}
 
@@ -32,6 +32,11 @@ public class InmemoryServiceImpl implements InmemoryService {
 	public int insertOneExchange(ExchangeVO exchangeVO) {
 		int result = inmemoryDAO.insertOneExchange(exchangeVO);
 		return result;
+	}
+	
+	public List<ExchangeVO> checkExchange() {
+		List<ExchangeVO> vlist = inmemoryDAO.checkExchange();
+		return vlist;
 	}
 
 }

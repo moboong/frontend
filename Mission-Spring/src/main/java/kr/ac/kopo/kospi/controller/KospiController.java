@@ -55,8 +55,15 @@ public class KospiController {
 				
 				elements = doc.select("tr:contains(" + str[i] + ")");
 				
+				double variation = Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", ""));
+				
+				Elements e1 = elements.select("img");
+				if(e1.attr("alt").equals("하락")){
+					variation = variation * -1;	
+				}
+				
 				kospiVO.setEndPrice(Double.parseDouble(elements.text().split(" ")[1].replaceAll(",", "")));
-				kospiVO.setVariation(Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", "")));
+				kospiVO.setVariation(variation);
 				
 				result += service.insertOneKospi(kospiVO);
 			}
@@ -72,8 +79,8 @@ public class KospiController {
 	
 	
 	// 전체 일별 코스피 넣기(1회용)
-	//@RequestMapping("/insertAll/kospi")
-	//@ResponseBody
+	@RequestMapping("/insertAll/kospi")
+	@ResponseBody
 	public String insertAll() {
 		
 		int page = 1;
@@ -114,8 +121,16 @@ public class KospiController {
 				kospiVO.setRegDate(regDate);
 				
 				elements = doc2.select("tr:contains(" + str[i] + ")");
+				
+				double variation = Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", ""));
+				
+				Elements e1 = elements.select("img");
+				if(e1.attr("alt").equals("하락")){
+					variation = variation * -1;	
+				}
+				
 				kospiVO.setEndPrice(Double.parseDouble(elements.text().split(" ")[1].replaceAll(",", "")));
-				kospiVO.setVariation(Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", "")));
+				kospiVO.setVariation(variation);
 				
 				list.add(kospiVO);
 			}

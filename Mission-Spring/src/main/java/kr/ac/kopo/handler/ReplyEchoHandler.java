@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -18,6 +19,7 @@ public class ReplyEchoHandler extends TextWebSocketHandler {
 	List<WebSocketSession> sessions = new ArrayList<>();
 	Map<String, WebSocketSession> userSessions = new HashMap<>();
 	
+	//클라이언트가 접속했을 때
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception{
 		System.out.println("afterConnectionEstablished:" + session);
@@ -26,32 +28,36 @@ public class ReplyEchoHandler extends TextWebSocketHandler {
 		userSessions.put(senderId, session);
 	}
 	
+	//소켓에 메시지 보낼 때
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		System.out.println("handleTextMessage:" + session + " : " + message);
 		//String senderId = getId(session);
+		
+		//모든 유저에게 보내기
 //		for (WebSocketSession sess: sessions) {
 //			sess.sendMessage(new TextMessage(senderId + ": " + message.getPayload()));
 //		}
 		
+		
 		//protocol: cmd,댓글작성자,게시글작성자,bno  (ex: reply,user2,user1,234)
-//		String msg = message.getPayload();
-//		if (StringUtils.isNotEmpty(msg)) {
-//			String[] strs = msg.split(",");
-//			if (strs != null && strs.length == 4) {
-//				String cmd = strs[0];
-//				String replyWriter = strs[1];
-//				String boardWriter = strs[2];
-//				String bno = strs[3];
-//				
-//				WebSocketSession boardWriterSession = userSessions.get(boardWriter);
-//				if ("reply".equals(cmd) && boardWriterSession != null) {
-//					TextMessage tmpMsg = new TextMessage(replyWriter + "님이 "
-//							+ "<a href='/board/read?bno=" + bno + "'>" + bno + "</a>번 게시글에 댓글을 달았습니다!");
-//					boardWriterSession.sendMessage(tmpMsg);
-//				}
-//			}
-//		}
+		String msg = message.getPayload();
+		if (StringUtils.isNotEmpty(msg)) {
+			String[] strs = msg.split(",");
+			if (strs != null && strs.length == 4) { //이거 안하면 아웃바운더리 에러, 런타임 등등 발생할 수 있음. 3개 입력하면 그런 에러 발생.
+				String cmd = strs[0];
+				String replyWriter = strs[1];
+				String boardWriter = strs[2];
+				String bno = strs[3];
+				
+				//온라인중인가를 판단함.
+				WebSocketSession boardWriterSession = userSessions.get(boardWriter);
+				if ("reply".equals(cmd) && boardWriterSession != null) {
+					TextMessage tmpMsg = new TextMessage(replyWriter + "님이 " + "<a href='/board/" + bno + "'>" + bno + "</a>번 게시글에 댓글을 달았습니다!");
+					boardWriterSession.sendMessage(tmpMsg);
+				}
+			}
+		}
 	}
 
 	private String getId(WebSocketSession session) {
@@ -63,6 +69,7 @@ public class ReplyEchoHandler extends TextWebSocketHandler {
 			return userVO.getId();
 	}
 
+	//커넥션 클로즈 시
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		System.out.println("afterConnectionEstablished:" + session + ":" + status);

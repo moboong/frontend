@@ -50,8 +50,11 @@ public class ExchangeController {
 			Iterator<Element> element = elements.select("tr").iterator();
 
 			while (element.hasNext()) {
-
-				String str = element.next().text();
+				
+				//하락 or 상승 구분하기
+				Element e1 = element.next();
+				
+				String str = e1.text();
 				String[] strlist = str.split(" ");
 				String regDate = strlist[0].replace('.', '-');
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
@@ -65,6 +68,9 @@ public class ExchangeController {
 				ExchangeVO exchangeVO = new ExchangeVO();
 				exchangeVO.setRegDate(regDate);
 				exchangeVO.setStdRate(stdRate);
+				if(e1.attr("class").equals("down")) {
+					variation = variation * -1;
+				}
 				exchangeVO.setVariation(variation);
 
 				// 하나씩 넣기
@@ -107,13 +113,19 @@ public class ExchangeController {
 
 			List<ExchangeVO> list = new ArrayList<ExchangeVO>();
 			while (element.hasNext()) {
-
-				String str = element.next().text();
+				
+				//하락 or 상승 구분하기
+				Element e1 = element.next();
+				
+				String str = e1.text();
 				String[] strlist = str.split(" ");
 				String regDate = strlist[0].replace('.', '-');
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
 				double variation = Double.parseDouble(strlist[2].replaceAll(",", ""));
-
+				if(e1.attr("class").equals("down")) {
+					variation = variation * -1;
+				}
+				
 				ExchangeVO exchangeVO = new ExchangeVO();
 				exchangeVO.setRegDate(regDate);
 				exchangeVO.setStdRate(stdRate);

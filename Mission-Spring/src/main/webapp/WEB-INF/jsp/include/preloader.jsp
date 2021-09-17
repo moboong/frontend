@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<div id="socketAlert" style="display: none;"></div>
+
 <div class="theme-loader">
 	<div class="loader-track">
 		<div class="preloader-wrapper">

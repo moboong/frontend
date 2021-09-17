@@ -36,3 +36,35 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-dashboard.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/script.js "></script>
     
+
+<script>
+var socket = null;
+$(document).ready(function() {
+	connectWS();
+});
+
+function connectWS() {
+	var ws = new WebSocket("ws://localhost:9999/Mission-Spring/replyEcho?boardNo=${board.no}");
+	socket = ws;
+		
+	ws.onopen = function() {
+		console.log('Info: connection opened.');
+	};
+	
+	ws.onmessage = function(event) {
+		console.log("RecieveMessage:", event.data + '\n');
+		let $socketAlert = $('div#socketAlert');
+		$socketAlert.text(event.data);
+		$socketAlert.css('display', 'block');
+	};
+	
+	ws.onclose = function(event) {
+		console.log('Info: connection closed.');
+		//setTimeout(function() { connect(); }, 1000); // retry connection!!
+	};
+	ws.onerror = function(err) {
+		console.log('Error: ', err);
+	};
+};
+</script>
+    

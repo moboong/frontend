@@ -57,18 +57,24 @@ public class InmemoryController {
 			Iterator<Element> element = elements.select("tr").iterator();
 
 			while (element.hasNext()) {
-
-				String str = element.next().text();
+				
+				//하락 or 상승 구분하기
+				Element e1 = element.next();
+				
+				String str = e1.text();
 				String[] strlist = str.split(" ");
-				String regDate = strlist[0];
+				String regDate = strlist[0].replaceAll("회", "");
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
 				double variation = Double.parseDouble(strlist[2].replaceAll(",", ""));
 
 				ExchangeVO exchangeVO = new ExchangeVO();
 				exchangeVO.setRegDate(regDate);
 				exchangeVO.setStdRate(stdRate);
+				if(e1.attr("class").equals("down")) {
+					variation = variation * -1;
+				}
 				exchangeVO.setVariation(variation);
-
+				
 				list.add(exchangeVO);
 			}
 			page++;
@@ -88,8 +94,9 @@ public class InmemoryController {
 	@ResponseBody
 	public String insertOne() {
 
-		String latest = service.getSeq();
-		System.out.println("저장된 가장 최근 회차" + latest);
+		int latestNum = service.getSeq();
+		String latest = Integer.toString(latestNum);
+		System.out.println("저장된 가장 최근 회차 : " + latest);
 		
 		int result = 0;
 		// 추가로 불러오기
@@ -113,12 +120,16 @@ public class InmemoryController {
 			while (element.hasNext()) {
 				
 				//하락 or 상승 구분하기
-				//element.next().attr("class");
-				String str = element.next().text();
+				Element e1 = element.next();
+				
+				String str = e1.text();
 				String[] strlist = str.split(" ");
-				String regDate = strlist[0];
+				String regDate = strlist[0].replaceAll("회", "");
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
 				double variation = Double.parseDouble(strlist[2].replaceAll(",", ""));
+				if(e1.attr("class").equals("down")) {
+					variation = variation * -1;
+				}
 				
 				// 230회부터 들어올거고 228만나면 정지
 				if (regDate.equals(latest)) {
@@ -129,20 +140,31 @@ public class InmemoryController {
 				exchangeVO.setRegDate(regDate);
 				exchangeVO.setStdRate(stdRate);
 				exchangeVO.setVariation(variation);
-
+				
 				// 하나씩 넣기
 				result += service.insertOneExchange(exchangeVO);
-				
+				System.out.println("추가된 레코드 : " + exchangeVO);
 			}
 			firstpage++;
 		}
-		System.out.println("다음페이지 갔나?(1이면 안간거):" + firstpage);
 
 		String msg = "삽입된 열의 개수: " + result;
 		
 		//상위 5개 변동이 5이상이면 알람.
+		List<ExchangeVO> vlist = service.checkExchange();
 		
+		System.out.println("최근 10개 레코드 -> " + vlist);
+		int flag = 0;
+		for(int i = 0; i < vlist.size(); i++) {
+			if(vlist.get(i).getVariation() >= 5) {
+				flag++;
+			}
+		}
+		System.out.println(flag + " / " + vlist.size());
 		
+		if(flag == vlist.size()) {
+			System.out.println("알람 때리기");
+		}
 		
 		return msg;
 	}

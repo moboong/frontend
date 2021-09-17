@@ -15,8 +15,8 @@ public class InmemoryDAOImpl implements InmemoryDAO {
 	@Resource(name="hsqlSessionTemplate")
 	private SqlSessionTemplate hsqlsessionTemplate;
 	
-	public String getSeq() {
-		String latest = hsqlsessionTemplate.selectOne("exchange.ExchangeDAO.getSeq");
+	public int getSeq() {
+		int latest = hsqlsessionTemplate.selectOne("exchange.ExchangeDAO.getSeq");
 		return latest;
 	}
 
@@ -37,5 +37,11 @@ public class InmemoryDAOImpl implements InmemoryDAO {
 		int result = hsqlsessionTemplate.insert("exchange.ExchangeDAO.insertOne", exchangeVO);
 		return result;
 	}
+	
+	public List<ExchangeVO> checkExchange() {
+		List<ExchangeVO> vlist = hsqlsessionTemplate.selectList("exchange.ExchangeDAO.check");
+		return vlist;
+	}
+	
 
 }

@@ -6,11 +6,14 @@ import kr.ac.kopo.exchange.vo.ExchangeVO;
 
 public interface InmemoryService {
 	
-	String getSeq();
+	int getSeq();
 	
 	List<ExchangeVO> searchAllExchange();
 	
 	int insertAllExchange(List<ExchangeVO> exchangeVOs);
 	
 	int insertOneExchange(ExchangeVO exchangeVO);
+	
+	
+	List<ExchangeVO> checkExchange();
 }

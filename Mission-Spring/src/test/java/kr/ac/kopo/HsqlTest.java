@@ -25,6 +25,7 @@ public class HsqlTest {
 	@Resource(name = "hsqlSessionTemplate")
 	private SqlSessionTemplate hsqlsessionTemplate;
 	
+	
 	@Test
 	public void test() {
 
@@ -61,7 +62,7 @@ public class HsqlTest {
 
 				String str = element.next().text();
 				String[] strlist = str.split(" ");
-				String regDate = strlist[0]; //strlist[0].replace('.', '-')
+				String regDate = strlist[0].replaceAll("회", "");
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
 				double variation = Double.parseDouble(strlist[2].replaceAll(",", ""));
 
@@ -87,7 +88,8 @@ public class HsqlTest {
 		System.out.println("in-memory" + elist2);
 		
 		
-		String latest = hsqlsessionTemplate.selectOne("exchange.ExchangeDAO.getSeq");
+		int latestNum = hsqlsessionTemplate.selectOne("exchange.ExchangeDAO.getSeq");
+		String latest = Integer.toString(latestNum);
 		System.out.println("저장된 가장 최근 회차" + latest);
 		
 		
@@ -115,7 +117,7 @@ public class HsqlTest {
 
 				String str = element.next().text();
 				String[] strlist = str.split(" ");
-				String regDate = strlist[0];
+				String regDate = strlist[0].replaceAll("회", "");
 				double stdRate = Double.parseDouble(strlist[1].replaceAll(",", ""));
 				double variation = Double.parseDouble(strlist[2].replaceAll(",", ""));
 				
@@ -138,5 +140,8 @@ public class HsqlTest {
 		}
 		System.out.println("끝:" + firstpage);
 		
+		
+		List<ExchangeVO> vlist = hsqlsessionTemplate.selectList("exchange.ExchangeDAO.check");
+		System.out.println(vlist);
 	}
 }

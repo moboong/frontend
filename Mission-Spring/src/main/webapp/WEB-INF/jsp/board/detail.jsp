@@ -7,49 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/css/layout.css" />
+	href="${ pageContext.request.contextPath }/resources/layout.css" />
 <link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/css/board.css" />
+	href="${ pageContext.request.contextPath }/resources/board.css" />
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-function connect() {
-	var ws = new WebSocket("ws://localhost:9999/Mission-Spring/replyEcho?boardNo=${board.no}");
-
-	ws.onopen = function() {
-		console.log('Info: connection opened.');
-		setTimeout(function() {
-			connect();
-		}, 1000); // retry connection!!
-	};
-
-	ws.onmessage = function(event) {
-		console.log(event.data + '\n');
-	};
-
-	ws.onclose = function(event) {
-		console.log('Info: connection closed.');
-	};
-	ws.onerror = function(event) {
-		console.log('Info: connection closed.');
-	};
-
-	$('#send').on('click', function(evt) {
-		evt.preventDefault();
-		if (socket.readyState !== 1)
-			return;
-		let msg = $('input#msg').val();
-		ws.send(msg);
-	});
-}
-	
-</script>
-
-<script>
-	
-	$(document).ready(
-		getReplyList()
-	)
 
 	function getReplyList() {
 		$.ajax({
@@ -68,7 +31,8 @@ function connect() {
 			}
 		})
 	}
-
+	
+	//댓글 작성하는 부분
 	function addReply() {
 
 		var queryString = $("form[name=replyForm]").serialize();
@@ -80,8 +44,15 @@ function connect() {
 			async : false,
 			dataType : 'json',
 			success : function(msg) {
-				alert(msg)
-				getReplyList()
+				alert(msg);
+				getReplyList();
+				
+				//소켓이 연결됐을 때만 보낸다. (reply,댓글작성자,게시글작성자,글번호)
+				if(socket) {
+					let socketMsg = "reply," + "${ userVO.id }," + "${ board.writer }," + "${ board.no }";
+					socket.send(socketMsg);
+				}
+				
 			},
 			'error' : function() {
 				alert('실패')
@@ -122,10 +93,36 @@ function connect() {
 		}
 	}
 </script>
+
+<script>
+	$(document).ready(function() {
+		
+		getReplyList();
+		
+		//connect();
+		
+		$('#btnSend').on('click', function(evt) {
+			evt.preventDefault();
+			if (socket.readyState !== 1)
+				return;
+			let msg = $('input#msg').val();
+			socket.send(msg);
+		});
+		
+		connectWS();
+	});
+</script>
+
+
+
 </head>
 <body>
+	
+	<div id="socketAlert" style="display: none;"></div>
+	
 	<header>
-		<%-- <jsp:include page="/jsp/include/topMenu.jsp" /> --%>
+		
+		
 	</header>
 	<section>
 		<div align="center">
@@ -197,9 +194,49 @@ function connect() {
 			<hr>
 			<div id="msgView"></div>
 		</div>
+		
+		
+		<div class="well">
+			<input type="text" id="msg" value="1212" class="form-control"/>
+			<button id="btnSend" class="btn btn-primary">Send Message</button>
+		</div>
+		
 	</section>
 	<footer>
-		<%-- <%@ include file="/jsp/include/bottom.jsp" %> --%>
+		
+		
 	</footer>
+	
+<script>
+var socket = null;
+$(document).ready(function() {
+	connectWS();
+});
+
+function connectWS() {
+	var ws = new WebSocket("ws://localhost:9999/Mission-Spring/replyEcho?boardNo=${board.no}");
+	socket = ws;
+		
+	ws.onopen = function() {
+		console.log('Info: connection opened.');
+	};
+	
+	ws.onmessage = function(event) {
+		console.log("RecieveMessage:", event.data + '\n');
+		let $socketAlert = $('div#socketAlert');
+		$socketAlert.text(event.data);
+		$socketAlert.css('display', 'block');
+	};
+	
+	ws.onclose = function(event) {
+		console.log('Info: connection closed.');
+		//setTimeout(function() { connect(); }, 1000); // retry connection!!
+	};
+	ws.onerror = function(err) {
+		console.log('Error: ', err);
+	};
+};
+</script>
+
 </body>
 </html>
