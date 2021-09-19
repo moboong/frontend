@@ -80,10 +80,10 @@
 							data-i18n="nav.basic-components.alert">채팅하기</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
+					<li class=" "><a href="${pageContext.request.contextPath}/board"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.breadcrumbs">모의투자하기</span> <span
+							data-i18n="nav.basic-components.breadcrumbs">지표토론실</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
 

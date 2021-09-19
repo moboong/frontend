@@ -53,7 +53,7 @@ public class ReplyEchoHandler extends TextWebSocketHandler {
 				//온라인중인가를 판단함.
 				WebSocketSession boardWriterSession = userSessions.get(boardWriter);
 				if ("reply".equals(cmd) && boardWriterSession != null) {
-					TextMessage tmpMsg = new TextMessage(replyWriter + "님이 " + "<a href='/board/" + bno + "'>" + bno + "</a>번 게시글에 댓글을 달았습니다!");
+					TextMessage tmpMsg = new TextMessage(replyWriter + "님이 " + "<a href=\"/Mission-Spring/board/" + bno + "\">" + bno + "</a>번 게시글에 댓글을 달았습니다!");
 					boardWriterSession.sendMessage(tmpMsg);
 				}
 			}

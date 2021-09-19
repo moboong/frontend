@@ -81,10 +81,10 @@
 									</div>
 									<div class="col-md-4">
 										<ul class="breadcrumb-title">
-											<li class="breadcrumb-item"><a href="index.html"> <i
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}"> <i
 													class="fa fa-home"></i>
 											</a></li>
-											<li class="breadcrumb-item"><a href="#!">환율시그널</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/signal/exchange">환율시그널</a></li>
 										</ul>
 									</div>
 								</div>

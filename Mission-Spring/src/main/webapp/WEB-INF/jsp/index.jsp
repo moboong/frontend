@@ -45,9 +45,9 @@
                                   <div class="col-md-4">
                                       <ul class="breadcrumb-title">
                                           <li class="breadcrumb-item">
-                                              <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                              <a href="${pageContext.request.contextPath}"> <i class="fa fa-home"></i> </a>
                                           </li>
-                                          <li class="breadcrumb-item"><a href="#!">메인페이지</a>
+                                          <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}">메인페이지</a>
                                           </li>
                                       </ul>
                                   </div>
@@ -273,7 +273,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="d-inline-block align-middle">
-                                                                            <img src="assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                                             <div class="d-inline-block">
                                                                                 <h6>John Deo</h6>
                                                                                 <p class="text-muted m-b-0">Graphics Designer</p>
@@ -297,7 +297,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="d-inline-block align-middle">
-                                                                            <img src="assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                                             <div class="d-inline-block">
                                                                                 <h6>Jenifer Vintage</h6>
                                                                                 <p class="text-muted m-b-0">Web Designer</p>
@@ -321,7 +321,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="d-inline-block align-middle">
-                                                                            <img src="assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                                             <div class="d-inline-block">
                                                                                 <h6>William Jem</h6>
                                                                                 <p class="text-muted m-b-0">Developer</p>
@@ -345,7 +345,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="d-inline-block align-middle">
-                                                                            <img src="assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                                             <div class="d-inline-block">
                                                                                 <h6>David Jones</h6>
                                                                                 <p class="text-muted m-b-0">Developer</p>
@@ -381,35 +381,35 @@
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="align-middle m-b-30">
-                                                            <img src="assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                             <div class="d-inline-block">
                                                                 <h6>David Jones</h6>
                                                                 <p class="text-muted m-b-0">Developer</p>
                                                             </div>
                                                         </div>
                                                         <div class="align-middle m-b-30">
-                                                            <img src="assets/images/avatar-1.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-1.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                             <div class="d-inline-block">
                                                                 <h6>David Jones</h6>
                                                                 <p class="text-muted m-b-0">Developer</p>
                                                             </div>
                                                         </div>
                                                         <div class="align-middle m-b-30">
-                                                            <img src="assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                             <div class="d-inline-block">
                                                                 <h6>David Jones</h6>
                                                                 <p class="text-muted m-b-0">Developer</p>
                                                             </div>
                                                         </div>
                                                         <div class="align-middle m-b-30">
-                                                            <img src="assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                             <div class="d-inline-block">
                                                                 <h6>David Jones</h6>
                                                                 <p class="text-muted m-b-0">Developer</p>
                                                             </div>
                                                         </div>
                                                         <div class="align-middle m-b-10">
-                                                            <img src="assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
                                                             <div class="d-inline-block">
                                                                 <h6>David Jones</h6>
                                                                 <p class="text-muted m-b-0">Developer</p>
@@ -440,50 +440,6 @@
 <!-- 지표 추가 Modal -->
 
 
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
     
     <jsp:include page="include/bottom.jsp"/>
 	<script>

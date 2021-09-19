@@ -78,9 +78,9 @@
                                   <div class="col-md-4">
                                       <ul class="breadcrumb-title">
                                           <li class="breadcrumb-item">
-                                              <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                              <a href="${pageContext.request.contextPath}"> <i class="fa fa-home"></i> </a>
                                           </li>
-                                          <li class="breadcrumb-item"><a href="#!">금속시그널</a>
+                                          <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/signal/metal">금속시그널</a>
                                           </li>
                                       </ul>
                                   </div>

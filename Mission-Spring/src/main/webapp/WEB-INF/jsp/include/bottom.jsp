@@ -56,6 +56,7 @@ function connectWS() {
 		let $socketAlert = $('div#socketAlert');
 		$socketAlert.text(event.data);
 		$socketAlert.css('display', 'block');
+		alert(event.data)
 	};
 	
 	ws.onclose = function(event) {

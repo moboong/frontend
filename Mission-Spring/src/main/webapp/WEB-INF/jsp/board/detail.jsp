@@ -5,12 +5,147 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/layout.css" />
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/board.css" />
-<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>상세페이지</title>
+<jsp:include page="../include/head.jsp"></jsp:include>
+</head>
+<body>
+	<!-- Pre-loader start -->
+	<jsp:include page="../include/preloader.jsp" />
+	<!-- Pre-loader end -->
+	<div id="pcoded" class="pcoded">
+		<div class="pcoded-overlay-box"></div>
+		<div class="pcoded-container navbar-wrapper">
+			<!-- nav-top start -->
+			<jsp:include page="../include/navtop.jsp" />
+			<!-- nav-top end -->
+			<div class="pcoded-main-container">
+				<div class="pcoded-wrapper">
+					<!-- nav-side start -->
+					<jsp:include page="../include/navside.jsp" />
+					<!-- nav-side end -->
+					
+					<!-- 컨텐츠 시작 -->
+					<div class="pcoded-content">
+						<!-- Page-header start -->
+						<div class="page-header">
+							<div class="page-block">
+								<div class="row align-items-center">
+									<div class="col-md-8">
+										<div class="page-header-title">
+											<h5 class="m-b-10">지표 토론실</h5>
+											<p class="m-b-0">Welcome to Stock Signal Forum</p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<ul class="breadcrumb-title">
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}"> <i
+													class="fa fa-home"></i>
+											</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board">지표 토론실</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Page-header end -->
+						<div class="pcoded-inner-content">
+							<!-- Main-body start -->
+							<div class="main-body">
+								<div class="page-wrapper">
+									<!-- Page-body start -->
+									<div class="page-body">
+										
+										<!-- 폼 시작 -->
+										<div align="center">
+											<hr width="80%">
+											<h2>게시판 상세</h2>
+											<hr width="80%">
+											<br>
+											<table border="1" style="width: 80%">
+												<tr>
+													<th width="25%">번호</th>
+													<td><c:out value="${ board.no }" /></td>
+												</tr>
+												<tr>
+													<th width="25%">제목</th>
+													<td><c:out value="${ board.title }" /></td>
+												</tr>
+												<tr>
+													<th width="25%">작성자</th>
+													<td>${ board.writer }</td>
+												</tr>
+												<tr>
+													<th width="25%">내용</th>
+													<td>${ board.content }</td>
+												</tr>
+												<tr>
+													<th width="25%">조회수</th>
+													<td>${ board.viewCnt }</td>
+												</tr>
+												<tr>
+													<th width="25%">등록일</th>
+													<td>${ board.regDate }</td>
+												</tr>
+												<%-- <tr>
+												<th>첨부파일</th>
+												<td>
+													<c:forEach items="${ fileList }" var="file">
+														<a href="/Mission-Web/upload/${ file.fileSaveName }">
+															<c:out value="${ file.fileOriName }" />
+														</a>
+														(${ file.fileSize } bytes)
+														<br>
+													</c:forEach>
+												</td>
+											</tr> --%>
+											</table>
+											<br>
+											<button onclick="clickBtn('U')">수정</button>
+											<button onclick="clickBtn('D')">삭제</button>
+											<button onclick="clickBtn('L')">목록</button>
+										</div>
+										<hr>
+										<div align="center">
+											<form method="post" name="replyForm">
+												<input type="hidden" name="boardNo" value="${ board.no }" />
+												<table border="1" style="width: 80%">
+													<tr>
+														<th>작성자</th>
+														<td><input type="text" size="10" name="writer"
+															value="${ userVO.id }"></td>
+														<th>내용</th>
+														<td><textarea rows="2" cols="60" name="content"></textarea></td>
+													</tr>
+												</table>
+											</form>
+											<br>
+											<button id="send" onclick="clickBtnReply('C')">댓글등록</button>
+											<button onclick="clickBtnReply('U')">댓글수정</button>
+											<button onclick="clickBtnReply('D')">댓글삭제</button>
+											<hr>
+											<div id="msgView"></div>
+										</div>
+										
+										
+										<div class="well">
+											<input type="text" id="msg" value="1212" class="form-control"/>
+											<button id="btnSend" class="btn btn-primary">Send Message</button>
+										</div>
+										<!-- 폼 시작 -->
+									
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 컨텐츠 끝 -->
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<jsp:include page="../include/bottom.jsp" />
 
 <script>
 
@@ -99,8 +234,6 @@
 		
 		getReplyList();
 		
-		//connect();
-		
 		$('#btnSend').on('click', function(evt) {
 			evt.preventDefault();
 			if (socket.readyState !== 1)
@@ -109,133 +242,7 @@
 			socket.send(msg);
 		});
 		
-		connectWS();
 	});
-</script>
-
-
-
-</head>
-<body>
-	
-	<div id="socketAlert" style="display: none;"></div>
-	
-	<header>
-		
-		
-	</header>
-	<section>
-		<div align="center">
-			<hr width="80%">
-			<h2>게시판 상세</h2>
-			<hr width="80%">
-			<br>
-			<table border="1" style="width: 80%">
-				<tr>
-					<th width="25%">번호</th>
-					<td><c:out value="${ board.no }" /></td>
-				</tr>
-				<tr>
-					<th width="25%">제목</th>
-					<td><c:out value="${ board.title }" /></td>
-				</tr>
-				<tr>
-					<th width="25%">작성자</th>
-					<td>${ board.writer }</td>
-				</tr>
-				<tr>
-					<th width="25%">내용</th>
-					<td>${ board.content }</td>
-				</tr>
-				<tr>
-					<th width="25%">조회수</th>
-					<td>${ board.viewCnt }</td>
-				</tr>
-				<tr>
-					<th width="25%">등록일</th>
-					<td>${ board.regDate }</td>
-				</tr>
-				<%-- <tr>
-				<th>첨부파일</th>
-				<td>
-					<c:forEach items="${ fileList }" var="file">
-						<a href="/Mission-Web/upload/${ file.fileSaveName }">
-							<c:out value="${ file.fileOriName }" />
-						</a>
-						(${ file.fileSize } bytes)
-						<br>
-					</c:forEach>
-				</td>
-			</tr> --%>
-			</table>
-			<br>
-			<button onclick="clickBtn('U')">수정</button>
-			<button onclick="clickBtn('D')">삭제</button>
-			<button onclick="clickBtn('L')">목록</button>
-		</div>
-		<hr>
-		<div align="center">
-			<form method="post" name="replyForm">
-				<input type="hidden" name="boardNo" value="${ board.no }" />
-				<table border="1" style="width: 80%">
-					<tr>
-						<th>작성자</th>
-						<td><input type="text" size="10" name="writer"
-							value="${ userVO.id }"></td>
-						<th>내용</th>
-						<td><textarea rows="2" cols="60" name="content"></textarea></td>
-					</tr>
-				</table>
-			</form>
-			<br>
-			<button id="send" onclick="clickBtnReply('C')">댓글등록</button>
-			<button onclick="clickBtnReply('U')">댓글수정</button>
-			<button onclick="clickBtnReply('D')">댓글삭제</button>
-			<hr>
-			<div id="msgView"></div>
-		</div>
-		
-		
-		<div class="well">
-			<input type="text" id="msg" value="1212" class="form-control"/>
-			<button id="btnSend" class="btn btn-primary">Send Message</button>
-		</div>
-		
-	</section>
-	<footer>
-		
-		
-	</footer>
-	
-<script>
-var socket = null;
-$(document).ready(function() {
-	connectWS();
-});
-
-function connectWS() {
-	var ws = new WebSocket("ws://localhost:9999/Mission-Spring/replyEcho?boardNo=${board.no}");
-	socket = ws;
-		
-	ws.onopen = function() {
-		console.log('Info: connection opened.');
-	};
-	
-	ws.onmessage = function(event) {
-		console.log("RecieveMessage:", event.data + '\n');
-		let $socketAlert = $('div#socketAlert');
-		$socketAlert.text(event.data);
-		$socketAlert.css('display', 'block');
-	};
-	
-	ws.onclose = function(event) {
-		console.log('Info: connection closed.');
-		//setTimeout(function() { connect(); }, 1000); // retry connection!!
-	};
-	ws.onerror = function(err) {
-		console.log('Error: ', err);
-	};
-};
 </script>
 
 </body>

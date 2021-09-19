@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>새글등록</title>
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css" />
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/board.css" />
-<script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
+<title>새글등록2</title>
+<jsp:include page="../include/head.jsp"></jsp:include>
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/layout.css" />
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/board.css" />
 <script>
 
 	$(document).ready(function() {
@@ -52,58 +52,67 @@
 </script>
 </head>
 <body>
-	<header>
-		<%-- <jsp:include page="/jsp/include/topMenu.jsp" /> --%>
-	</header>
-	<section>
-		<div align="center">
-			<hr width="80%">
-			<h2>게시글 등록폼</h2>
-			<hr width="80%">
-			<br>
-			<!-- action 생략이 가능한 이유. 왜냐면 uri가 같아서. action이 없을 경우 현재 uri로 보냄. -->
-			<form method="post" 
-				  name="writeForm" onsubmit="return doWrite()">
-				<table border="1" style="width: 80%">
-					<tr>
-						<th width="25%">제목</th>
-						<td>
-							<input type="text" size="60" name="title">
-						</td>
-					</tr>
-					<tr>
-						<th width="25%">작성자</th>
-						<td>
-							<input type="text" size="60" name="writer" value="${ userVO.id }">
-						</td>
-					</tr>
-					<tr>
-						<th width="25%">내용</th>
-						<td>
-							<textarea rows="8" cols="60" name="content"></textarea>
-						</td>
-					</tr>
+	<!-- Pre-loader start -->
+	<jsp:include page="../include/preloader.jsp" />
+	<!-- Pre-loader end -->
+	
+	<div id="pcoded" class="pcoded">
+		<div class="pcoded-overlay-box"></div>
+		<div class="pcoded-container navbar-wrapper">
+			<!-- nav-top start -->
+			<jsp:include page="../include/navtop.jsp" />
+			<!-- nav-top end -->
+			<div class="pcoded-main-container">
+				<div class="pcoded-wrapper">
+					<!-- nav-side start -->
+					<jsp:include page="../include/navside.jsp" />
+					<!-- nav-side end -->
+	
+					<!-- 컨텐츠 시작 -->
+					<section>
+						<div align="center">
+							<hr width="80%">
+							<h2>게시글 등록폼</h2>
+							<hr width="80%">
+							<br>
+							<!-- action 생략이 가능한 이유. 왜냐면 uri가 같아서. action이 없을 경우 현재 uri로 보냄. -->
+							<form method="post" 
+								  name="writeForm" onsubmit="return doWrite()">
+								<table border="1" style="width: 80%">
+									<tr>
+										<th width="25%">제목</th>
+										<td>
+											<input type="text" size="60" name="title">
+										</td>
+									</tr>
+									<tr>
+										<th width="25%">작성자</th>
+										<td>
+											<input type="text" size="60" name="writer" value="${ userVO.id }">
+										</td>
+									</tr>
+									<tr>
+										<th width="25%">내용</th>
+										<td>
+											<textarea rows="8" cols="60" name="content"></textarea>
+										</td>
+									</tr>
+									
+								</table>
+								<br>
+								<input type="submit" value="등록">
+								<input type="button" value="목록" id="goListBtn">
+							</form>
+						</div>
+					</section>
+					<!-- 컨텐츠 끝 -->
 					
-				</table>
-				<br>
-				<input type="submit" value="등록">
-				<input type="button" value="목록" id="goListBtn">
-			</form>
+				</div>
+			</div>
 		</div>
-	</section>
-	<footer>
-		<%-- <%@ include file="/jsp/include/bottom.jsp" %> --%>
-	</footer>
+	</div>
+	
+	<jsp:include page="../include/bottom.jsp" />
+	
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

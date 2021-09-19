@@ -1,82 +1,129 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/layout.css" />
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/board.css" />
-<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>토론실 게시판</title>
+<jsp:include page="../include/head.jsp"></jsp:include>
 <script>
-
 	if ('${ msg }') {
 		alert('${ msg }')
-	}
-	
-	
-	$(document).ready(function() {
-		$('#addBtn').click(function() {
-			location.href = "${ pageContext.request.contextPath }/board/write"
-		})
-	})
-	
-	function doAction(no) {
-		<c:choose>
-			<c:when test="${ not empty userVO}">
-				location.href = 'detail.jsp?no='+no + '&type=list';
-			</c:when>
-			<c:otherwise>
-				if(confirm('로그인이 필요한 서비스입니다\n로그인페이지로 이동하시겠습니까?'))
-					/* location.href = "/Mission-Spring/jsp/login/login.jsp" */
-					location.href = "${ pageContext.request.contextPath }"
-			</c:otherwise>
-		</c:choose>
 	}
 </script>
 </head>
 <body>
-	<header>
-		<%-- <jsp:include page="/jsp/include/topMenu.jsp" /> --%>
-	</header>
-	<section>
-		<div align="center">
-		<hr>
-		<h2>게시판 목록</h2>
-		<hr>
-		<br>
-		<table style="width: 100%" id="list">
-			<tr>
-				<th width="7%">번호</th>
-				<th>제목</th>
-				<th width="16%">작성자</th>
-				<th width="20%">등록일</th>
-			</tr>
-			<c:forEach items="${ requestScope.list }" var="board" varStatus="loop">
-				<tr <c:if test="${ loop.index mod 2 ne 0 }"> class="odd" </c:if>>
-					<td>${ board.no }</td>
-					<td>
-						<a href="${ pageContext.request.contextPath }/board/${ board.no }">
-						<%-- <a href="${pageContext.request.contextPath}/board/detail?no=${ board.no }"> --%>
-						<%-- <a href="#" onclick="doAction()"> --%>
-						<%-- <a href="javascript:doAction(${ board.no })"> --%>
-							<c:out value="${ board.title }" />
-						</a>
-					</td>
-					<td>${ board.writer }</td>
-					<td>${ board.regDate }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
-		<%-- <c:if test="${ not empty userVO }"> --%>
-			<button id="addBtn">새글등록</button>
-		<%-- </c:if> --%>
+	<!-- Pre-loader start -->
+	<jsp:include page="../include/preloader.jsp" />
+	<!-- Pre-loader end -->
+	<div id="pcoded" class="pcoded">
+		<div class="pcoded-overlay-box"></div>
+		<div class="pcoded-container navbar-wrapper">
+			<!-- nav-top start -->
+			<jsp:include page="../include/navtop.jsp" />
+			<!-- nav-top end -->
+			<div class="pcoded-main-container">
+				<div class="pcoded-wrapper">
+					<!-- nav-side start -->
+					<jsp:include page="../include/navside.jsp" />
+					<!-- nav-side end -->
+
+					<!-- 컨텐츠 시작 -->
+					<div class="pcoded-content">
+						<!-- Page-header start -->
+						<div class="page-header">
+							<div class="page-block">
+								<div class="row align-items-center">
+									<div class="col-md-8">
+										<div class="page-header-title">
+											<h5 class="m-b-10">지표 토론실</h5>
+											<p class="m-b-0">Welcome to Stock Signal Forum</p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<ul class="breadcrumb-title">
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}"> <i
+													class="fa fa-home"></i>
+											</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board">지표 토론실</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Page-header end -->
+						<div class="pcoded-inner-content">
+							<!-- Main-body start -->
+							<div class="main-body">
+								<div class="page-wrapper">
+									<!-- Page-body start -->
+									<div class="page-body">
+
+
+										<!-- 카드 테이블 시작 -->
+										<div class="card">
+											<div class="card-header">
+												<h5>환율 지표 토론실</h5>
+												<span>환율에 대한 다양한 의견들을 <code>공유</code>해봐요!</span>
+												<div class="card-header-right">
+													<i class="fa fa-window-maximize full-card"></i>
+													<i class="fa fa-minus minimize-card"></i> 
+													<i class="fa fa-refresh reload-card"></i>
+												</div>
+											</div>
+											<div class="card-block table-border-style">
+												<div class="table-responsive">
+													<table class="table table-hover" id="list">
+														<thead>
+															<tr>
+																<th>번호</th>
+																<th>제목</th>
+																<th>작성자</th>
+																<th>등록일</th>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach items="${ requestScope.list }" var="board"
+																varStatus="loop">
+																<tr
+																	<c:if test="${ loop.index mod 2 ne 0 }"> class="odd" </c:if>>
+																	<td>${ board.no }</td>
+																	<td><a
+																		href="${ pageContext.request.contextPath }/board/${ board.no }">
+																			<c:out value="${ board.title }" />
+																	</a></td>
+																	<td>${ board.writer }</td>
+																	<td>${ board.regDate }</td>
+																</tr>
+															</c:forEach>
+														</tbody>
+													</table>								
+												</div>
+											</div>
+											<div class="card-footer">
+												<div class="text-center">
+													<c:if test="${ not empty userVO }">
+														<a type="button" class="btn btn-primary btn-round waves-effect waves-light" href="${ pageContext.request.contextPath }/board/write">새글등록</a>
+													</c:if>
+												</div>
+											</div>
+										</div>
+										<!-- 카드 테이블 끝 -->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 컨텐츠 끝 -->
+					
+				</div>
+			</div>
+		</div>
 	</div>
-	</section>
-	<footer>
-		<%-- <%@ include file="/jsp/include/bottom.jsp" %> --%>
-	</footer>
+
+	<jsp:include page="../include/bottom.jsp" />
+
 </body>
 </html>

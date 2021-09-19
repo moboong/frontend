@@ -51,7 +51,7 @@
 			<ul class="nav-right">
 				<li class="header-notification"><a href="#!"
 					class="waves-effect waves-light"> <i class="ti-bell"></i> <span
-						class="badge bg-c-red"></span>
+						class="bg-c-red"></span> <!-- class="bg-c-red"  -->
 				</a>
 					<ul class="show-notification">
 						<li>
@@ -90,6 +90,18 @@
 									<h5 class="notification-user">드록바</h5>
 									<p class="notification-msg">내 게시글에 댓글을 달았습니다.</p>
 									<span class="notification-time">1시간 전</span>
+								</div>
+							</div>
+						</li>
+						<li class="waves-effect waves-light">
+							<div class="media">
+								<img class="d-flex align-self-center img-radius"
+									src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg"
+									alt="Generic placeholder image">
+								<div class="media-body">
+									<h5 class="notification-user">안성재</h5>
+									<p class="notification-msg">내 게시글에 댓글을 달았습니다.</p>
+									<span class="notification-time">3시간</span>
 								</div>
 							</div>
 						</li>
