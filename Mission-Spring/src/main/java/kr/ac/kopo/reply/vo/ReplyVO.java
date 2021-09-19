@@ -1,7 +1,6 @@
 package kr.ac.kopo.reply.vo;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 public class ReplyVO {
 	
@@ -9,7 +8,7 @@ public class ReplyVO {
 	
 	private int boardNo;
 	
-	@Pattern(regexp = "^[A-Za-z0-9]*$", message = "특수기호 사용 불가")
+	//@Pattern(regexp = "^[A-Za-z0-9]*$", message = "특수기호 사용 불가")
 	@NotEmpty(message = "(내용)필수항목입니다")
 	private String content;
 	

@@ -195,11 +195,35 @@ function addKeyword() {
 	
 }
 
-
+/* notice 가져오기 */
+function getNotice() {
+	
+	$.ajax({
+		type: 'GET',
+		url: '/Mission-Spring/reply/notice',
+		success: function(data) {
+			$("#signalnotice").html(data);
+			console.log('GET 비동기 notice 로드 성공')
+		},
+		error: function() {
+			console.log('GET 비동기 notice 넣기 실패')
+		}
+	});
+	
+};
 
 
 $(document).ready(function() {
-
+	
+	//페이지 시작시 notice로드
+	getNotice();
+	//종 이벤트 등록 	
+	$("#bell").on('click', function(){
+		let $bell = $("#bell");
+		if($bell.attr('class') == 'badge bg-c-red'){
+			$bell.attr('class', 'bg-c-red');
+		}
+	});
 	// card js start
 
 	$(".card-header-right .close-card").on('click', function() {

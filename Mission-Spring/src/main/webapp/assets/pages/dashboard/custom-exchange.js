@@ -128,6 +128,7 @@ $(document).ready(function() {
 		},
 		"dataProvider": exchangeKospiData
 	});
+	console.log('변수 chart (환-코차트) : ', chart)
 
 
 	/* 환율 단독 그래프 */
@@ -198,6 +199,7 @@ $(document).ready(function() {
 		},
 		"dataProvider": exchangeData
 	});
+	console.log('변수 chart2 (환율차트) : ', chart2)
 
 
 });

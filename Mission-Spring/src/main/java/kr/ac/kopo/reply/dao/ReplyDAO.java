@@ -25,4 +25,11 @@ public interface ReplyDAO {
 	 * @return 성공여부
 	 */
 	int insertOne(ReplyVO replyVO);
+	
+	/**
+	 * 최근 notice 리스트 가져오기
+	 * @param id
+	 * @return list
+	 */
+	List<ReplyVO> getNotice(String id);
 }

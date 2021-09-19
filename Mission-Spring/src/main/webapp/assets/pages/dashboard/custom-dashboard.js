@@ -631,8 +631,11 @@ $(document).ready(function() {
         } ]
     } );
 
+	console.log('변수 chart (샘플차트) : ', chart)
+	
 
-	var ctx = document.getElementById('this-month').getContext("2d");
+
+	/*var ctx = document.getElementById('this-month').getContext("2d");
 	var myChart = new Chart(ctx, {
 		type: 'bar',
 		data: avgvalchart('#11c15b', [30, 15, 25, 35, 30, 20, 25, 30, 15, 1], '#11c15b'),
@@ -721,7 +724,7 @@ $(document).ready(function() {
 				}
 			}
 		};
-	}
+	}*/
 	// sale analytics end
 
 

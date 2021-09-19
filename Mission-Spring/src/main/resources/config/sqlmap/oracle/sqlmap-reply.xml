@@ -26,4 +26,20 @@
 		insert into t_reply(no, board_no, content, writer)
 		 values(seq_t_reply_no.nextval, #{boardNo}, #{content}, #{writer})
 	</insert>
+	
+	<select id="getNotice" parameterType="String" resultMap="replyMap">
+		select * from (
+			select A.board_no, A.writer, A.content, 
+			case 
+			when (sysdate - A.reg_date) &lt; 0.0007 then round((sysdate - A.reg_date) * 24 * 60 * 60) || '초전' 
+			when (sysdate - A.reg_date) &lt; 0.0417 then round((sysdate - A.reg_date) * 24 * 60) || '분전'
+			when (sysdate - A.reg_date) &lt; 1      then round((sysdate - A.reg_date) * 24) || '시간전'
+			when (sysdate - A.reg_date) &gt; 1.1    then round((sysdate - A.reg_date)) || '일전'
+			end as reg_date
+			from t_reply A, (select writer, no from t_board where writer = #{WYW}) B
+			where A.board_no = B.no
+			order by A.reg_date desc
+		)
+		where rownum &lt; 8
+	</select>
 </mapper>

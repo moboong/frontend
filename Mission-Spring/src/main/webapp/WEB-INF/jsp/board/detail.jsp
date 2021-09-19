@@ -6,22 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
-<jsp:include page="../include/head.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/head.jsp"></jsp:include>
 </head>
 <body>
 	<!-- Pre-loader start -->
-	<jsp:include page="../include/preloader.jsp" />
+	<jsp:include page="/WEB-INF/jsp/include/preloader.jsp" />
 	<!-- Pre-loader end -->
 	<div id="pcoded" class="pcoded">
 		<div class="pcoded-overlay-box"></div>
 		<div class="pcoded-container navbar-wrapper">
 			<!-- nav-top start -->
-			<jsp:include page="../include/navtop.jsp" />
+			<jsp:include page="/WEB-INF/jsp/include/navtop.jsp" />
 			<!-- nav-top end -->
 			<div class="pcoded-main-container">
 				<div class="pcoded-wrapper">
 					<!-- nav-side start -->
-					<jsp:include page="../include/navside.jsp" />
+					<jsp:include page="/WEB-INF/jsp/include/navside.jsp" />
 					<!-- nav-side end -->
 					
 					<!-- 컨텐츠 시작 -->
@@ -56,83 +56,51 @@
 									<div class="page-body">
 										
 										<!-- 폼 시작 -->
-										<div align="center">
-											<hr width="80%">
-											<h2>게시판 상세</h2>
-											<hr width="80%">
-											<br>
-											<table border="1" style="width: 80%">
-												<tr>
-													<th width="25%">번호</th>
-													<td><c:out value="${ board.no }" /></td>
-												</tr>
-												<tr>
-													<th width="25%">제목</th>
-													<td><c:out value="${ board.title }" /></td>
-												</tr>
-												<tr>
-													<th width="25%">작성자</th>
-													<td>${ board.writer }</td>
-												</tr>
-												<tr>
-													<th width="25%">내용</th>
-													<td>${ board.content }</td>
-												</tr>
-												<tr>
-													<th width="25%">조회수</th>
-													<td>${ board.viewCnt }</td>
-												</tr>
-												<tr>
-													<th width="25%">등록일</th>
-													<td>${ board.regDate }</td>
-												</tr>
-												<%-- <tr>
-												<th>첨부파일</th>
-												<td>
-													<c:forEach items="${ fileList }" var="file">
-														<a href="/Mission-Web/upload/${ file.fileSaveName }">
-															<c:out value="${ file.fileOriName }" />
-														</a>
-														(${ file.fileSize } bytes)
-														<br>
-													</c:forEach>
-												</td>
-											</tr> --%>
-											</table>
-											<br>
-											<button onclick="clickBtn('U')">수정</button>
-											<button onclick="clickBtn('D')">삭제</button>
-											<button onclick="clickBtn('L')">목록</button>
-										</div>
-										<hr>
-										<div align="center">
-											<form method="post" name="replyForm">
-												<input type="hidden" name="boardNo" value="${ board.no }" />
-												<table border="1" style="width: 80%">
-													<tr>
-														<th>작성자</th>
-														<td><input type="text" size="10" name="writer"
-															value="${ userVO.id }"></td>
-														<th>내용</th>
-														<td><textarea rows="2" cols="60" name="content"></textarea></td>
-													</tr>
-												</table>
-											</form>
-											<br>
-											<button id="send" onclick="clickBtnReply('C')">댓글등록</button>
-											<button onclick="clickBtnReply('U')">댓글수정</button>
-											<button onclick="clickBtnReply('D')">댓글삭제</button>
-											<hr>
-											<div id="msgView"></div>
-										</div>
 										
-										
-										<div class="well">
-											<input type="text" id="msg" value="1212" class="form-control"/>
-											<button id="btnSend" class="btn btn-primary">Send Message</button>
+										<!-- 카드 폼 시작 -->
+										<div class="card">
+											<div class="card-header">												
+												<h5><c:out value="${ board.title }" /></h5>
+												<span><code>조회수</code> <c:out value="${ board.viewCnt }" /></span>
+												<span><code>등록일</code> <c:out value="${ board.regDate }" /></span>
+												<span><code>작성자</code> <c:out value="${ board.writer }" /></span>
+											</div>
+											<div class="card-block">
+												<h4 class="sub-title">카테고리 : <c:out value="환율" /></h4>											
+												<div class="form-group row">													
+													<div class="col-sm-12">														
+														<img style="width: 100%; border:solid 1px #cccccc;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">																																																											
+													</div>
+												</div>															
+												<div class="form-group row">													
+													<div class="col-sm-12">															
+														<c:out value="${ board.content }" />
+													</div>
+												</div>																																													
+											</div>
+											<div class="card-footer">
+												<div class="text-center">
+													<hr>
+													<c:if test="${ sessionScope.userVO.id == board.writer }">	
+														<button class="btn btn-primary btn-round waves-effect waves-light" onclick="clickBtn('U')">수정</button>
+														<button class="btn btn-danger btn-round waves-effect waves-light" onclick="clickBtn('D')">삭제</button>
+													</c:if>
+													<button class="btn btn-inverse btn-round waves-effect waves-light" onclick="clickBtn('L')">목록</button>
+													<hr>
+												</div>
+												<br>
+												<form method="post" name="replyForm">
+													<input type="hidden" name="boardNo" value="${ board.no }" />
+													<div id="replyTable">
+													
+													</div>
+												</form>
+											</div>
 										</div>
-										<!-- 폼 시작 -->
-									
+										<!-- 카드 폼 끝 -->
+										
+										<!-- 폼 끝 -->
+										
 									</div>
 								</div>
 							</div>
@@ -145,24 +113,20 @@
 		</div>
 	</div>
 	
-	<jsp:include page="../include/bottom.jsp" />
+	<jsp:include page="/WEB-INF/jsp/include/bottom.jsp" />
 
 <script>
 
 	function getReplyList() {
 		$.ajax({
 			type : 'GET',
-			dataType : 'json',
 			url : '${ pageContext.request.contextPath }/reply/${board.no}',
 			success : function(data) {
-				$('#msgView').html("");
-				for(var i = 0 ; i < data.length; i++){
-				    let str = data[i].no + " / " + data[i].boardNo + " / " + data[i].writer + " / " + data[i].content + " / " + data[i].regDate;
-					$('#msgView').append("<h4>" + str + "</h4>")
-				}
+				$('#replyTable').html(data);
+				console.log('GET 비동기 댓글jsp 성공')
 			},
 			'error' : function() {
-				alert('실패')
+				console.log('GET 비동기 댓글jsp 실패')
 			}
 		})
 	}
@@ -177,9 +141,11 @@
 			url : '${ pageContext.request.contextPath }/reply/write',
 			data : queryString,
 			async : false,
-			dataType : 'json',
-			success : function(msg) {
-				alert(msg);
+			success : function(result) {
+				
+				alert('댓글 성공 여부: ' + result);
+				
+				//댓글 불러오기
 				getReplyList();
 				
 				//소켓이 연결됐을 때만 보낸다. (reply,댓글작성자,게시글작성자,글번호)
@@ -189,8 +155,8 @@
 				}
 				
 			},
-			'error' : function() {
-				alert('실패')
+			error : function() {
+				alert('댓글 추가 실패')
 			}
 		})
 	}
@@ -198,7 +164,10 @@
 	function clickBtnReply(type) {
 		switch (type) {
 		case 'C':
-			addReply()
+			let bool = confirm("진짜 등록하시겠습니까?");
+			if(bool){
+				addReply();				
+			}
 			break
 		case 'U':
 			alert('댓글수정입장')

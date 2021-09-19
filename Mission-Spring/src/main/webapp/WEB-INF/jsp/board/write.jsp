@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>토론실 게시판 : 게시글 작성</title>
-<jsp:include page="../include/head.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/head.jsp"></jsp:include>
 <style>
 	.error{
 		color : red;
@@ -21,18 +21,18 @@
 </head>
 <body>
 	<!-- Pre-loader start -->
-	<jsp:include page="../include/preloader.jsp" />
+	<jsp:include page="/WEB-INF/jsp/include/preloader.jsp" />
 	<!-- Pre-loader end -->
 	<div id="pcoded" class="pcoded">
 		<div class="pcoded-overlay-box"></div>
 		<div class="pcoded-container navbar-wrapper">
 			<!-- nav-top start -->
-			<jsp:include page="../include/navtop.jsp" />
+			<jsp:include page="/WEB-INF/jsp/include/navtop.jsp" />
 			<!-- nav-top end -->
 			<div class="pcoded-main-container">
 				<div class="pcoded-wrapper">
 					<!-- nav-side start -->
-					<jsp:include page="../include/navside.jsp" />
+					<jsp:include page="/WEB-INF/jsp/include/navside.jsp" />
 					<!-- nav-side end -->
 
 					<!-- 컨텐츠 시작 -->
@@ -112,7 +112,7 @@
 														<div class="col-sm-10">
 															<input type="file" id="input-image" class="form-control">																													
 															<br>
-															<img style="width: 100%;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">																																														
+															<img style="width: 100%; border:solid 1px #cccccc;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">																																														
 															<br>
 														</div>
 													</div>
@@ -146,7 +146,7 @@
 		</div>
 	</div>
 
-	<jsp:include page="../include/bottom.jsp" />
+	<jsp:include page="/WEB-INF/jsp/include/bottom.jsp" />
 	
 	<script>
 

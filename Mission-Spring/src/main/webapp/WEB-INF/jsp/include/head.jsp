@@ -38,7 +38,11 @@
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css">
       <!-- morris chart -->
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/morris.js/css/morris.css">
-
+	  
+	  <!-- Notification.css -->
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/notification/notification.css">
+      <!-- Animate.css -->
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animate.css/css/animate.css">
 
         <!-- 네이버금융 -->
         <script type="text/javascript" src="https://ssl.pstatic.net/imgstock/static.pc/20210813130554/js/info/jindo.min.ns.1.5.3.euckr.js"></script>

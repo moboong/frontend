@@ -28,12 +28,15 @@
     <!-- menu js -->
     <script src="${pageContext.request.contextPath}/assets/js/pcoded.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/vertical-layout.min.js "></script>
+    <!-- notification js -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-growl.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/notification/notification.js"></script>
     <!-- Morris Chart js -->
     <%-- <script src="${pageContext.request.contextPath}/assets/js/raphael/raphael.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/morris.js/morris.js"></script> --%>
     <!-- custom js -->
     <%-- <script src="${pageContext.request.contextPath}/assets/js/morris-custom-chart.js"></script> --%>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-dashboard.js"></script>
+    <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-dashboard.js"></script> --%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/script.js "></script>
     
 
@@ -53,10 +56,12 @@ function connectWS() {
 	
 	ws.onmessage = function(event) {
 		console.log("RecieveMessage:", event.data + '\n');
-		let $socketAlert = $('div#socketAlert');
-		$socketAlert.text(event.data);
-		$socketAlert.css('display', 'block');
-		alert(event.data)
+		//notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, title, message);
+		notify("top", "right", "fa fa-comments", "inverse", "animated fadeInRight", "animated fadeOutRight", "<알림> : ", event.data);
+		//종 울리기
+		$('#bell').attr('class', 'badge bg-c-red')
+		//notice 리스트 리로드
+		getNotice();
 	};
 	
 	ws.onclose = function(event) {

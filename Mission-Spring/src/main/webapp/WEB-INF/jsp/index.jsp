@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <title>메인페이지</title>
-    <jsp:include page="include/head.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/jsp/include/head.jsp"></jsp:include>
     
     <script>
 	  	if ('${ msg }') {
@@ -16,18 +16,18 @@
 
   <body>
   <!-- Pre-loader start -->
-  <jsp:include page="include/preloader.jsp"></jsp:include>
+  <jsp:include page="/WEB-INF/jsp/include/preloader.jsp"></jsp:include>
   <!-- Pre-loader end -->
   <div id="pcoded" class="pcoded">
       <div class="pcoded-overlay-box"></div>
       <div class="pcoded-container navbar-wrapper">
           <!-- nav-top start -->
-          <jsp:include page="include/navtop.jsp"/>
+          <jsp:include page="/WEB-INF/jsp/include/navtop.jsp"/>
 		  <!-- nav-top end -->
           <div class="pcoded-main-container">
               <div class="pcoded-wrapper">
                   <!-- nav-side start -->
-                  <jsp:include page="include/navside.jsp"/>
+                  <jsp:include page="/WEB-INF/jsp/include/navside.jsp"/>
                   <!-- nav-side end -->
                   
                   <!-- 해당 페이지 시작 -->
@@ -434,14 +434,11 @@
             </div>
         </div>
     </div>
-    
-<!-- 지표 추가 Modal -->    
-<jsp:include page="modal/addgraph.jsp" />
-<!-- 지표 추가 Modal -->
-
 
     
-    <jsp:include page="include/bottom.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/include/bottom.jsp"/>
+    <!-- index amChart의 js파일 -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-dashboard.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('#index').attr('class', 'active');

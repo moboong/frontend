@@ -11,4 +11,6 @@ public interface ReplyService {
 	int deleteOneReply(int no);
 	
 	int insertOneReply(ReplyVO replyVO);
+	
+	List<ReplyVO> getNotice(String id);
 }

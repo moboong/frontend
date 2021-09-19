@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,7 +49,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	/* 1번방식
+	/*//1번방식
 	 * @RequestMapping("/board/detail") 
 	 * public void selectByNo(HttpServletRequest request) { 
 	 * 		int no = Integer.parseInt(request.getParameter("no"));
@@ -58,12 +57,11 @@ public class BoardController {
 	 * }
 	 */
 	
-	//2번방식
-	@RequestMapping("/board/detail")
-	public void selectByNo(@RequestParam("no") int no) {
-		
-		System.out.println(no + "번 상세게시글(?no=23 방식)");
-	}
+	/* //2번방식
+	 * @RequestMapping("/board/detail") public void selectByNo(@RequestParam("no") int no) {
+	 * 		System.out.println(no + "번 상세게시글(?no=23 방식)"); 
+	 * }
+	 */
 	
 	//3번방식
 	@RequestMapping("/board/{no}")
