@@ -5,9 +5,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.board.vo.BoardVO" alias="boardVO" />
+		<typeAlias type="kr.ac.kopo.board.vo.BoardFileVO" alias="boardfileVO" />
 		<typeAlias type="kr.ac.kopo.member.vo.MemberVO" alias="memberVO" />
-		<typeAlias type="kr.ac.kopo.reply.vo.ReplyVO" alias="ReplyVO" />
-		<typeAlias type="kr.ac.kopo.exchange.vo.ExchangeVO" alias="ExchangeVO" />
-		<typeAlias type="kr.ac.kopo.kospi.vo.KospiVO" alias="KospiVO" />
+		<typeAlias type="kr.ac.kopo.reply.vo.ReplyVO" alias="replyVO" />
+		<typeAlias type="kr.ac.kopo.exchange.vo.ExchangeVO" alias="exchangeVO" />
+		<typeAlias type="kr.ac.kopo.kospi.vo.KospiVO" alias="kospiVO" />
 	</typeAliases>
 </configuration>

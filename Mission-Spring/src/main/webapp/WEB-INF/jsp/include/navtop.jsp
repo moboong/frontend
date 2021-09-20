@@ -48,6 +48,7 @@
 					class="waves-effect waves-light"> <i class="ti-fullscreen"></i>
 				</a></li>
 			</ul>
+			<!-- 비로그인시 없어 -->
 			<ul class="nav-right">
 				<li class="header-notification"><a href="javascript:void(0);"
 					class="waves-effect waves-light"> <i class="ti-bell"></i> 
@@ -133,6 +134,7 @@
 						</a></li>
 					</ul></li>
 			</ul>
+			<!-- 비로그인시 없어 -->
 		</div>
 	</div>
 </nav>

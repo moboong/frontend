@@ -74,7 +74,7 @@
 											</div>
 											<div class="card-block table-border-style">
 												<div class="table-responsive">
-													<table class="table table-hover" id="list">
+													<table class="table table-hover"> <!-- id="list" 이거 영향있냐? -->
 														<thead>
 															<tr>
 																<th>번호</th>
@@ -91,7 +91,13 @@
 																	<td><a
 																		href="${ pageContext.request.contextPath }/board/${ board.no }">
 																			<c:out value="${ board.title }" />
-																	</a></td>
+																		</a>&nbsp;
+																		<c:if test="${ board.replyCnt != 0 }">
+																			<label class="badge badge-success">
+																				<c:out value="${ board.replyCnt }" />
+																			</label>
+																		</c:if>
+																	</td>
 																	<td>${ board.writer }</td>
 																	<td>${ board.regDate }</td>
 																</tr>

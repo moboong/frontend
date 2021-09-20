@@ -10,9 +10,11 @@
 				<img class="img-80 img-radius"
 					src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg"
 					alt="User-Profile-Image">
+				<!-- 위는 디폴트 사진  -->
 				<div class="user-details">
 					<span id="more-details">황준호<i class="fa fa-caret-down"></i></span>
 				</div>
+				<!-- 밑은 로그인 해주세요 문구 -->
 			</div>
 
 			<div class="main-menu-content">

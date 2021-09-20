@@ -2,6 +2,7 @@ package kr.ac.kopo.board.dao;
 
 import java.util.List;
 
+import kr.ac.kopo.board.vo.BoardFileVO;
 import kr.ac.kopo.board.vo.BoardVO;
 
 public interface BoardDAO {
@@ -27,6 +28,7 @@ public interface BoardDAO {
 	 */
 	int deleteOne(int no);
 	
+	
 	/**
 	 * 게시글 추가
 	 * @param boardVO
@@ -35,6 +37,16 @@ public interface BoardDAO {
 	int insertOne(BoardVO boardVO);
 	
 	
-	//hsql
-//	List<BoardVO> searchAllHsql();
+	/**
+	 * 게시판 seq 번호
+	 * @return 제일 마지막 일련번호
+	 */
+	int getSeq();
+	
+	
+	/**
+	 * 첨부파일 정보 저장
+	 * @return 성공여부
+	 */
+	int insertFile(BoardFileVO boardFileVO);
 }

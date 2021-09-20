@@ -1,9 +1,12 @@
 package kr.ac.kopo.member.controller;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -21,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -38,6 +43,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	ServletContext servletContext;
 
 	@GetMapping("/login")
 	public String loginForm(HttpSession session) {
@@ -107,14 +115,49 @@ public class MemberController {
 	}
 
 	@PostMapping("/signup")
-	public String signup(@Valid MemberVO member, Errors error, HttpSession session) {
-
-		// System.out.println(member);
-
+	public String signup(@Valid MemberVO member, Errors error, HttpSession session, MultipartHttpServletRequest mRequest) throws Exception {
+		
 		if (error.hasErrors()) {
 			System.out.println("회원가입 오류발생!!!");
 			return "member/signup";
 		}
+		
+		
+		String uploadDir = servletContext.getRealPath("/upload/profile/");
+		System.out.println(uploadDir);
+		
+		Iterator<String> iter = mRequest.getFileNames();
+		while(iter.hasNext()) {
+			
+			String formFileName = iter.next();
+			// 폼에서 파일을 선택하지 않아도 객체 생성됨
+			MultipartFile mFile = mRequest.getFile(formFileName);
+			
+			// 원본 파일명
+			String oriFileName = mFile.getOriginalFilename();
+			System.out.println("원본 파일명 : " + oriFileName);
+			
+			if(oriFileName != null && !oriFileName.equals("")) {
+			
+				// 확장자 처리
+				String ext = "";
+				// 뒤쪽에 있는 . 의 위치 
+				int index = oriFileName.lastIndexOf(".");
+				if (index != -1) {
+					// 파일명에서 확장자명(.포함)을 추출
+					ext = oriFileName.substring(index);
+				}
+				
+				// 고유한 파일명 만들기	
+				String saveFileName = member.getId() + ext; //확장자까지 붙이기
+				System.out.println("저장할 파일명 : " + saveFileName);
+
+			
+				// 임시저장된 파일을 원하는 경로에 저장
+				mFile.transferTo(new File(uploadDir + saveFileName));
+			} 
+		} 
+		
 
 		String msg = "";
 		int result = service.signup(member);

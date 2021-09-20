@@ -40,10 +40,12 @@
 </div>
 <div class="card-footer">
 	<div class="text-center">
-		<a href="javascript:void(0);" class="b-b-primary text-primary" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',1)">1</a>
-		<a href="javascript:void(0);" class="b-b-primary text-primary" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',2)">2</a>
-		<a href="javascript:void(0);" class="b-b-primary text-primary" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',3)">3</a>
-		<a href="javascript:void(0);" class="b-b-primary text-primary" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',4)">4</a>
-		<a href="javascript:void(0);" class="b-b-primary text-primary" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',5)">5</a>
+		<a href="javascript:void(0);" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',6)"><i class="ti-angle-left"></i> </a>
+		<a href="javascript:void(0);" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',1)"><label class="badge badge-inverse-info">1</label></a>
+		<a href="javascript:void(0);" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',2)"><label class="badge badge-inverse-info">2</label></a>
+		<a href="javascript:void(0);" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',3)"><label class="badge badge-inverse-info">3</label></a>
+		<a href="javascript:void(0);" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',4)"><label class="badge badge-inverse-info">4</label></a>
+		<a href="javascript:void(0);" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',5)"><label class="badge badge-inverse-info">5</label></a>
+		<a href="javascript:void(0);" onclick="getNews('<c:out value="${ requestScope.keyword }"/>',7)"> <i class="ti-angle-right"></i></a>
 	</div>
 </div>

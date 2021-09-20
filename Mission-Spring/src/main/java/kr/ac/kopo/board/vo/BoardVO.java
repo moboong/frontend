@@ -24,6 +24,17 @@ public class BoardVO {
 	
 	private String regDate;
 	
+	private int replyCnt;
+	private String fileSaveName;
+	
+	public String getFileSaveName() {
+		return fileSaveName;
+	}
+
+	public void setFileSaveName(String fileSaveName) {
+		this.fileSaveName = fileSaveName;
+	}
+
 	public BoardVO() {
 		super();
 	}
@@ -76,10 +87,19 @@ public class BoardVO {
 		this.regDate = regDate;
 	}
 
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", viewCnt="
-				+ viewCnt + ", regDate=" + regDate + "]";
+				+ viewCnt + ", regDate=" + regDate + ", replyCnt=" + replyCnt + ", fileSaveName=" + fileSaveName + "]";
 	}
-	
+
+
 }

@@ -2,6 +2,7 @@ package kr.ac.kopo.board.service;
 
 import java.util.List;
 
+import kr.ac.kopo.board.vo.BoardFileVO;
 import kr.ac.kopo.board.vo.BoardVO;
 
 public interface BoardService {
@@ -14,6 +15,8 @@ public interface BoardService {
 	
 	int insertOneBoard(BoardVO boardVO);
 	
-//	List<BoardVO> selectAllBoardHsql();
+	int getSeq();
+	
+	int insertFile(BoardFileVO boardFileVO);
 	
 }

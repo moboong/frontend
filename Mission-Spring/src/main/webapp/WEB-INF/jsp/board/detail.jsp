@@ -67,11 +67,13 @@
 											</div>
 											<div class="card-block">
 												<h4 class="sub-title">카테고리 : <c:out value="환율" /></h4>											
-												<div class="form-group row">													
-													<div class="col-sm-12">														
-														<img style="width: 100%; border:solid 1px #cccccc;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">																																																											
-													</div>
-												</div>															
+												<c:if test="${ not empty board.fileSaveName }">
+													<div class="form-group row">													
+														<div class="col-sm-12">														
+															<img style="width: 100%; border:solid 1px #cccccc;" src="${pageContext.request.contextPath}/display?fileName=${ board.writer }/${ board.fileSaveName }">																																																											
+														</div>
+													</div>															
+												</c:if>
 												<div class="form-group row">													
 													<div class="col-sm-12">															
 														<c:out value="${ board.content }" />

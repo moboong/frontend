@@ -28,6 +28,7 @@ public class MemberVO {
 		super();
 	}
 
+
 	public String getAgree() {
 		return agree;
 	}
@@ -92,10 +93,14 @@ public class MemberVO {
 		this.struct = struct;
 	}
 
+
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", type=" + type + ", struct="
 				+ struct + ", email=" + email + ", tel=" + tel + ", agree=" + agree + "]";
 	}
+
+
+
 
 }

@@ -16,21 +16,40 @@ public class DisplayController {
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName){
 		
-		File file = new File("c:\\upload\\" + fileName);
-		
 		ResponseEntity<byte[]> result = null;
+
+		File file = new File("c:\\Lecture\\maven_work\\wtpwebapps\\Mission-Spring\\upload\\" + fileName);
+		File defaultfile = new File("c:\\Lecture\\maven_work\\wtpwebapps\\Mission-Spring\\upload\\profile\\default.png");
+
+		if(file.exists()) {
+				
+			try {
+				
+				HttpHeaders header = new HttpHeaders();
+				
+				header.add("Content-type", Files.probeContentType(file.toPath()));
+				
+				result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		
-		try {
+		} else {
 			
-			HttpHeaders header = new HttpHeaders();
-			
-			header.add("Content-type", Files.probeContentType(file.toPath()));
-			
-			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
-			
-		}catch (Exception e) {
-			e.printStackTrace();
+			try {
+				
+				HttpHeaders header = new HttpHeaders();
+				
+				header.add("Content-type", Files.probeContentType(defaultfile.toPath()));
+				
+				result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(defaultfile), header, HttpStatus.OK);
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 		
 		return result;
 	}

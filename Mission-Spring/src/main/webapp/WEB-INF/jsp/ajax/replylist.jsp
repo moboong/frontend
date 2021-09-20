@@ -5,28 +5,61 @@
 <h6 class="h6">
 	댓글 <label class="badge badge-lg bg-info">${ requestScope.replyList.size() }</label>
 </h6>
-<div align="center">
-	<table border="1" style="width: 80%">
+
+<input type="hidden" name="writer" value="${ userVO.id }" />
+<div class="table-responsive">
+	<table class="table table-hover">
+		
 		<tr>
-			<td>부모 번호</td>
-			<td>작성자</td>
-			<td><input type="text" size="10" name="writer" value="${ userVO.id }"></td>
-			<td>내용</td>
-			<td><textarea rows="2" cols="60" name="content"></textarea></td>
-			<td><button id="send" onclick="clickBtnReply('C')">댓글등록</button></td>
+			<td width="10%">
+				<div class="d-inline-block align-middle">
+					<img
+						src="${pageContext.request.contextPath}/display?fileName=profile/${ userVO.id }.png"
+						alt="user image" class="img-radius img-40 align-top m-r-15">
+					<div class="d-inline-block">
+						<h6>${ userVO.id }</h6>
+					</div>
+				</div>
+			</td>
+			<td>
+				<div class="col-sm-12">
+					<textarea name="content" rows="5" cols="5" class="form-control"
+						placeholder="댓글을 작성하세요"></textarea>
+				</div>
+			</td>
+			<td width="15%">
+				<button id="send" class="btn btn-info btn-round waves-effect waves-light" onclick="clickBtnReply('C')">댓글등록</button>
+			</td>
 		</tr>
 
 		<c:forEach items="${ requestScope.replyList }" var="reply"
 			varStatus="loop">
 			<tr>
-				<td>${ reply.no }</td>
-				<td>${ reply.boardNo }</td>
-				<td>${ reply.content }</td>
-				<td>${ reply.writer }</td>
-				<td>${ reply.regDate }</td>
 				<td>
-					<button onclick="clickBtnReply('U')">댓글수정</button>
-					<button onclick="clickBtnReply('D')">댓글삭제</button>
+					<div class="d-inline-block align-middle">
+						<img
+							src="${pageContext.request.contextPath}/display?fileName=profile/${ reply.writer }.png"
+							alt="user image" class="img-radius img-40 align-top m-r-15">
+						<div class="d-inline-block">
+							<h6>${ reply.writer }</h6>
+						</div>
+					</div>
+				</td>
+				<td style="max-width: 500px;">
+					<div class="col-sm-12">
+						<p style="white-space: normal;">${ reply.content }</p>
+					</div>
+				</td>
+				<td>
+					<div class="col-sm-12">
+						<h6>${ reply.regDate }</h6>
+					</div>
+					<c:if test="${ sessionScope.userVO.id == reply.writer }">
+						<div class="col-sm-12">
+							<button class="btn btn-primary btn-round waves-effect waves-light" onclick="clickBtnReply('U')">수정</button>
+							<button class="btn btn-danger btn-round waves-effect waves-light" onclick="clickBtnReply('D')">삭제</button>					
+						</div>
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>

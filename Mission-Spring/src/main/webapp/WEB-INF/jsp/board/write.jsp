@@ -74,7 +74,7 @@
 												<h5>게시글 작성하기</h5>
 												<span>지금 바로 <code>&lt;시장지표&gt;</code>에 대한 질문을 올려보세요!</span>
 											</div>
-											<form:form method="post" modelAttribute="boardVO">
+											<form:form method="post" enctype="multipart/form-data" modelAttribute="boardVO">
 											<div class="card-block">
 												<h4 class="sub-title">등록 폼</h4>
 													<div class="form-group row">
@@ -110,7 +110,7 @@
 													<div class="form-group row">
 														<label class="col-sm-2 col-form-label">파일 업로드</label>
 														<div class="col-sm-10">
-															<input type="file" id="input-image" class="form-control">																													
+															<input type="file" name="attachFile" id="input-image" class="form-control">																													
 															<br>
 															<img style="width: 100%; border:solid 1px #cccccc;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">																																														
 															<br>

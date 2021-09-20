@@ -77,10 +77,10 @@ public class ReplyController {
 		ModelAndView mav = new ModelAndView("ajax/noticelist");
 		
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		List<ReplyVO> noticeList = service.getNotice(userVO.getId());
-		
-		mav.addObject("noticeList", noticeList);
+		if(userVO != null) {
+			List<ReplyVO> noticeList = service.getNotice(userVO.getId());
+			mav.addObject("noticeList", noticeList);			
+		}
 		
 		return mav;
 	}
