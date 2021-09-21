@@ -50,7 +50,7 @@ public class BoardController {
 	
 	//게시글 상세보기
 	@RequestMapping("/board/{no}")
-	public ModelAndView selectByNo2(@PathVariable("no") int no) {
+	public ModelAndView selectByNo(@PathVariable("no") int no) {
 		
 		System.out.println(no + "번 상세게시글(/23 방식)");
 		

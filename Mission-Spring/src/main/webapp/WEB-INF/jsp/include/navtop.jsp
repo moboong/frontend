@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar header-navbar pcoded-header">
 	<div class="navbar-wrapper">
 		<div class="navbar-logo">
@@ -20,7 +21,7 @@
 			</div>
 			<a href="${pageContext.request.contextPath}"> <img
 				class="img-fluid"
-				src="${pageContext.request.contextPath}/assets/images/logo.png"
+				src="${pageContext.request.contextPath}/assets/images/logo6.png"
 				alt="Theme-Logo" />
 			</a> <a class="mobile-options waves-effect waves-light"> <i
 				class="ti-more"></i>
@@ -49,91 +50,37 @@
 				</a></li>
 			</ul>
 			<!-- 비로그인시 없어 -->
-			<ul class="nav-right">
-				<li class="header-notification"><a href="javascript:void(0);"
-					class="waves-effect waves-light"> <i class="ti-bell"></i> 
-					<span id="bell" class="bg-c-red"></span>
-				</a>
-					<ul id="signalnotice" class="show-notification">
-						<%-- 
-						<li>
-							<h6>Stock Signal Notice</h6> <label class="label label-danger">New</label>
-						</li>
-						<li class="waves-effect waves-light">
-							<div class="media">
-								<img class="d-flex align-self-center img-radius"
-									src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg"
-									alt="Generic placeholder image">
-								<div class="media-body">
-									<h5 class="notification-user">이기찬</h5>
-									<p class="notification-msg">내 게시글에 댓글을 달았습니다.</p>
-									<span class="notification-time">30분 전</span>
-								</div>
-							</div>
-						</li>
-						<li class="waves-effect waves-light">
-							<div class="media">
-								<img class="d-flex align-self-center img-radius"
-									src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg"
-									alt="Generic placeholder image">
-								<div class="media-body">
-									<h5 class="notification-user">제라드</h5>
-									<p class="notification-msg">내 게시글에 좋아요를 눌렀습니다.</p>
-									<span class="notification-time">46분전</span>
-								</div>
-							</div>
-						</li>
-						<li class="waves-effect waves-light">
-							<div class="media">
-								<img class="d-flex align-self-center img-radius"
-									src="${pageContext.request.contextPath}/assets/images/avatar-3.jpg"
-									alt="Generic placeholder image">
-								<div class="media-body">
-									<h5 class="notification-user">드록바</h5>
-									<p class="notification-msg">내 게시글에 댓글을 달았습니다.</p>
-									<span class="notification-time">1시간 전</span>
-								</div>
-							</div>
-						</li>
-						<li class="waves-effect waves-light">
-							<div class="media">
-								<img class="d-flex align-self-center img-radius"
-									src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg"
-									alt="Generic placeholder image">
-								<div class="media-body">
-									<h5 class="notification-user">안성재</h5>
-									<p class="notification-msg">내 게시글에 댓글을 달았습니다.</p>
-									<span class="notification-time">3시간</span>
-								</div>
-							</div>
-						</li> 
-						--%>
-					</ul></li>
-				<li class="user-profile header-notification"><a
-					href="javascript:void(0)" class="waves-effect waves-light"> <img
-						src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg"
-						class="img-radius" alt="User-Profile-Image"> <span>황준호</span>
-						<i class="ti-angle-down"></i>
-				</a>
-					<ul class="show-notification profile-notification">
-						<li class="waves-effect waves-light"><a
-							href="${pageContext.request.contextPath}"> <i
-								class="ti-settings"></i> 설정
-						</a></li>
-						<li class="waves-effect waves-light"><a
-							href="${pageContext.request.contextPath}"> <i class="ti-user"></i>
-								프로필
-						</a></li>
-						<li class="waves-effect waves-light"><a
-							href="${pageContext.request.contextPath}"> <i
-								class="ti-email"></i> 채팅하기
-						</a></li>
-						<li class="waves-effect waves-light"><a
-							href="${pageContext.request.contextPath}/logout"> <i
-								class="ti-layout-sidebar-left"></i> 로그아웃
-						</a></li>
-					</ul></li>
-			</ul>
+			<c:if test="${ not empty sessionScope.userVO }">
+				<ul class="nav-right">
+					<li class="header-notification"><a href="javascript:void(0);"
+						class="waves-effect waves-light"> <i class="ti-bell"></i> 
+						<span id="bell" class="bg-c-red"></span>
+					</a>
+						<ul id="signalnotice" class="show-notification">
+							
+						</ul></li>
+					<li class="user-profile header-notification"><a
+						href="javascript:void(0)" class="waves-effect waves-light"> <img
+							src="${pageContext.request.contextPath}/display?fileName=profile/${ userVO.id }.png"
+							class="img-radius" alt="User-Profile-Image"> <span>${ userVO.name }</span>
+							<i class="ti-angle-down"></i>
+					</a>
+						<ul class="show-notification profile-notification">
+							<li class="waves-effect waves-light"><a
+								href="${pageContext.request.contextPath}"> <i
+									class="ti-settings"></i> 설정
+							</a></li>
+							<li class="waves-effect waves-light"><a
+								href="${pageContext.request.contextPath}/mypage"> <i class="ti-user"></i>
+									프로필
+							</a></li>
+							<li class="waves-effect waves-light"><a
+								href="${pageContext.request.contextPath}/logout"> <i
+									class="ti-layout-sidebar-left"></i> 로그아웃
+							</a></li>
+						</ul></li>
+				</ul>
+			</c:if>
 			<!-- 비로그인시 없어 -->
 		</div>
 	</div>

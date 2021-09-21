@@ -38,8 +38,9 @@
 			end as reg_date
 			from t_reply A, (select writer, no from t_board where writer = #{WYW}) B
 			where A.board_no = B.no
+			and A.writer != #{WYW}
 			order by A.reg_date desc
 		)
-		where rownum &lt; 8
+		where rownum &lt; 7
 	</select>
 </mapper>

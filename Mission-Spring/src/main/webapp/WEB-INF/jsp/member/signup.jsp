@@ -101,9 +101,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <form method="post" class="md-float-material form-material">
+                    <form method="post" enctype="multipart/form-data" class="md-float-material form-material">
                         <div class="text-center">
-                            <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="logo.png">
+                            <img src="${pageContext.request.contextPath}/assets/images/logo6.png" alt="logo6.png">
                         </div>
                         <div class="auth-box card">
                             <div class="card-block">
@@ -148,7 +148,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row m-t-25 text-left">
+
+								<div class="form-group form-primary">
+									<label class="col-sm-12 col-form-label">프로필 사진 (JPG, PNG)</label>
+									<div class="col-sm-12">
+										<input type="file" name="attachFile" id="input-image"
+											class="form-control"> <br> <img
+											style="width: 100%; border: solid 1px #cccccc;"
+											id="preview-image"
+											src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
+										<br>
+									</div>
+								</div>
+
+								<div class="row m-t-25 text-left">
                                     <div class="col-md-12">
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
@@ -207,6 +220,37 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/SmoothScroll.js"></script>     
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/common-pages.js"></script>
+
+	<script>
+
+		$(document).ready(function() {
+			// input file에 change 이벤트 부여
+			const inputImage = document.getElementById("input-image")
+			inputImage.addEventListener("change", e => {
+			    readImage(e.target)
+			})		
+		});
+		
+		function readImage(input) {
+		    // 인풋 태그에 파일이 있는 경우
+		    if(input.files && input.files[0]) {
+		        // 이미지 파일인지 검사 (생략)
+		        // FileReader 인스턴스 생성
+		        const reader = new FileReader()
+		        // 이미지가 로드가 된 경우
+		        reader.onload = e => {
+		            const previewImage = document.getElementById("preview-image")
+		            previewImage.src = e.target.result
+		        }
+		        // reader가 이미지 읽도록 하기
+		        reader.readAsDataURL(input.files[0])
+		    }
+		}
+		//이것도 리스토 및 자원 사용을 클라이언트에 부과한 사례 이런 식으로 클라이언트가 하면 효율적일
+		//사안들은 클라이언트에 맡김으로써 부하를 분산했다.!!
+		
+	</script>
+
 </body>
 
 </html>

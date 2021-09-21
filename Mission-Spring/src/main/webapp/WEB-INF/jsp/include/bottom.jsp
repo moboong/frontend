@@ -57,7 +57,7 @@ function connectWS() {
 	ws.onmessage = function(event) {
 		console.log("RecieveMessage:", event.data + '\n');
 		//notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, title, message);
-		notify("top", "right", "fa fa-comments", "inverse", "animated fadeInRight", "animated fadeOutRight", "<알림> : ", event.data);
+		notify("top", "center", "fa fa-comments", "inverse", "animated fadeInRight", "animated fadeOutRight", "<알림> : ", event.data);
 		//종 울리기
 		$('#bell').attr('class', 'badge bg-c-red')
 		//notice 리스트 리로드

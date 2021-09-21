@@ -15,4 +15,8 @@ public interface MemberService {
 	int signup(MemberVO memberVO);
 	
 	List<String> getAllStruct();
+	
+	MemberVO getMypage(String id);
+	
+	int updateMypage(MemberVO memberVO);
 }

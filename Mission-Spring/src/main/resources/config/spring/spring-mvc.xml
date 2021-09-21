@@ -102,6 +102,10 @@
 			<mvc:exclude-mapping path="/assets/**"/>
 			<mvc:exclude-mapping path="/custom/**"/>
 			<mvc:exclude-mapping path="/show/**"/>
+			<mvc:exclude-mapping path="/display"/>
+			<mvc:exclude-mapping path="/reply/notice/**"/>
+			<mvc:exclude-mapping path="/replyEcho"/>
+			<mvc:exclude-mapping path="/signal/rate"/>
 			<ref bean="MsgInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -107,7 +107,7 @@
                     
                         <form method="post" class="md-float-material form-material">
                             <div class="text-center">
-                                <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="logo.png">
+                                <img src="${pageContext.request.contextPath}/assets/images/logo6.png" alt="logo6.png">
                             </div>
                             <div class="auth-box card">
                                 <div class="card-block">

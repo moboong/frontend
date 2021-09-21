@@ -35,4 +35,15 @@
 		  from t_member
 	</select>
 	
+	<select id="getMypage" parameterType="String" resultType="memberVO">
+		select *
+		  from t_member
+		where id = #{id}
+	</select>
+	
+	<update id="updateMypage" parameterType="memberVO">
+		update t_member set struct = #{struct}
+		where id = #{id}
+	</update>
+	
 </mapper>

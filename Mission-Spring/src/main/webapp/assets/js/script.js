@@ -453,8 +453,8 @@ function toggleFullScreen() {
 
 $('body').append('' +
 	'<div class="fixed-button">' +
-	'<a href="http://192.168.217.48:9999/Mission-Spring/" target="_blank" class="btn btn-md btn-primary">' +
-	'<i class="fa fa-commenting-o" aria-hidden="true"></i> 채팅하러 가기' +
+	'<a href="/Mission-Spring/board/write" class="btn btn-md btn-primary">' +
+	'<i class="fa fa-commenting-o" aria-hidden="true"></i> 질문하러 가기' +
 	'</a> ' +
 	'</div>' +
 	'');

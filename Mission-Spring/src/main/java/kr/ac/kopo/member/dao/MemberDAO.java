@@ -39,4 +39,20 @@ public interface MemberDAO {
 	 * @return lists
 	 */
 	List<String> getAllStruct();
+	
+	
+	/**
+	 * 마이페이지 가져오기
+	 * @param id
+	 * @return mypage정보 (MemberVO)
+	 */
+	MemberVO getMypage(String id);
+	
+	
+	/**
+	 * 개인정보 수정
+	 * @param memberVO
+	 * @return 수정여부
+	 */
+	int updateMypage(MemberVO memberVO);
 }

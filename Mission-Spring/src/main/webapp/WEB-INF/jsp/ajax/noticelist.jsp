@@ -9,7 +9,7 @@
 	<li class="waves-effect waves-light">
 		<div class="media">
 			<img class="d-flex align-self-center img-radius"
-				src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg"
+				src="${pageContext.request.contextPath}/display?fileName=profile/${ notice.writer }.png"
 				alt="Generic placeholder image">
 			<div class="media-body">
 				<h5 class="notification-user">${ notice.writer }</h5>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="pcoded-navbar">
 	<div class="sidebar_toggle">
 		<a href="#"><i class="icon-close icons"></i></a>
@@ -7,22 +8,31 @@
 	<div class="pcoded-inner-navbar main-menu">
 		<div class="">
 			<div class="main-menu-header">
+				<!-- 위는 디폴트 사진 or 회원 사진  -->
 				<img class="img-80 img-radius"
-					src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg"
+					src="${pageContext.request.contextPath}/display?fileName=profile/${ userVO.id }.png"
 					alt="User-Profile-Image">
-				<!-- 위는 디폴트 사진  -->
+				<!-- 위는 디폴트 사진 or 회원 사진  -->
+				<!-- 밑은 로그인 해주세요 문구 -->
 				<div class="user-details">
-					<span id="more-details">황준호<i class="fa fa-caret-down"></i></span>
+					<c:choose>
+						<c:when test="${ not empty userVO }">
+							<span id="more-details">${ userVO.name }<i class="fa fa-caret-down"></i></span>
+						</c:when>
+						<c:otherwise>
+							<h6><a style="color: white;" href="${pageContext.request.contextPath}/login">로그인 해주세요</a></h6>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<!-- 밑은 로그인 해주세요 문구 -->
 			</div>
 
 			<div class="main-menu-content">
 				<ul>
-					<li class="more-details"><a href="${pageContext.request.contextPath}"><i
+					<li class="more-details"><a href="${pageContext.request.contextPath}/mypage"><i
 							class="ti-user"></i>프로필</a> <a href="${pageContext.request.contextPath}"><i
 							class="ti-settings"></i>설정</a> <a
-						href="${pageContext.request.contextPath}"><i
+						href="${pageContext.request.contextPath}/logout"><i
 							class="ti-layout-sidebar-left"></i>로그아웃</a></li>
 				</ul>
 			</div>
@@ -74,12 +84,6 @@
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
 							data-i18n="nav.basic-components.breadcrumbs">캘린더</span> <span
-							class="pcoded-mcaret"></span>
-					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
-						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.alert">채팅하기</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
 					<li class=" "><a href="${pageContext.request.contextPath}/board"
@@ -171,12 +175,6 @@
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
 							data-i18n="nav.basic-components.alert">회원관리</span> <span
-							class="pcoded-mcaret"></span>
-					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
-						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.breadcrumbs">채팅관리</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
 					<li class=" "><a href="${pageContext.request.contextPath}"

@@ -170,7 +170,96 @@ public class MemberController {
 		session.setAttribute("msg", msg);
 		return "redirect:/login";
 	}
+	
+	@GetMapping("/mypage")
+	public ModelAndView mypage(HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView("member/mypage");
+		
+		//이거 나중에 로그인체크 인터셉터로 다 처리할거야.
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		if (userVO == null) {
+			session.setAttribute("msg", "로그인이 필요한 서비스입니다.");
+			mav.setViewName("redirect:/");
+		} else {
+			MemberVO mypage = service.getMypage(userVO.getId());
+			mav.addObject("mypage", mypage);
+		}
+		
+		return mav;
+	}
+	
+	@GetMapping("/updateMypage")
+	public ModelAndView updateMypageForm(HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView("member/updateMypage");
+		
+		//이거 나중에 로그인체크 인터셉터로 다 처리할거야.
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		if (userVO == null) {
+			session.setAttribute("msg", "로그인이 필요한 서비스입니다.");
+			mav.setViewName("redirect:/");
+		} else {
+			MemberVO mypage = service.getMypage(userVO.getId());
+			mav.addObject("mypage", mypage);
+		}
+		
+		return mav;
+	}
+	
+	
+	@PostMapping("/updateMypage")
+	public String updateMypage(MemberVO member, HttpSession session, MultipartHttpServletRequest mRequest) throws Exception {
+		
+		String msg = "";
+		int result = service.updateMypage(member);
+		if(result != 0) {
+			msg = "수정을 완료했습니다.";
+			//파일입력
+			String uploadDir = servletContext.getRealPath("/upload/profile/");
+			System.out.println(uploadDir);
+			
+			Iterator<String> iter = mRequest.getFileNames();
+			while(iter.hasNext()) {
+				
+				String formFileName = iter.next();
+				// 폼에서 파일을 선택하지 않아도 객체 생성됨
+				MultipartFile mFile = mRequest.getFile(formFileName);
+				
+				// 원본 파일명
+				String oriFileName = mFile.getOriginalFilename();
+				System.out.println("원본 파일명 : " + oriFileName);
+				
+				if(oriFileName != null && !oriFileName.equals("")) {
+				
+					// 확장자 처리
+					String ext = "";
+					// 뒤쪽에 있는 . 의 위치 
+					int index = oriFileName.lastIndexOf(".");
+					if (index != -1) {
+						// 파일명에서 확장자명(.포함)을 추출
+						ext = oriFileName.substring(index);
+					}
+					
+					// 고유한 파일명 만들기	
+					String saveFileName = member.getId() + ext; //확장자까지 붙이기
+					System.out.println("저장할 파일명 : " + saveFileName);
 
+				
+					// 임시저장된 파일을 원하는 경로에 저장
+					mFile.transferTo(new File(uploadDir + saveFileName));
+				} 
+			}
+			//파일입력
+		} else {
+			msg = "수정에 실패했습니다.";
+		}
+		session.setAttribute("msg", msg);
+		
+		return "redirect:/mypage";
+	}
+
+	
 	@GetMapping("/custom/userpage")
 	public ModelAndView getStruct(HttpSession session) {
 

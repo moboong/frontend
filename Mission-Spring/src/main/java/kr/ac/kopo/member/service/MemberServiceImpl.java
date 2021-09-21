@@ -43,4 +43,16 @@ public class MemberServiceImpl implements MemberService {
 		List<String> list = memberDAO.getAllStruct();
 		return list;
 	}
+	
+	@Override
+	public MemberVO getMypage(String id) {
+		MemberVO mypageVO = memberDAO.getMypage(id);
+		return mypageVO;
+	}
+	
+	@Override
+	public int updateMypage(MemberVO memberVO) {
+		int result = memberDAO.updateMypage(memberVO);
+		return result;
+	}
 }
