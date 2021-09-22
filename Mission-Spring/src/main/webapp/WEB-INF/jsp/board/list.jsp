@@ -7,11 +7,6 @@
 <meta charset="UTF-8">
 <title>토론실 게시판</title>
 <jsp:include page="/WEB-INF/jsp/include/head.jsp"></jsp:include>
-<script>
-	if ('${ msg }') {
-		alert('${ msg }')
-	}
-</script>
 </head>
 <body>
 	<!-- Pre-loader start -->
@@ -46,7 +41,7 @@
 											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}"> <i
 													class="fa fa-home"></i>
 											</a></li>
-											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board">지표 토론실</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board">지표토론실</a></li>
 										</ul>
 									</div>
 								</div>
@@ -80,6 +75,7 @@
 																<th>번호</th>
 																<th>제목</th>
 																<th>작성자</th>
+																<th>조회수</th>						
 																<th>등록일</th>
 															</tr>
 														</thead>
@@ -99,6 +95,7 @@
 																		</c:if>
 																	</td>
 																	<td>${ board.writer }</td>
+																	<td>${ board.viewCnt }</td>
 																	<td>${ board.regDate }</td>
 																</tr>
 															</c:forEach>
@@ -107,7 +104,8 @@
 												</div>
 											</div>
 											<div class="card-footer">
-												<div class="text-center">
+												<div class="text-center">	
+													<hr>												
 													<c:if test="${ not empty userVO }">
 														<a type="button" class="btn btn-primary btn-round waves-effect waves-light" href="${ pageContext.request.contextPath }/board/write">새글등록</a>
 													</c:if>

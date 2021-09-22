@@ -23,14 +23,12 @@
 		from t_board A LEFT JOIN
 		(select board_no, count(*) as reply_cnt from t_reply group by board_no) B
 		ON(A.no = B.board_no)
+		where type = '01'
 		ORDER BY A.no desc
 	</select>
 	
 	<select id="selectByNo" parameterType="int" resultMap="boardMap">
-		<!-- select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date
-		  from t_board
-		where no = #{WYW} -->
-		select A.no, A.title, A.writer, A.content, A.view_cnt, to_char(A.reg_date, 'yyyy-mm-dd') as reg_date, B.file_save_name
+		select A.no, A.type, A.title, A.writer, A.content, A.view_cnt, to_char(A.reg_date, 'yyyy-mm-dd') as reg_date, B.file_save_name
 			from t_board A LEFT JOIN t_board_file B
 			ON(A.no = B.board_no)
 		where A.no = #{WYW} 
@@ -43,8 +41,8 @@
 	</delete>
 	
 	<insert id="insertOne" parameterType="boardVO">
-		insert into t_board(no, title, writer, content)
-		 values(#{no}, #{title}, #{writer}, #{content})
+		insert into t_board(no, type, title, writer, content)
+		 values(#{no}, #{type}, #{title}, #{writer}, #{content})
 	</insert>
 	
 	<select id="getSeq" resultType="int">
@@ -55,5 +53,26 @@
 		insert into t_board_file(no, board_no, file_ori_name, file_save_name, file_size)
 		 values(seq_t_board_file_no.nextval, #{boardNo}, #{fileOriName}, #{fileSaveName}, #{fileSize})
 	</insert>
+	
+	<update id="increaseViewCnt" parameterType="int">
+		update t_board set view_cnt = view_cnt + 1
+		  where no = #{no}
+	</update>
+	
+	<update id="updateBoard" parameterType="boardVO">
+		update t_board set
+			type = #{type},
+			title = #{title},
+			content = #{content}
+		where no = #{no}
+	</update>
+	
+	<update id="updateFile" parameterType="boardfileVO">
+		update t_board_file set
+			file_ori_name = #{fileOriName},
+			file_save_name = #{fileSaveName},
+			file_size = #{fileSize}
+		where board_no = #{boardNo}
+	</update>
 	
 </mapper>

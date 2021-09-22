@@ -50,4 +50,21 @@ public class BoardServiceImpl implements BoardService {
 		int result = boardDAO.insertFile(boardFileVO);
 		return result;
 	}
+	
+	@Override
+	public void increaseViewCnt(int no) {
+		boardDAO.increaseViewCnt(no);
+	}
+	
+	@Override
+	public int updateBoard(BoardVO boardVO) {
+		int result = boardDAO.updateBoard(boardVO);
+		return result;
+	}
+	
+	@Override
+	public int updateFile(BoardFileVO boardFileVO) {
+		int result = boardDAO.updateFile(boardFileVO);
+		return result;
+	}
 }

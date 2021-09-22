@@ -6,12 +6,6 @@
 <head>
     <title>메인페이지</title>
     <jsp:include page="/WEB-INF/jsp/include/head.jsp"></jsp:include>
-    
-    <script>
-	  	if ('${ msg }') {
-	  		alert('${ msg }')
-	  	}
-    </script>
   </head>
 
   <body>

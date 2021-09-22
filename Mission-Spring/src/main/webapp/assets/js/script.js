@@ -3,6 +3,7 @@
 var arr = [];
 var idx = 0;
 
+/* 나중에 다 분산 시키기 */
 function updateMenu() {
 	
 	/* 모달 초기화 */
@@ -75,6 +76,7 @@ function updateMenu() {
 	}
 }
 
+/* 나중에 다 분산 시키기 */
 /* 그래프 추가 함수 */
 function addGraph() {
 
@@ -146,6 +148,7 @@ function addGraph() {
 
 }
 
+/* 나중에 다 분산 시키기 */
 /* 뉴스 가져오기 함수 */
 function getNews(pk, pp) {
 
@@ -167,13 +170,14 @@ function getNews(pk, pp) {
 
 }
 
+/* 나중에 다 분산 시키기 */
 /* 뉴스 추가 모달 */
 function showModal() {
 	$('#newsModal').modal('show');
 	$('input[name="keyword"]').val("");
 }
 
-
+/* 나중에 다 분산 시키기 */
 /* 뉴스 키워드 메뉴 추가 */
 function addKeyword() {
 	
@@ -195,6 +199,7 @@ function addKeyword() {
 	
 }
 
+/* 이건 여기있기 전체 적용이니까, 이거랑 소켓 같은거 */
 /* notice 가져오기 */
 function getNotice() {
 	
@@ -213,6 +218,16 @@ function getNotice() {
 };
 
 
+/* 나중에 다 분산 시키기 */
+/* pw 체크 모달 */
+function showPwcheckModal() {
+	$('#pwcheckModal').modal('show');
+	$('input[name="password"]').val("");
+}
+
+
+
+/* 핵심 중추 온레디 함수 */
 $(document).ready(function() {
 	
 	//페이지 시작시 notice로드

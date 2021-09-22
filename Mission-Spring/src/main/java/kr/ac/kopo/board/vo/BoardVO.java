@@ -9,6 +9,9 @@ public class BoardVO {
 	
 	private int no;
 	
+	@NotEmpty(message = "(종류)필수항목입니다")
+	private String type;
+	
 	@Length(min=2, max=40, message = "최소 2글자 최대 40글자만 사용가능합니다")
 	@NotEmpty(message = "(제목)필수항목입니다")
 	private String title;
@@ -95,11 +98,19 @@ public class BoardVO {
 		this.replyCnt = replyCnt;
 	}
 
-	@Override
-	public String toString() {
-		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", viewCnt="
-				+ viewCnt + ", regDate=" + regDate + ", replyCnt=" + replyCnt + ", fileSaveName=" + fileSaveName + "]";
+	public String getType() {
+		return type;
 	}
 
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVO [no=" + no + ", type=" + type + ", title=" + title + ", writer=" + writer + ", content="
+				+ content + ", viewCnt=" + viewCnt + ", regDate=" + regDate + ", replyCnt=" + replyCnt
+				+ ", fileSaveName=" + fileSaveName + "]";
+	}
 
 }

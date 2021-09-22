@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>토론실 게시판 : 게시글 작성</title>
+<title>토론실 게시판 : 게시글 수정</title>
 <jsp:include page="/WEB-INF/jsp/include/head.jsp"></jsp:include>
 <style>
 	.error{
@@ -38,7 +38,7 @@
 								<div class="row align-items-center">
 									<div class="col-md-8">
 										<div class="page-header-title">
-											<h5 class="m-b-10">지표 토론실 : 게시글 작성</h5>
+											<h5 class="m-b-10">지표 토론실 : 게시글 수정</h5>
 											<p class="m-b-0">Welcome to Stock Signal Forum</p>
 										</div>
 									</div>
@@ -48,7 +48,8 @@
 													class="fa fa-home"></i>
 											</a></li>
 											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board">지표토론실</a></li>
-											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board/write">게시글작성</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board/${board.no}">${board.no}번상세</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board/update">${board.no}번수정</a></li>
 										</ul>
 									</div>
 								</div>
@@ -66,24 +67,22 @@
 										<!-- 카드 폼 시작 -->
 										<div class="card">
 											<div class="card-header">
-												<h5>게시글 작성하기</h5>
-												<span>지금 바로 <code>&lt;시장지표&gt;</code>에 대한 질문을 올려보세요!</span>
+												<h5>게시글 수정하기</h5>
 											</div>
 											<form:form method="post" enctype="multipart/form-data" modelAttribute="boardVO">
 											<div class="card-block">
-												<h4 class="sub-title">등록 폼</h4>
+												<h4 class="sub-title">수정 폼</h4>
 													<div class="form-group row">
-														<label class="col-sm-2 col-form-label">토론 주제 선정</label>
+														<label class="col-sm-2 col-form-label">토론 주제</label>
 														<div class="col-sm-10">
-															<form:select path="type" class="form-control" required="required">
-																<option value="" selected="selected">토론할 주제를 정해주세요</option>
-																<option value="01">환율</option>
-																<option value="02">금리</option>
-																<option value="03">유가</option>
-																<option value="04">원자재</option>
-																<option value="05">금속</option>
-																<option value="06">주가지수</option>
-																<option value="00">자유주제</option>																
+															<form:select path="type" class="form-control" required="required">								
+																<option value="01" <c:if test="${ board.type == '01' }">selected="selected"</c:if>>환율</option>
+																<option value="02" <c:if test="${ board.type == '02' }">selected="selected"</c:if>>금리</option>
+																<option value="03" <c:if test="${ board.type == '03' }">selected="selected"</c:if>>유가</option>
+																<option value="04" <c:if test="${ board.type == '04' }">selected="selected"</c:if>>원자재</option>
+																<option value="05" <c:if test="${ board.type == '05' }">selected="selected"</c:if>>금속</option>
+																<option value="06" <c:if test="${ board.type == '06' }">selected="selected"</c:if>>주가지수</option>
+																<option value="00" <c:if test="${ board.type == '00' }">selected="selected"</c:if>>자유주제</option>																
 															</form:select>
 															<form:errors path="type" class="error" />
 														</div>
@@ -91,7 +90,7 @@
 													<div class="form-group row">
 														<label class="col-sm-2 col-form-label">게시글 제목</label>
 														<div class="col-sm-10">															
-															<form:input path="title" class="form-control" type="text" placeholder="게시글 제목을 입력하세요" />
+															<form:input path="title" class="form-control" type="text" placeholder="${ board.title }" />
 															<form:errors path="title" class="error" />
 														</div>
 													</div>																										
@@ -105,17 +104,18 @@
 													<div class="form-group row">
 														<label class="col-sm-2 col-form-label">파일 업로드</label>
 														<div class="col-sm-10">
-															<input type="file" name="attachFile" id="input-image" class="form-control">																													
+															<input type="file" name="attachFile" id="input-image" class="form-control" />																																																																																																
 															<br>
-															<img style="width: 100%; border:solid 1px #cccccc;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">																																														
-															<br>
+															<img style="width: 100%; border:solid 1px #cccccc;" id="preview-image" 
+																src="<c:if test="${ board.fileSaveName ne null }">${pageContext.request.contextPath}/display?fileName=${ board.writer }/${ board.fileSaveName }</c:if>">																																														
+															<br>						
 														</div>
 													</div>
 													
 													<div class="form-group row">
 														<label class="col-sm-2 col-form-label">게시글 내용</label>
 														<div class="col-sm-10">															
-															<form:textarea rows="20" cols="5" path="content" class="form-control" placeholder="내용을 입력하세요" />
+															<form:textarea rows="20" cols="5" path="content" class="form-control" placeholder="${board.content}" />
 															<form:errors path="content" class="error" />
 														</div>
 													</div>																																	
@@ -123,8 +123,8 @@
 												<div class="card-footer">
 													<div class="text-center">
 														<hr>
-														<a type="button" class="btn btn-inverse btn-round waves-effect waves-light" href="${ pageContext.request.contextPath }/board">목록</a>
-														<form:button type="submit" class="btn btn-primary btn-round waves-effect waves-light">등록</form:button>
+														<a type="button" class="btn btn-inverse btn-round waves-effect waves-light" href="${ pageContext.request.contextPath }/board/${board.no}">뒤로가기</a>
+														<form:button type="submit" class="btn btn-primary btn-round waves-effect waves-light">수정</form:button>
 													</div>
 												</div>
 											</form:form>

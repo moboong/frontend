@@ -58,14 +58,16 @@
 								<div class="page-wrapper">
 									<!-- Page-body start -->
 									<div class="page-body">
-
+										<div class="row justify-content-md-center">
 										<!-- 폼 시작 -->
 
 										<!-- 카드 마이페이지 시작 -->
+										<div class="col-xl-8 col-md-12">
 										<div class="card">
 											<div class="card-header">
 												<h5>마이페이지</h5>
 											</div>
+											<form class="validation-form" method="post" enctype="multipart/form-data" onsubmit="return validatePW()">
 											<div class="card-block">
 												
 												<div class="form-group row">
@@ -87,27 +89,22 @@
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">ID</label>
 													<div class="col-sm-10">
-														<input type="text" class="form-control"
-															placeholder="<c:out value="${ mypage.id }" />" readonly="readonly">
+														<input type="text" name="id" class="form-control" value="<c:out value="${ mypage.id }" />"
+															   readonly="readonly">
 													</div>
 												</div>
 												
 												<div class="form-group row">
-													<label class="col-sm-2 col-form-label">기존 비밀번호</label>
+													<label class="col-sm-2 col-form-label">비밀번호 변경</label>
 													<div class="col-sm-10">
-														<input type="password" class="form-control">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-2 col-form-label">비밀번호 입력</label>
-													<div class="col-sm-10">
-														<input type="password" class="form-control">															
+														<input type="password" name="password" class="form-control" id="pw" onkeyup="passwordCheckFunction();">															
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">비밀번호 확인</label>
 													<div class="col-sm-10">
-														<input type="password" class="form-control">															
+														<input type="password" name="password2" class="form-control" id="pwcheck" onkeyup="passwordCheckFunction();">															
+														<span id="pwCheckMsg" style="color: red"></span>
 													</div>
 												</div>
 												
@@ -115,33 +112,33 @@
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">이름</label>
 													<div class="col-sm-10">
-														<input type="text" class="form-control"
-															placeholder="<c:out value="${ mypage.name }" />" >
+														<input type="text" name="name" class="form-control"
+															placeholder="<c:out value="${ mypage.name }" />">
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">이메일</label>
 													<div class="col-sm-10">
-														<input type="email" class="form-control"
-															placeholder="<c:out value="${ mypage.tel }" />" >
+														<input type="email" name="email" class="form-control"
+															placeholder="<c:out value="${ mypage.email }" />">
 													</div>
 												</div>
 												
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">전화번호</label>
 													<div class="col-sm-10">
-														<input type="tel" class="form-control"
-															placeholder="<c:out value="${ mypage.email }" />" >
+														<input type="tel" name="tel" class="form-control"
+															placeholder="<c:out value="${ mypage.tel }" />">
 													</div>
 												</div>
 												
 												<div class="form-group row">
-													<label class="col-sm-2 col-form-label">동의여부</label>
+													<label class="col-sm-2 col-form-label">동의여부 : ${ mypage.agree}</label>
 													
 													<div class="col-sm-10">					
-														동의 <input type="radio" name="agree" value="Y" <c:if test="${ mypage.agree ne 'N' }">checked="checked"</c:if>>
-														&nbsp;거부 <input type="radio" name="agree" value="N" <c:if test="${ mypage.agree eq 'N' }">checked="checked"</c:if>>	
+														동의 <input type="radio" name="agree" value="Y">
+														&nbsp;거부 <input type="radio" name="agree" value="N">	
 													</div>
 													
 												</div>											
@@ -157,11 +154,13 @@
 													</button>											
 												</div>
 											</div>
+											</form>
+										</div>
 										</div>
 										<!-- 카드 폼 끝 -->
-
+										
 										<!-- 폼 끝 -->
-
+										</div>
 									</div>
 								</div>
 							</div>
@@ -201,6 +200,47 @@
 		        reader.readAsDataURL(input.files[0])
 		    }
 		}
+		//이것도 리스토 및 자원 사용을 클라이언트에 부과한 사례 이런 식으로 클라이언트가 하면 효율적일
+		//사안들은 클라이언트에 맡김으로써 부하를 분산했다.!!
+		
+	</script>
+	
+	<script>
+		function passwordCheckFunction() {
+			
+			let pw = $('#pw').val()
+			let pwcheck = $('#pwcheck').val()
+			
+			if(pw != pwcheck){
+				$('#pwCheckMsg').html('비밀번호가 일치하지 않습니다.')
+			} else {
+				$('#pwCheckMsg').html('')
+			}
+		}
+		function validatePW(){
+			let bool = false;
+			if($('#pwCheckMsg').html() == ''){
+				bool = true;
+			}
+			return bool; 
+		}
+		
+		
+		//유효성 검사
+	    window.addEventListener('load', () => {
+	      const forms = document.getElementsByClassName('validation-form');
+
+	      Array.prototype.filter.call(forms, (form) => {
+	        form.addEventListener('submit', function (event) {
+	          if (form.checkValidity() === false) {
+	            event.preventDefault();
+	            event.stopPropagation();
+	          }
+
+	          form.classList.add('was-validated');
+	        }, false);
+	      });
+	    }, false);
 		//이것도 리스토 및 자원 사용을 클라이언트에 부과한 사례 이런 식으로 클라이언트가 하면 효율적일
 		//사안들은 클라이언트에 맡김으로써 부하를 분산했다.!!
 		

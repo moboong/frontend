@@ -19,4 +19,9 @@ public interface BoardService {
 	
 	int insertFile(BoardFileVO boardFileVO);
 	
+	void increaseViewCnt(int no);
+	
+	int updateBoard(BoardVO boardVO);
+	
+	int updateFile(BoardFileVO boardFileVO);
 }

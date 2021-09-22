@@ -9,10 +9,6 @@
 
       <script>
       	
-	    if ('${ msg }') {
-	  		alert('${ msg }');
-	  	}
-      
         let page = 1;
 	 	
 	 	function back() {

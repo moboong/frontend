@@ -28,7 +28,7 @@
 				</div>
 			</td>
 			<td width="15%">
-				<button id="send" class="btn btn-info btn-round waves-effect waves-light" onclick="clickBtnReply('C')">댓글등록</button>
+				<button id="send" class="btn btn-info btn-round waves-effect waves-light" onclick="clickBtnReply('C',0)">댓글등록</button>
 			</td>
 		</tr>
 
@@ -54,12 +54,14 @@
 					<div class="col-sm-12">
 						<h6>${ reply.regDate }</h6>
 					</div>
-					<c:if test="${ sessionScope.userVO.id == reply.writer }">
-						<div class="col-sm-12">
-							<button class="btn btn-primary btn-round waves-effect waves-light" onclick="clickBtnReply('U')">수정</button>
-							<button class="btn btn-danger btn-round waves-effect waves-light" onclick="clickBtnReply('D')">삭제</button>					
-						</div>
-					</c:if>
+					
+					<div class="col-sm-12">		
+						<button class="btn btn-inverse btn-round btn-mini waves-effect waves-light" onclick="clickBtnReply('R',${reply.no})">답글</button>
+						<c:if test="${ sessionScope.userVO.id == reply.writer }">
+							<button class="btn btn-primary btn-round btn-mini waves-effect waves-light" onclick="clickBtnReply('U',${reply.no})">수정</button>
+							<button class="btn btn-danger btn-round btn-mini waves-effect waves-light" onclick="clickBtnReply('D',${reply.no})">삭제</button>					
+						</c:if>
+					</div>
 				</td>
 			</tr>
 		</c:forEach>

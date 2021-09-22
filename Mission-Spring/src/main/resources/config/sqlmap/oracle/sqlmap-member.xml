@@ -42,7 +42,12 @@
 	</select>
 	
 	<update id="updateMypage" parameterType="memberVO">
-		update t_member set struct = #{struct}
+		update t_member set 
+			password = #{password},
+			name = #{name},
+			email = #{email},
+			tel = #{tel},
+			agree = #{agree}
 		where id = #{id}
 	</update>
 	

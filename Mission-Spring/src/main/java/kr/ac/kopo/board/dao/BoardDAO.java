@@ -49,4 +49,27 @@ public interface BoardDAO {
 	 * @return 성공여부
 	 */
 	int insertFile(BoardFileVO boardFileVO);
+	
+	
+	/**
+	 * 조회수 증가
+	 * @param no
+	 */
+	void increaseViewCnt(int no);
+	
+	
+	/**
+	 * 게시글 수정
+	 * @param boardVO
+	 * @return 성공여부
+	 */
+	int updateBoard(BoardVO boardVO);
+	
+	
+	/**
+	 * 파일정보 수정
+	 * @param boardFileVO
+	 * @return 성공여부
+	 */
+	int updateFile(BoardFileVO boardFileVO);
 }

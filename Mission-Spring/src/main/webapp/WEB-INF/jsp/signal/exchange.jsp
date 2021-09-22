@@ -8,9 +8,6 @@
 <jsp:include page="/WEB-INF/jsp/include/head.jsp"></jsp:include>
 
 <script>
-	if ('${ msg }') {
-		alert('${ msg }')
-	}
 
 	let page = 1;
 

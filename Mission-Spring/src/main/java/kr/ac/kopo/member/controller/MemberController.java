@@ -189,6 +189,29 @@ public class MemberController {
 		return mav;
 	}
 	
+	
+	@PostMapping("/mypage")
+	public String checkPW(String password, HttpSession session) {
+		
+		String view = "";
+		String msg = "";
+		
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		
+		if(userVO.getPassword().equals(password)) {
+			msg = "개인정보수정 페이지로 이동합니다.";
+			view = "redirect:/updateMypage";
+		} else {
+			msg = "비밀번호가 틀렸습니다.";
+			view = "redirect:/mypage";
+		}
+		
+		session.setAttribute("msg", msg);
+		
+		return view;
+	}
+	
+	
 	@GetMapping("/updateMypage")
 	public ModelAndView updateMypageForm(HttpSession session) {
 		
@@ -209,10 +232,42 @@ public class MemberController {
 	
 	
 	@PostMapping("/updateMypage")
-	public String updateMypage(MemberVO member, HttpSession session, MultipartHttpServletRequest mRequest) throws Exception {
+	public String updateMypage(MemberVO member, HttpSession session, MultipartHttpServletRequest mRequest, Model model) throws Exception {
+		
+		System.out.println("처리전:" + member);
 		
 		String msg = "";
-		int result = service.updateMypage(member);
+		int result = 0;
+		
+		MemberVO mypage = service.getMypage(member.getId());
+		System.out.println("비교대상:" + mypage);
+		
+		if(member.getPassword().equals("") && member.getName().equals("") && member.getEmail().equals("") && member.getTel().equals("") && (member.getAgree() == null || member.getAgree().equals(""))) {
+			//전부 null이면 안바꿔
+			result++;
+			
+		} else {
+			//하나라도 입력했으면 바꿔
+			
+			if(member.getPassword().equals("")) {
+				member.setPassword(mypage.getPassword());
+			}
+			if(member.getName().equals("")) {
+				member.setName(mypage.getName());
+			}
+			if(member.getEmail().equals("")) {
+				member.setEmail(mypage.getEmail());
+			}
+			if(member.getTel().equals("")) {
+				member.setTel(mypage.getTel());
+			}
+			if(member.getAgree() == null || member.getAgree().equals("")) {
+				member.setAgree(mypage.getAgree());
+			}
+			System.out.println("처리후:" + member);
+			result = service.updateMypage(member);
+		}
+		
 		if(result != 0) {
 			msg = "수정을 완료했습니다.";
 			//파일입력
@@ -255,6 +310,12 @@ public class MemberController {
 			msg = "수정에 실패했습니다.";
 		}
 		session.setAttribute("msg", msg);
+		
+		
+		
+		//로그인 세션 초기화
+		MemberVO userVO = service.login(member);
+		model.addAttribute("userVO", userVO);
 		
 		return "redirect:/mypage";
 	}

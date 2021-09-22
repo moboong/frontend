@@ -32,7 +32,7 @@
 								<div class="row align-items-center">
 									<div class="col-md-8">
 										<div class="page-header-title">
-											<h5 class="m-b-10">지표 토론실</h5>
+											<h5 class="m-b-10">지표 토론실 : ${board.no}번 상세보기</h5>
 											<p class="m-b-0">Welcome to Stock Signal Forum</p>
 										</div>
 									</div>
@@ -41,7 +41,8 @@
 											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}"> <i
 													class="fa fa-home"></i>
 											</a></li>
-											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board">지표 토론실</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board">지표토론실</a></li>
+											<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/board/${board.no}">${board.no}번상세</a></li>
 										</ul>
 									</div>
 								</div>
@@ -163,8 +164,11 @@
 		})
 	}
 
-	function clickBtnReply(type) {
+	function clickBtnReply(type, no) {
 		switch (type) {
+		case 'R':
+			//getReReply()
+			break
 		case 'C':
 			let bool = confirm("진짜 등록하시겠습니까?");
 			if(bool){
@@ -176,8 +180,9 @@
 			/* updateReply() */
 			break
 		case 'D':
-			if (confirm('[ reply number ]번 게시글을 삭제할까요?')) {
-				alert('댓글수정입장')
+			$(this).parents()
+			if (confirm('[ ' + no + ' ]번 게시글을 삭제할까요?')) {
+				alert('댓글삭제입장')
 				/* updateReply() */
 			}
 			break
@@ -187,11 +192,12 @@
 	function clickBtn(type) {
 		switch (type) {
 		case 'U':
-			location.href = '/board/updateFrom/${ board.no }'
+			location.href = '${ pageContext.request.contextPath }/board/update/${ board.no }'
 			break
 		case 'D':
-			if (confirm('[${board.no}]번 게시글을 삭제할까요?'))
-				location.href = '${ pageContext.request.contextPath }/board/delete/${ board.no }'
+			if (confirm('[${board.no}]번 게시글을 삭제할까요?')){				
+				alert('void 삭제 후 목록으로 이동함.');
+			}
 			break
 		case 'L':
 			location.href = "${ pageContext.request.contextPath }/board"
@@ -205,14 +211,17 @@
 		
 		getReplyList();
 		
+		
+		/* 
+		//이거 전체 메세지 코드임
 		$('#btnSend').on('click', function(evt) {
 			evt.preventDefault();
 			if (socket.readyState !== 1)
 				return;
 			let msg = $('input#msg').val();
 			socket.send(msg);
-		});
-		
+		}); 
+		*/
 	});
 </script>
 

@@ -54,4 +54,21 @@ public class BoardDAOImpl implements BoardDAO {
 		int result = sqlsessionTemplate.insert("board.BoardDAO.insertFile", boardFileVO);
 		return result;
 	}
+	
+	@Override
+	public void increaseViewCnt(int no) {
+		sqlsessionTemplate.update("board.BoardDAO.increaseViewCnt", no);
+	}
+	
+	@Override
+	public int updateBoard(BoardVO boardVO) {
+		int result = sqlsessionTemplate.update("board.BoardDAO.updateBoard", boardVO);
+		return result;
+	}
+	
+	@Override
+	public int updateFile(BoardFileVO boardFileVO) {
+		int result = sqlsessionTemplate.update("board.BoardDAO.updateFile", boardFileVO);
+		return result;
+	}
 }
