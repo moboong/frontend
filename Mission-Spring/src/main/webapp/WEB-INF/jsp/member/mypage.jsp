@@ -118,9 +118,6 @@
 												<div class="card-footer">
 													<div class="text-right">
 														<hr>
-														<%-- <a href="${pageContext.request.contextPath}/updateMypage" class="btn waves-effect waves-light btn-primary">
-															<i class="icofont icofont-user-alt-3"></i>수정하기
-														</a> --%>
 														<button type="button" onclick="showPwcheckModal();" class="btn waves-effect waves-light btn-primary"><i class="icofont icofont-user-alt-3"></i>수정하기</button>												
 													</div>
 												</div>
@@ -186,9 +183,6 @@
 												<div class="card-footer">
 													<div class="text-right">
 														<hr>
-														<%-- <a href="${pageContext.request.contextPath}/updateMypage" class="btn waves-effect waves-light btn-primary">
-															<i class="icofont icofont-user-alt-3"></i>수정하기
-														</a> --%>
 														<button type="button" onclick="showPwcheckModal();" class="btn waves-effect waves-light btn-primary"><i class="icofont icofont-user-alt-3"></i>수정하기</button>												
 													</div>
 												</div>

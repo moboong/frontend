@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin.AdminDAO">
+	
+	<resultMap type="conditionVO" id="conditionMap">
+	</resultMap>
+	
+	<select id="select01" parameterType="conditionVO" resultMap="conditionMap">
+		select A.no, A.type, B.title as code, A.top, A.var from 
+			t_condition A, info_code B
+		where A.code = B.code 
+		and type = #{type}
+	</select>
+	
+	<insert id="insert01" parameterType="conditionVO">
+		insert into t_condition(no, type, code, top, var)
+			values(seq_t_condition_no.nextval, #{type}, #{code}, #{top}, #{var})
+	</insert>
+	
+	<update id="update01" parameterType="conditionVO">
+		update t_condition set
+			top = #{top},
+			var = #{var}
+		where no = #{no}
+	</update>
+	
+</mapper>

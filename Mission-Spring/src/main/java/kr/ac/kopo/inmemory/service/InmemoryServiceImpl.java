@@ -13,29 +13,34 @@ public class InmemoryServiceImpl implements InmemoryService {
 
 	@Autowired
 	private InmemoryDAO inmemoryDAO;
-
+	
+	@Override
 	public int getSeq() {
 		int latest = inmemoryDAO.getSeq();
 		return latest;
 	}
-
+	
+	@Override
 	public List<ExchangeVO> searchAllExchange() {
 		List<ExchangeVO> elist = inmemoryDAO.searchAllExchange();
 		return elist;
 	}
 
+	@Override
 	public int insertAllExchange(List<ExchangeVO> exchangeVOs) {
 		int result = inmemoryDAO.insertAllExchange(exchangeVOs);
 		return result;
 	}
 
+	@Override
 	public int insertOneExchange(ExchangeVO exchangeVO) {
 		int result = inmemoryDAO.insertOneExchange(exchangeVO);
 		return result;
 	}
 	
-	public List<ExchangeVO> checkExchange() {
-		List<ExchangeVO> vlist = inmemoryDAO.checkExchange();
+	@Override
+	public List<ExchangeVO> checkExchange(int top) {
+		List<ExchangeVO> vlist = inmemoryDAO.checkExchange(top);
 		return vlist;
 	}
 

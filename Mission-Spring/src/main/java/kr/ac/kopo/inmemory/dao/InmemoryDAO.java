@@ -14,5 +14,5 @@ public interface InmemoryDAO {
 
 	int insertOneExchange(ExchangeVO exchangeVO);
 	
-	List<ExchangeVO> checkExchange();
+	List<ExchangeVO> checkExchange(int top);
 }

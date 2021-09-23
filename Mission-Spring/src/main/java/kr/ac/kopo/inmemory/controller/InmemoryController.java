@@ -10,11 +10,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.exchange.vo.ExchangeVO;
 import kr.ac.kopo.inmemory.service.InmemoryService;
+import kr.ac.kopo.inmemory.vo.NoticeVO;
 
 @Controller
 public class InmemoryController {
@@ -89,11 +91,15 @@ public class InmemoryController {
 	}
 
 	
-
-	@RequestMapping("/inmemory/insertOne")
+	//이녀석은 넣음과 동시에 체크하는 모듈임.
+	//따라서 5이상으로 할지, 10개 연속으로 할지 동적으로 관리자가 조절할 수 있어야함.
+	//상위 10개가 변동 5이상인지
+	//궁극적으로 POST처리하고 일단은 GET으로 테스트
+	@RequestMapping("/inmemory/1/{top}/{var}")
 	@ResponseBody
-	public String insertOne() {
-
+	public List<NoticeVO> insertOne(@PathVariable("top") int top, @PathVariable("var") int var) {
+		
+		//여기부터 인메모리에 적재.
 		int latestNum = service.getSeq();
 		String latest = Integer.toString(latestNum);
 		System.out.println("저장된 가장 최근 회차 : " + latest);
@@ -149,19 +155,25 @@ public class InmemoryController {
 		}
 
 		String msg = "삽입된 열의 개수: " + result;
+		System.out.println(msg);
+		//여기까지 인메모리에 적재 끝.
 		
-		//상위 5개 변동이 5이상이면 알람.
-		List<ExchangeVO> vlist = service.checkExchange();
 		
-		System.out.println("최근 10개 레코드 -> " + vlist);
+		
+		//상위 10개 변동이 5이상이면 알람.
+		List<ExchangeVO> vlist = service.checkExchange(top);
+		
+		System.out.println("최근 " + top + "개 레코드 -> " + vlist);
 		int flag = 0;
 		for(int i = 0; i < vlist.size(); i++) {
-			if(vlist.get(i).getVariation() >= 5) {
+			if( Math.abs(vlist.get(i).getVariation()) >= var) {
 				flag++;
 			}
 		}
 		System.out.println(flag + " / " + vlist.size());
 		
+		List<NoticeVO> noticeList = new ArrayList<NoticeVO>();
+		//10개 다 5이상이면?
 		if(flag == vlist.size()) {
 			System.out.println("알람 때리기");
 			//이 함수의 시작은 ajax일거임 왜냐면 이거 한다고 페이지를 넘기지 않을 거거든. 
@@ -178,9 +190,15 @@ public class InmemoryController {
 			//ㅇㅇ 할 수 있을 듯.
 			//개인의 목표를 검증해주는 이곳에는 hsql과 oralce의 혼용이 예상되겠군.
 			
+			
+			//프로토콜 : (all, 환율, 상승)   ->   (받는 사람, 종류, 상승 or 하락)
+			NoticeVO noticeVO = new NoticeVO("all", "01", "001");
+			noticeList.add(noticeVO);
 		}
 		
-		return msg;
+		
+		
+		return noticeList;
 	}
 
 }

@@ -30,7 +30,7 @@
 		VALUES (#{stdRate}, #{regDate}, #{variation})
 	</insert>
 	
-	<select id="check" resultType="exchangeVO">
+	<select id="check" parameterType="int" resultType="exchangeVO">
 		SELECT * FROM 
 		(
 			SELECT regDate, stdRate, variation FROM (
@@ -38,7 +38,7 @@
 			) 
 			ORDER BY no desc
 		)
-		where <![CDATA[ ROWNUM() <= 10 ]]>
+		where <![CDATA[ ROWNUM() <= #{top} ]]>
 	</select>
 	
 </mapper>
