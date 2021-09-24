@@ -211,17 +211,6 @@
 		
 		getReplyList();
 		
-		
-		/* 
-		//이거 전체 메세지 코드임
-		$('#btnSend').on('click', function(evt) {
-			evt.preventDefault();
-			if (socket.readyState !== 1)
-				return;
-			let msg = $('input#msg').val();
-			socket.send(msg);
-		}); 
-		*/
 	});
 </script>
 

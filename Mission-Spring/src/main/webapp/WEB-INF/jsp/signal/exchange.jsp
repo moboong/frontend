@@ -247,12 +247,12 @@
 																<li class="nav-item"><a class="nav-link active"
 																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('환율',1);">환율</a>
 																	<div class="slide"></div></li>
-																<li class="nav-item"><a class="nav-link"
+																<!-- <li class="nav-item"><a class="nav-link"
 																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('수출입동향',1);">수출입동향</a>
 																	<div class="slide"></div></li>
 																<li class="nav-item"><a class="nav-link"
 																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="getNews('외국인 매도세',1);">외국인 매도세</a>
-																	<div class="slide"></div></li>
+																	<div class="slide"></div></li> -->
 																<li id="plusNav" class="nav-item"><a class="nav-link"
 																	data-toggle="tab" href="javascript:void(0);" role="tab" onclick="showModal();"><i
 																		class="fa fa-plus-square" aria-hidden="true"></i></a>

@@ -145,7 +145,10 @@
 												</div>
 											</div>
 
-
+											<div class="well">
+												<input type="text" id="msg" value="1212" class="form-control" />
+												<button id="btnSend" onclick="sendAllMessage();" class="btn btn-primary">Send Message</button>
+											</div>
 											
 
 											<!-- 폼 끝 -->
@@ -270,6 +273,13 @@
 			$('input[name=no]').val(no)
 		}
 		
+		function sendAllMessage(){
+			if (socket2){
+				let msg = $('input#msg').val();
+				socket2.send(msg);					
+			}
+		}
+		
 	</script>
 	
 	<script>
@@ -277,6 +287,7 @@
 		$(document).ready(function() {
 			showCondition("01");
 			selectAll();
+			
 		});
 	
 	</script>

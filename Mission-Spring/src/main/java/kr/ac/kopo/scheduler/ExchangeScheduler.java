@@ -1,4 +1,4 @@
-package kr.ac.kopo.exchange.controller;
+package kr.ac.kopo.scheduler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,23 +9,20 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import kr.ac.kopo.exchange.service.ExchangeService;
 import kr.ac.kopo.exchange.vo.ExchangeVO;
 
-@Controller
-public class ExchangeController {
-
+//@Component
+public class ExchangeScheduler {
+	
 	@Autowired
 	private ExchangeService service;
-
-	// 일별 환율 주기적으로 넣기(주기적으로 사용)
-	@RequestMapping("/insertOne/exchange")
-	@ResponseBody
-	public String insertOne() {
+	
+	//새벽 1시
+	@Scheduled(cron = "0 0 1 * * *")
+	public void insertOne() {
 
 		String latest = service.getSeq();
 		System.out.println("저장된 가장 최근 날짜" + latest);
@@ -82,14 +79,11 @@ public class ExchangeController {
 		
 
 		String msg = "삽입된 열의 개수: " + result;
-
-		return msg;
+		System.out.println(msg);
 	}
-
-	// 전체 일별 환율 넣기(1회용)
-	// @RequestMapping("/insertAll/exchange")
-	// @ResponseBody
-	public String insertAll() {
+	
+	//이거는 초기화 1회용@Scheduled
+	public void insertAll() {
 
 		int result = 0;
 		int page = 1;
@@ -139,23 +133,6 @@ public class ExchangeController {
 		}
 
 		String msg = "삽입된 열의 개수: " + result;
-
-		return msg;
-	}
-
-	
-	@RequestMapping("/show/exchange")
-	@ResponseBody
-	public List<ExchangeVO> selectAll() {
-		// 안에 코스피 바인드 돼있음.
-		List<ExchangeVO> exchangeVOs = service.searchAllExchange();
-		return exchangeVOs;
-	}
-
-	@RequestMapping("/show/exchange/year")
-	@ResponseBody
-	public List<ExchangeVO> selectYear() {
-		List<ExchangeVO> exchangeVOs = service.searchYearExchange();
-		return exchangeVOs;
+		System.out.println(msg);
 	}
 }

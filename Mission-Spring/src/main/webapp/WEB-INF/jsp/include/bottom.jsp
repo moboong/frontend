@@ -42,8 +42,10 @@
 
 <script>
 var socket = null;
+var socket2 = null;
 $(document).ready(function() {
 	connectWS();
+	connectEX();
 });
 
 function connectWS() {
@@ -51,7 +53,7 @@ function connectWS() {
 	socket = ws;
 		
 	ws.onopen = function() {
-		console.log('Info: connection opened.');
+		console.log('Info: WebSocket connection opened.');
 	};
 	
 	ws.onmessage = function(event) {
@@ -65,10 +67,33 @@ function connectWS() {
 	};
 	
 	ws.onclose = function(event) {
-		console.log('Info: connection closed.');
+		console.log('Info: WebSocket connection closed.');
 		//setTimeout(function() { connect(); }, 1000); // retry connection!!
 	};
 	ws.onerror = function(err) {
+		console.log('Error: ', err);
+	};
+};
+
+function connectEX() {
+	var ws2 = new WebSocket("ws://localhost:9999/Mission-Spring/exchangeEcho");
+	socket2 = ws2;
+		
+	ws2.onopen = function() {
+		console.log('Info: Spring-WS connection opened.');
+	};
+	
+	ws2.onmessage = function(event) {
+		console.log("RecieveMessage:", event.data + '\n');
+		//종 울리기
+		$('#bell').attr('class', 'badge bg-c-red')
+	};
+	
+	ws2.onclose = function(event) {
+		console.log('Info: Spring-WS connection closed.');
+		//setTimeout(function() { connect(); }, 1000); // retry connection!!
+	};
+	ws2.onerror = function(err) {
 		console.log('Error: ', err);
 	};
 };
