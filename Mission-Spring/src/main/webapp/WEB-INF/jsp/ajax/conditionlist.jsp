@@ -9,27 +9,49 @@
 
 		</div>
 		<div class="card-block">
-
-			<c:forEach items="${ requestScope.conditionList }" var="condition"
-				varStatus="loop">
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">${ condition.code }</label>
-					<div class="col-sm-10">
-						<h5 id="presentCondition">${ condition.top }회차연속전일대비${ condition.var }이상의
-							변동을 보일 때</h5>
-						<button type="button"
-							class="btn waves-effect waves-light btn-primary"
-							onclick="editModalShow(${ condition.no });">조건 수정 모달 on
-						</button>
-
-						<button type="button" id="${ condition.no }"
-							onclick="insertAndCheck(${ condition.type },${ condition.top },${ condition.var });"
-							class="btn waves-effect waves-light btn-primary">
-							삽입-체크하기(insertOne)</button>
-					</div>
-				</div>
-			</c:forEach>
-
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>지표종류</th>
+							<th>알림조건</th>
+							<th class="text-right">조건 수정</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${ requestScope.conditionList }" var="condition"
+							varStatus="loop">
+						<tr>
+							<td>
+								<div class="chk-option d-inline-block">
+									<div class="checkbox-fade fade-in-primary">
+										<label class="check-task"> <input type="checkbox"
+											value=""> <span class="cr"> <i
+												class="cr-icon fa fa-check txt-default"></i>
+										</span>
+										</label>
+									</div>
+								</div>
+								<div class="d-inline-block">
+										<h5>${ condition.code }</h5>
+										<p class="text-muted m-b-0">exchange signal</p>
+									</div>
+								
+							</td>
+							<td>
+								<h6 style="font-size: 17px;" id="presentCondition">${ condition.top }회차연속 전일대비 ${ condition.var }이상의
+								변동을 보일 때</h6>
+							</td>
+							<td class="text-right">
+								<button type="button"
+								class="btn waves-effect waves-light btn-primary"
+								onclick="editModalShow(${ condition.no });">알림 조건 수정</button>
+							</td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="card-footer">
 			<div class="text-right">
@@ -44,51 +66,45 @@
 	<div class="card">
 		<div class="card-header">
 			<h5>알림 현황</h5>
-			
+
 		</div>
 		<div class="card-block">
-			<div class="align-middle m-b-30">
-				<img src="/Mission-Spring/assets/images/avatar-2.jpg"
-					alt="user image" class="img-radius img-40 align-top m-r-15">
-				<div class="d-inline-block">
-					<h6>David Jones</h6>
-					<p class="text-muted m-b-0">Developer</p>
-				</div>
-			</div>
-			<div class="align-middle m-b-30">
-				<img src="/Mission-Spring/assets/images/avatar-1.jpg"
-					alt="user image" class="img-radius img-40 align-top m-r-15">
-				<div class="d-inline-block">
-					<h6>David Jones</h6>
-					<p class="text-muted m-b-0">Developer</p>
-				</div>
-			</div>
-			<div class="align-middle m-b-30">
-				<img src="/Mission-Spring/assets/images/avatar-3.jpg"
-					alt="user image" class="img-radius img-40 align-top m-r-15">
-				<div class="d-inline-block">
-					<h6>David Jones</h6>
-					<p class="text-muted m-b-0">Developer</p>
-				</div>
-			</div>
-			<div class="align-middle m-b-30">
-				<img src="/Mission-Spring/assets/images/avatar-4.jpg"
-					alt="user image" class="img-radius img-40 align-top m-r-15">
-				<div class="d-inline-block">
-					<h6>David Jones</h6>
-					<p class="text-muted m-b-0">Developer</p>
-				</div>
-			</div>
-			<div class="align-middle m-b-10">
-				<img src="/Mission-Spring/assets/images/avatar-5.jpg"
-					alt="user image" class="img-radius img-40 align-top m-r-15">
-				<div class="d-inline-block">
-					<h6>David Jones</h6>
-					<p class="text-muted m-b-0">Developer</p>
-				</div>
-			</div>
-			<div class="text-center">
-				<a href="#!" class="b-b-primary text-primary">View all Projects</a>
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>지표종류</th>
+							<th>시작시간</th>
+							<th>감지 횟수</th>
+							<th class="text-right">Priority</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${ requestScope.conditionList }" var="condition"
+							varStatus="loop">
+						<tr>
+							<td>
+								<div class="d-inline-block">
+									<h6>${ condition.code }</h6>
+									<p class="text-muted m-b-0">exchange signal</p>
+								</div>
+							</td>
+							<td>
+								09:00
+							</td>
+							<td>5회</td>
+							<td class="text-right">
+								<label class="label label-success">medium</label>
+							</td>
+						</tr>
+						</c:forEach>
+					</tbody>
+					<!-- 
+					<td class="text-right"><label class="label label-primary">high</label></td>
+					<td class="text-right"><label class="label label-success">medium</label></td>
+					<td class="text-right"><label class="label label-danger">Low</label></td>
+					 -->
+				</table>
 			</div>
 		</div>
 		<div class="card-footer">

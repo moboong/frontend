@@ -68,7 +68,7 @@
 												<div class="card">
 													<div class="card-header">
 														<h5>인메모리 현황</h5>
-														<button type="button" onclick="selectAll();"
+														<button style="float: right" type="button" onclick="selectAll();"
 																class="btn waves-effect waves-light btn-primary">
 																<i class="icofont icofont-user-alt-3"></i>전체조회(selectAll)
 														</button>
@@ -76,8 +76,8 @@
 													</div>
 													<div class="card-block">
 
-														<h5>미국-달러</h5>
-														<div id="selectAll"></div>
+														<h5>미국-달러 환율</h5>
+														<div class="table-responsive" id="selectAll" style="max-height: 650px; overflow-y: auto;"></div>
 
 													</div>
 													<div class="card-footer">
@@ -95,15 +95,14 @@
 												<div class="card">
 													<div class="card-header">
 														<h5>인메모리 현황</h5>
-														<button type="button" onclick="selectAll();"
+														<button style="float: right" type="button" onclick="selectAll();"
 																class="btn waves-effect waves-light btn-primary">
 																<i class="icofont icofont-user-alt-3"></i>전체조회(selectAll)
 														</button>
-														
 													</div>
 													<div class="card-block">
 														<h5>외국인 매도세</h5>
-														<div id="selectAll"></div>
+														<div class="table-responsive" id="selectAll"></div>
 
 													</div>
 													<div class="card-footer">
@@ -121,7 +120,7 @@
 												<div class="card">
 													<div class="card-header">
 														<h5>인메모리 현황</h5>
-														<button type="button" onclick="selectAll();"
+														<button style="float: right" type="button" onclick="selectAll();"
 																class="btn waves-effect waves-light btn-primary">
 																<i class="icofont icofont-user-alt-3"></i>전체조회(selectAll)
 														</button>
@@ -143,11 +142,6 @@
 														</div>
 													</div>
 												</div>
-											</div>
-
-											<div class="well">
-												<input type="text" id="msg" value="1212" class="form-control" />
-												<button id="btnSend" onclick="sendAllMessage();" class="btn btn-primary">Send Message</button>
 											</div>
 											
 
@@ -211,12 +205,8 @@
 				type : 'GET',
 				url : '${pageContext.request.contextPath}/inmemory/selectAll',
 				success : function(data) {
-					console.log(data)
-					let temp = JSON.parse(data)
-					console.log(temp)
 					console.log('func: GET 인메모리 전체조회 성공')
-					$('#selectAll').text(data)
-
+					$('#selectAll').html(data)
 				},
 				error : function() {
 					console.log('func: GET 인메모리 전체조회 실패')
@@ -271,13 +261,6 @@
 		function editModalShow(no) {
 			$('#editModal').modal("show");
 			$('input[name=no]').val(no)
-		}
-		
-		function sendAllMessage(){
-			if (socket2){
-				let msg = $('input#msg').val();
-				socket2.send(msg);					
-			}
 		}
 		
 	</script>

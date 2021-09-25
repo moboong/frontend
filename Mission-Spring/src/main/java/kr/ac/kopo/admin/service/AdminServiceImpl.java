@@ -31,4 +31,10 @@ public class AdminServiceImpl implements AdminService {
 		int result = adminDAO.updateExchange(conditionVO);
 		return result;
 	}
+	
+	@Override
+	public ConditionVO selectOneExchange(ConditionVO conditionVO){
+		ConditionVO condition = adminDAO.selectOneExchange(conditionVO);
+		return condition;
+	}
 }

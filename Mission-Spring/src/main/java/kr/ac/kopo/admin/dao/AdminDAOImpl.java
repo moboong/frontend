@@ -34,4 +34,10 @@ public class AdminDAOImpl implements AdminDAO {
 		int result = sqlsessionTemplate.update("admin.AdminDAO.update01", conditionVO);
 		return result;
 	}
+	
+	@Override
+	public ConditionVO selectOneExchange(ConditionVO conditionVO){
+		ConditionVO condition = sqlsessionTemplate.selectOne("admin.AdminDAO.select01inOne", conditionVO);
+		return condition;
+	}
 }

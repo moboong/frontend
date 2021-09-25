@@ -39,17 +39,14 @@
     <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-dashboard.js"></script> --%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/script.js "></script>
     
-
 <script>
 var socket = null;
-var socket2 = null;
 $(document).ready(function() {
 	connectWS();
-	connectEX();
 });
 
 function connectWS() {
-	var ws = new WebSocket("ws://localhost:9999/Mission-Spring/replyEcho?boardNo=${board.no}");
+	var ws = new WebSocket("ws://localhost:9999/Mission-Spring/replyEcho");
 	socket = ws;
 		
 	ws.onopen = function() {
@@ -74,28 +71,4 @@ function connectWS() {
 		console.log('Error: ', err);
 	};
 };
-
-function connectEX() {
-	var ws2 = new WebSocket("ws://localhost:9999/Mission-Spring/exchangeEcho");
-	socket2 = ws2;
-		
-	ws2.onopen = function() {
-		console.log('Info: Spring-WS connection opened.');
-	};
-	
-	ws2.onmessage = function(event) {
-		console.log("RecieveMessage:", event.data + '\n');
-		//종 울리기
-		$('#bell').attr('class', 'badge bg-c-red')
-	};
-	
-	ws2.onclose = function(event) {
-		console.log('Info: Spring-WS connection closed.');
-		//setTimeout(function() { connect(); }, 1000); // retry connection!!
-	};
-	ws2.onerror = function(err) {
-		console.log('Error: ', err);
-	};
-};
 </script>
-    

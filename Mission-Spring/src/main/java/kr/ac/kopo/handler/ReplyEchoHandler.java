@@ -56,6 +56,12 @@ public class ReplyEchoHandler extends TextWebSocketHandler {
 					TextMessage tmpMsg = new TextMessage(replyWriter + "님이 " + "<a href=\"/Mission-Spring/board/" + bno + "\"><label class=\"label label-success\">" + bno + "</label></a>번 게시글에 댓글을 달았습니다!");
 					boardWriterSession.sendMessage(tmpMsg);
 				}
+				if ("alarm".equals(cmd) && "all".equals(boardWriter)) {
+					TextMessage tmpMsg = new TextMessage(bno + "이상 감지!! 확인 요함.");
+					for (WebSocketSession sess: sessions) {
+						sess.sendMessage(tmpMsg);
+					}
+				}
 			}
 		}
 	}
@@ -67,6 +73,11 @@ public class ReplyEchoHandler extends TextWebSocketHandler {
 			return session.getId();
 		else
 			return userVO.getId();
+	}
+	
+	public List<WebSocketSession> getSessionList(){
+		List<WebSocketSession> sessionList = this.sessions;
+		return sessionList;
 	}
 
 	//커넥션 클로즈 시

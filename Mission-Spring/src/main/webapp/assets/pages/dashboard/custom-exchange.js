@@ -34,11 +34,12 @@ $(document).ready(function() {
 		"type": "serial",
 		"theme": "light",
 		"hideCredits": true,
-		"marginRight": 60,
-		"marginLeft": 60,
+		"marginRight": 80,
+		"marginLeft": 80,
 		"autoMarginOffset": 20,
 		"dataDateFormat": "YYYY-MM-DD",
 		"valueAxes": [{
+			"title": "코스피",
 			"id": "v1",
 			"axisColor": "#FF6600",
 			"axisThickness": 2,
@@ -46,6 +47,7 @@ $(document).ready(function() {
 			"position": "left",
 			"ignoreAxisWidth": true
 		}, {
+			"title": "미국달러",
 			"id": "v2",
 			"axisColor": "#30c15b",
 			"axisThickness": 2,
@@ -58,6 +60,7 @@ $(document).ready(function() {
 			"shadowAlpha": 0
 		},
 		"graphs": [{
+			"title": "미국달러-코스피",
 			"id": "g1",
 			"valueAxis": "v1",
 			"balloon": {
@@ -74,7 +77,7 @@ $(document).ready(function() {
 			"bulletSize": 5,
 			"hideBulletsCount": 50,
 			"lineThickness": 1.5,
-			"title": "red line",
+			"title": "코스피",
 			"useLineColorForBulletBorder": true,
 			"valueField": "endPrice",
 			"balloonText": "<span style='font-size:18px;'>[[value]]</span>"
@@ -95,7 +98,7 @@ $(document).ready(function() {
 			"bulletSize": 5,
 			"hideBulletsCount": 50,
 			"lineThickness": 1.5,
-			"title": "red line",
+			"title": "미국달러환율",
 			"useLineColorForBulletBorder": true,
 			"valueField": "stdRate",
 			"balloonText": "<span style='font-size:18px;'>[[value]]</span>"
@@ -126,6 +129,9 @@ $(document).ready(function() {
 		"export": {
 			"enabled": true
 		},
+		 "legend": {
+    		"useGraphSettings": true
+  		},
 		"dataProvider": exchangeKospiData
 	});
 	console.log('변수 chart (환-코차트) : ', chart)

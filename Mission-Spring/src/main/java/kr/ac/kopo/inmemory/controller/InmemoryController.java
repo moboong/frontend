@@ -10,9 +10,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.exchange.vo.ExchangeVO;
 import kr.ac.kopo.inmemory.service.InmemoryService;
@@ -24,11 +26,13 @@ public class InmemoryController {
 	@Autowired
 	private InmemoryService service;
 	
-	@RequestMapping("/inmemory/selectAll")
-	@ResponseBody
-	public List<ExchangeVO> selectAll() {
+	@GetMapping("/inmemory/selectAll")
+	public ModelAndView selectAll() {
+		ModelAndView mav = new ModelAndView("ajax/inmemorytable");
 		List<ExchangeVO> exchangeVOs = service.searchAllExchange();
-		return exchangeVOs;
+		mav.addObject("exchangeList", exchangeVOs);
+		
+		return mav;
 	}
 	
 

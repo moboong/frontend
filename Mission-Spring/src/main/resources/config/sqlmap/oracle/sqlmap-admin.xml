@@ -14,6 +14,13 @@
 		and type = #{type}
 	</select>
 	
+	<select id="select01inOne" parameterType="conditionVO" resultMap="conditionMap">
+		select A.no, A.type, B.title as code, A.top, A.var from 
+			t_condition A, info_code B
+		where A.code = B.code 
+		and B.title = #{code}
+	</select>
+	
 	<insert id="insert01" parameterType="conditionVO">
 		insert into t_condition(no, type, code, top, var)
 			values(seq_t_condition_no.nextval, #{type}, #{code}, #{top}, #{var})

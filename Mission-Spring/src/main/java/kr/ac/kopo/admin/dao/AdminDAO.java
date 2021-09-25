@@ -11,4 +11,6 @@ public interface AdminDAO {
 	int insertExchange(ConditionVO conditionVO);
 	
 	int updateExchange(ConditionVO conditionVO);
+	
+	ConditionVO selectOneExchange(ConditionVO conditionVO);
 }

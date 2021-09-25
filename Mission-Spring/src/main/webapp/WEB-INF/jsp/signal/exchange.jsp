@@ -164,7 +164,57 @@
 													</div>
 													<div class="card-block">
 														<div id="exko-chart" style="height: 400px;"></div>
-														<!-- <div id="line-example"></div> -->
+														<div class="table-responsive">
+														<table class="table table-hover">			
+															
+															<thead>
+																<tr>
+																	<th>과거 급상승 시기 뉴스</th>
+																	<th>2008-12, 2020-03</th>
+																</tr>
+															</thead>
+															<tbody>
+															
+															
+																	<tr>
+																		<td><img
+																			src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F022%2F2011%2F05%2F22%2F20110522001262_0.jpg&type=sc960_832"
+																			alt="user image" class="img-100 align-top m-r-15"></td>
+																		<td>
+																			<div class="d-inline-block align-middle">
+																				<div class="d-inline-block">
+																					<h4>
+																						<a href="https://www.mbn.co.kr/news/economy/398135" target="_blank">
+																							원달러 환율, 이틀째 상승…1329원
+																						</a>
+																					</h4>					
+																					<p class="text-muted m-b-0">외환시장 전문가들은 "국내 증시 약세와 외국인 매도세로 환율이 상승세를 보이고 있다"면서 "그렇지만 환율 상승요인이 많지는 않기 때문에 추가 상승은 제한될 것"이라고 말했다. [</p>
+																				</div>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td><img
+																			src="https://imgnews.pstatic.net/image/032/2005/10/16/5j1725a.jpg?type=w647"
+																			alt="user image" class="img-100 align-top m-r-15"></td>
+																		<td>
+																			<div class="d-inline-block align-middle">
+																				<div class="d-inline-block">
+																					<h4>
+																						<a href="https://www.mbn.co.kr/news/economy/398135" target="_blank">
+																							심상찮은 외국인 매도세 언제까지
+																						</a>
+																					</h4>					
+																					<p class="text-muted m-b-0">주식시장에서 외국인들의 매도공세가 심상치 않다. 외국인 순매도 행진은 얼마전까지 주가급등에 따른 ‘차익실현’으로 해석됐지만 최근에는 ‘시장이탈’ 조짐으로 변화하고 있다. 일부 전문가들은 “11월초 미국 연방준비위원회가 금리 방향을 결정할 때까지 외국인 매도세가 지속될 것”이라는 조심스러운 견해를 내놓고 있다.</p>
+																				</div>
+																			</div>
+																		</td>
+																	</tr>
+														
+															
+															</tbody>
+														</table>
+													</div>
 													</div>
 												</div>
 											</div>
@@ -293,28 +343,26 @@
 									<!-- Inverse-color Breadcrumb card end -->
 									<div id="custompage" class="row"></div>
 
+
 									<!-- Inverse-color Breadcrumb card start -->
-									<div class="card borderless-card">
+									<!-- <div class="card borderless-card">
 										<div class="card-block inverse-breadcrumb">
 											<div class="breadcrumb-header">
 												<h5>STEP 4 : 전문가의 이론(룰)과 현실 비교하기</h5>
 												<span>Stock Signal With Exchange</span>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<!-- Inverse-color Breadcrumb card end -->
 
-									<!-- Simple Breadcrumb card start -->
-									<div class="card">
+									
+									<!-- <div class="card">
 										<div class="card-block">
 											<h5>Expert`s Theory : 전문가의 환율과 주가에 대한 이론 (트리플 약세)</h5>
 										</div>
 									</div>
-									<!-- Simple Breadcrumb card start -->
-
+								
 									<div class="row">
-
-										<!-- task, page, download counter  start -->
 										<div class="col-xl-3 col-md-6">
 											<div class="card">
 												<div class="card-block">
@@ -410,20 +458,19 @@
 												</div>
 											</div>
 										</div>
-										<!-- task, page, download counter  end -->
 									</div>
+ -->
 
-
-									<!-- Simple Breadcrumb card start -->
+									<!-- 
 									<div class="card">
 										<div class="card-block">
 											<h5>Reality : 현실에서는?</h5>
 										</div>
 									</div>
-									<!-- Simple Breadcrumb card start -->
+									
 									<div class="row">
 
-										<!-- task, page, download counter  start -->
+										task, page, download counter  start
 										<div class="col-xl-3 col-md-6">
 											<div class="card">
 												<div class="card-block">
@@ -527,7 +574,7 @@
 
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<!-- task, page, download counter  end -->
 									</div>
 

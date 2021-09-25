@@ -30,24 +30,11 @@ public class ExchangeEchoHandler extends TextWebSocketHandler {
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		System.out.println("handleTextMessage:" + session + " : " + message);
-
-		// 온라인중인가를 판단함.
-//		for(int i = 0; i < userSessions.size(); i++) {
-//			WebSocketSession onlinSession = userSessions.get(i)
-//			if (onlinSession != null) {
-//				TextMessage tmpMsg = new TextMessage("비상");
-//				onlinSession.sendMessage(tmpMsg);
-//			}			
-//		}
-		
-		for (Map.Entry<String, WebSocketSession> entry : userSessions.entrySet()) {
-		    WebSocketSession onlinSession = entry.getValue();
-		    if (onlinSession != null) {
-				TextMessage tmpMsg = new TextMessage("환율 변동성 감지!!");
-				onlinSession.sendMessage(tmpMsg);
-			}
+		String senderId = getId(session);
+		//모든 유저에게 보내기
+		for (WebSocketSession sess: sessions) {
+			sess.sendMessage(new TextMessage(senderId + ": " + message.getPayload()));
 		}
-
 	}
 
 	private String getId(WebSocketSession session) {
