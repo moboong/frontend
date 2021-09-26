@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="foreign.ForeignDAO">
+	
+	<insert id="insertAll" parameterType="java.util.List">
+		INSERT INTO FOREIGNSELL (retail, regDate, foreigns, institutional)
+		VALUES
+		<foreach collection="list" item="item" separator=" , ">
+			(#{item.retail}, #{item.regDate}, #{item.foreigns}, #{item.institutional})
+		</foreach>
+	</insert>
+	
+	<select id="selectAll" resultType="foreignVO">
+		SELECT regDate, retail, foreigns, institutional FROM FOREIGNSELL
+		ORDER BY regDate desc
+	</select>
+	
+</mapper>

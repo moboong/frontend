@@ -221,6 +221,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/common-pages.js"></script>
 
+<jsp:include page="/WEB-INF/jsp/modal/msgalert.jsp" />
+<script>
+	    if ('${ msg }') {
+			$('#msgModalBody').html('${ msg }');
+			$('#msgModal').modal('show'); 
+		}
+</script>
+
 	<script>
 
 		$(document).ready(function() {

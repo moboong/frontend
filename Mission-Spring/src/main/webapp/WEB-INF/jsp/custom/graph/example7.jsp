@@ -5,8 +5,8 @@
 <div id="7" class="col-xl-6 col-md-12 custcard">
 	<div class="card">
 		<div class="card-header">
-			<h5>7번 컨텐츠</h5>
-			<span class="text-muted">여기서 외국인 매도세에 주목해보세요!</span>
+			<h5>유럽연합EUR</h5>
+			<span class="text-muted">유로도 주목하기!</span>
 			<div class="card-header-right" style="display: none;">
 				<i class="fa fa-plus plussize-card"></i> <i
 					class="fa fa-minus minussize-card"></i> <i
@@ -14,33 +14,7 @@
 			</div>
 		</div>
 		<div class="card-block">
-			<div class="col-xl-12 col-md-12">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs md-tabs" role="tablist">
-					<li class="nav-item"><a class="nav-link active"
-						data-toggle="tab" href="#home3" role="tab">1일(1분)</a>
-						<div class="slide"></div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#profile3" role="tab">1주일</a>
-						<div class="slide"></div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#messages3" role="tab">1개월</a>
-						<div class="slide"></div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#settings3" role="tab">3개월</a>
-						<div class="slide"></div></li>
-				</ul>
-			</div>
-			<div style="max-height: 500px;" class="row align-items-center">
-				<div class="container">
-					<img
-						src="https://ssl.pstatic.net/imgfinance/chart/sise/trendUitradeDayKOSPI.png? />"
-						border="0" alt="그래프" width="100%"
-						class="card-img rounded mx-auto d-block"
-						style="max-height: 700px; max-width: 700px;">
-				</div>
-			</div>
-
+			<img src="https://ssl.pstatic.net/imgfinance/chart/marketindex/area/month3/FX_EURKRW.png" width="700" alt="차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x243.gif'">
 		</div>
 	</div>
 </div>

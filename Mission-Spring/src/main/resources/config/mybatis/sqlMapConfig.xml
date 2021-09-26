@@ -11,5 +11,6 @@
 		<typeAlias type="kr.ac.kopo.exchange.vo.ExchangeVO" alias="exchangeVO" />
 		<typeAlias type="kr.ac.kopo.kospi.vo.KospiVO" alias="kospiVO" />
 		<typeAlias type="kr.ac.kopo.admin.vo.ConditionVO" alias="conditionVO" />
+		<typeAlias type="kr.ac.kopo.signal.vo.ForeignVO" alias="foreignVO" />
 	</typeAliases>
 </configuration>

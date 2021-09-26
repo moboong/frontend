@@ -56,366 +56,267 @@
                                     <!-- Page-body start -->
                                     <div class="page-body">
                                         <div class="row">
-                                            <!-- task, page, download counter  start -->
-                                            <div class="col-xl-3 col-md-6">
+                                            
+    										
+    										<div class="col-xl-7 col-md-12">
+												<div class="card">
+													<div class="card-header">
+														<h5>WELCOME!!</h5>
+														<span class="text-muted">어서오세요! 친절한 거시경제지표 서비스 스톡시그널입니다!</span>
+													</div>
+													<div class="card-block"
+														style="">
+														<div
+															class="row align-items-center">
+															<div class="container">
+																<img id="signalImg"
+																	src="${pageContext.request.contextPath}/assets/images/main.png"
+																	class="card-img rounded mx-auto d-block"
+																	style="">
+															</div>
+														</div>
+														
+													</div>
+												</div>
+											</div>
+    										
+    										
+                                           	<div class="col-xl-5 col-md-12">
+												<div class="card">
+													<div class="card-header">
+														<h5>스톡 시그널</h5>
+														<span class="text-muted">거시경제지표이 내 주식에 어떤 영향을 미치는 걸까?</span>
+													</div>
+													<div class="card-block"
+														style="min-height: 400px;">
+														<!-- Nav tabs -->
+														<div class="col-xl-12 col-md-12">
+															<ul class="nav nav-tabs md-tabs" role="tablist">
+																<li class="nav-item"><a class="nav-link active"
+																	data-toggle="tab" href="#home3" role="tab">환율시그널</a>
+																	<div class="slide"></div></li>
+																<li class="nav-item"><a class="nav-link"
+																	data-toggle="tab" href="#profile3" role="tab">금리시그널</a>
+																	<div class="slide"></div></li>
+																<li class="nav-item"><a class="nav-link"
+																	data-toggle="tab" href="#messages3" role="tab">유가시그널</a>
+																	<div class="slide"></div></li>
+																<li class="nav-item"><a class="nav-link"
+																	data-toggle="tab" href="#settings3" role="tab">원자재시그널</a>
+																	<div class="slide"></div></li>
+																<li class="nav-item"><a class="nav-link"
+																	data-toggle="tab" href="#settings3" role="tab">금속시그널</a>
+																	<div class="slide"></div></li>
+																	<li class="nav-item"><a class="nav-link"
+																	data-toggle="tab" href="#settings3" role="tab">주가지수</a>
+																	<div class="slide"></div></li>
+															</ul>
+														</div>
+														<!-- Nav tabs -->
+														<div style="max-height: 500px;"
+															class="row align-items-center">
+															<div class="container">
+																<img id="signalImg"
+																	src="${pageContext.request.contextPath}/assets/images/exchange/1.png"
+																	class="card-img rounded mx-auto d-block"
+																	style="max-height: 500px; max-width: 500px;">
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<!-- task, page, download counter  start -->
+											<div class="col-xl-2 col-md-4">
                                                 <div class="card">
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             <div class="col-8">
-                                                                <h4 class="text-c-purple">$30200</h4>
-                                                                <h6 class="text-muted m-b-0">All Earnings</h6>
+                                                                <h4 class="text-c-red">1,178.00원</h4>
+                                                                <h6 class="text-muted m-b-0">환율(미국-달러)</h6>
                                                             </div>
                                                             <div class="col-4 text-right">
-                                                                <i class="fa fa-bar-chart f-28"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer bg-c-purple">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-9">
-                                                                <p class="text-white m-b-0">% change</p>
-                                                            </div>
-                                                            <div class="col-3 text-right">
-                                                                <i class="fa fa-line-chart text-white f-16"></i>
-                                                            </div>
-                                                        </div>
-            
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-md-6">
-                                                <div class="card">
-                                                    <div class="card-block">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-8">
-                                                                <h4 class="text-c-green">290+</h4>
-                                                                <h6 class="text-muted m-b-0">Page Views</h6>
-                                                            </div>
-                                                            <div class="col-4 text-right">
-                                                                <i class="fa fa-file-text-o f-28"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer bg-c-green">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-9">
-                                                                <p class="text-white m-b-0">% change</p>
-                                                            </div>
-                                                            <div class="col-3 text-right">
-                                                                <i class="fa fa-line-chart text-white f-16"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-md-6">
-                                                <div class="card">
-                                                    <div class="card-block">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-8">
-                                                                <h4 class="text-c-red">145</h4>
-                                                                <h6 class="text-muted m-b-0">Task Completed</h6>
-                                                            </div>
-                                                            <div class="col-4 text-right">
-                                                                <i class="fa fa-calendar-check-o f-28"></i>
+                                                            	<i class="fa fa-usd f-28"></i>                                                                
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer bg-c-red">
                                                         <div class="row align-items-center">
                                                             <div class="col-9">
-                                                                <p class="text-white m-b-0">% change</p>
+                                                                <p class="text-white m-b-0">전일대비 +4.00(+0.34%)</p>
                                                             </div>
                                                             <div class="col-3 text-right">
-                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                                <i class="fa fa-hand-o-up text-white f-16"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3 col-md-6">
+                                            <div class="col-xl-2 col-md-4">
                                                 <div class="card">
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             <div class="col-8">
-                                                                <h4 class="text-c-blue">500</h4>
-                                                                <h6 class="text-muted m-b-0">Downloads</h6>
+                                                                <h4 class="text-c-purple">0.75%</h4>
+                                                                <h6 class="text-muted m-b-0">금리(콜금리-1일)</h6>
                                                             </div>
-                                                            <div class="col-4 text-right">
-                                                                <i class="fa fa-hand-o-down f-28"></i>
+                                                            <div class="col-4 text-right">                                                                
+                                                                <i class="fa fa-percent f-28"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer bg-c-blue">
+                                                    <div class="card-footer bg-c-purple">
                                                         <div class="row align-items-center">
                                                             <div class="col-9">
-                                                                <p class="text-white m-b-0">% change</p>
+                                                                <p class="text-white m-b-0">전일대비 -0.02(-2.60%)</p>
                                                             </div>
                                                             <div class="col-3 text-right">
-                                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                                                <i class="fa fa-hand-o-down text-white f-16"></i>
                                                             </div>
                                                         </div>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-red">75.02</h4>
+                                                                <h6 class="text-muted m-b-0">유가(두바이유)</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">                                                            	
+                                                            	<i class="fa fa-database f-28"></i>                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-red">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">전일대비 +0.65(+0.87%)</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                               	<i class="fa fa-hand-o-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                             <div class="col-xl-2 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-red">9,275.00</h4>
+                                                                <h6 class="text-muted m-b-0">원자재(구리)</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">                                                            	
+                                                            	<i class="fa fa-cog f-28"></i>                                                        
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-red">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">전일대비 +23.0(+0.25%)</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-hand-o-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-red">1,749.70</h4>
+                                                                <h6 class="text-muted m-b-0">금속(국제 금)</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">                                                            	
+                                                            	<i class="fa fa-codepen f-28"></i>                                                      
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-red">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">전일대비 +2.00(+0.11%)</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-hand-o-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-xl-2 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text-c-purple">15,047.70</h4>
+                                                                <h6 class="text-muted m-b-0">나스닥 종합</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">                                                                
+                                                                <i class="fa fa-line-chart f-28"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-c-purple">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <p class="text-white m-b-0">전일대비 -4.54(-0.03%)</p>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <i class="fa fa-hand-o-down text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+            
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- task, page, download counter  end -->
-    
-                                            <!--  sale analytics start -->
-                                            <div class="col-xl-8 col-md-12">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h5>Sales Analytics</h5>
-                                                        <span class="text-muted">Get 15% Off on <a href="https://www.amcharts.com/" target="_blank">amCharts</a> licences. Use code "codedthemes" and get the discount.</span>
-                                                        <div class="card-header-right">
-                                                            <ul class="list-unstyled card-option">
-                                                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                                                                <li><i class="fa fa-window-maximize full-card"></i></li>
-                                                                <li><i class="fa fa-minus minimize-card"></i></li>
-                                                                <li><i class="fa fa-refresh reload-card"></i></li>
-                                                                <li><i class="fa fa-trash close-card"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-block">
-                                                        <div id="sales-analytics" style="height: 400px;"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4 col-md-12">
-                                                <div class="card">
-                                                    <div class="card-block">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h4>$256.23</h4>
-                                                                <p class="text-muted">This Month</p>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <label class="label label-success">+20%</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-8">
-                                                                <canvas id="this-month" style="height: 150px;"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card quater-card">
-                                                    <div class="card-block">
-                                                        <h6 class="text-muted m-b-15">This Quarter</h6>
-                                                        <h4>$3,9452.50</h4>
-                                                        <p class="text-muted">$3,9452.50</p>
-                                                        <h5>87</h5>
-                                                        <p class="text-muted">Online Revenue<span class="f-right">80%</span></p>
-                                                        <div class="progress"><div class="progress-bar bg-c-blue" style="width: 80%"></div></div>
-                                                        <h5 class="m-t-15">68</h5>
-                                                        <p class="text-muted">Offline Revenue<span class="f-right">50%</span></p>
-                                                        <div class="progress"><div class="progress-bar bg-c-green" style="width: 50%"></div></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--  sale analytics end -->
-    
-                                            <!--  project and team member start -->
-                                            <div class="col-xl-8 col-md-12">
-                                                <div class="card table-card">
-                                                    <div class="card-header">
-                                                        <h5>Projects</h5>
-                                                        <div class="card-header-right">
-                                                            <ul class="list-unstyled card-option">
-                                                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                                                                <li><i class="fa fa-window-maximize full-card"></i></li>
-                                                                <li><i class="fa fa-minus minimize-card"></i></li>
-                                                                <li><i class="fa fa-refresh reload-card"></i></li>
-                                                                <li><i class="fa fa-trash close-card"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-block">
-                                                        <div class="table-responsive">
-                                                            <table class="table table-hover">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        <div class="chk-option">
-                                                                            <div class="checkbox-fade fade-in-primary">
-                                                                                <label class="check-task">
-                                                                                    <input type="checkbox" value="">
-                                                                                    <span class="cr">
-                                                                                            <i class="cr-icon fa fa-check txt-default"></i>
-                                                                                        </span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        Assigned</th>
-                                                                    <th>Name</th>
-                                                                    <th>Due Date</th>
-                                                                    <th class="text-right">Priority</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="chk-option">
-                                                                            <div class="checkbox-fade fade-in-primary">
-                                                                                <label class="check-task">
-                                                                                    <input type="checkbox" value="">
-                                                                                    <span class="cr">
-                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
-                                                                                            </span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-inline-block align-middle">
-                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                                            <div class="d-inline-block">
-                                                                                <h6>John Deo</h6>
-                                                                                <p class="text-muted m-b-0">Graphics Designer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>Able Pro</td>
-                                                                    <td>Jun, 26</td>
-                                                                    <td class="text-right"><label class="label label-danger">Low</label></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="chk-option">
-                                                                            <div class="checkbox-fade fade-in-primary">
-                                                                                <label class="check-task">
-                                                                                    <input type="checkbox" value="">
-                                                                                    <span class="cr">
-                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
-                                                                                            </span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-inline-block align-middle">
-                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                                            <div class="d-inline-block">
-                                                                                <h6>Jenifer Vintage</h6>
-                                                                                <p class="text-muted m-b-0">Web Designer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>Mashable</td>
-                                                                    <td>March, 31</td>
-                                                                    <td class="text-right"><label class="label label-primary">high</label></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="chk-option">
-                                                                            <div class="checkbox-fade fade-in-primary">
-                                                                                <label class="check-task">
-                                                                                    <input type="checkbox" value="">
-                                                                                    <span class="cr">
-                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
-                                                                                            </span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-inline-block align-middle">
-                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                                            <div class="d-inline-block">
-                                                                                <h6>William Jem</h6>
-                                                                                <p class="text-muted m-b-0">Developer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>Flatable</td>
-                                                                    <td>Aug, 02</td>
-                                                                    <td class="text-right"><label class="label label-success">medium</label></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="chk-option">
-                                                                            <div class="checkbox-fade fade-in-primary">
-                                                                                <label class="check-task">
-                                                                                    <input type="checkbox" value="">
-                                                                                    <span class="cr">
-                                                                                                <i class="cr-icon fa fa-check txt-default"></i>
-                                                                                            </span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-inline-block align-middle">
-                                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                                            <div class="d-inline-block">
-                                                                                <h6>David Jones</h6>
-                                                                                <p class="text-muted m-b-0">Developer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>Guruable</td>
-                                                                    <td>Sep, 22</td>
-                                                                    <td class="text-right"><label class="label label-primary">high</label></td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                            <div class="text-right m-r-20">
-                                                                <a href="#!" class=" b-b-primary text-primary">View all Projects</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4 col-md-12">
-                                                <div class="card ">
-                                                    <div class="card-header">
-                                                        <h5>Team Members</h5>
-                                                        <div class="card-header-right">
-                                                            <ul class="list-unstyled card-option">
-                                                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                                                                <li><i class="fa fa-window-maximize full-card"></i></li>
-                                                                <li><i class="fa fa-minus minimize-card"></i></li>
-                                                                <li><i class="fa fa-refresh reload-card"></i></li>
-                                                                <li><i class="fa fa-trash close-card"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-block">
-                                                        <div class="align-middle m-b-30">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                            <div class="d-inline-block">
-                                                                <h6>David Jones</h6>
-                                                                <p class="text-muted m-b-0">Developer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="align-middle m-b-30">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-1.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                            <div class="d-inline-block">
-                                                                <h6>David Jones</h6>
-                                                                <p class="text-muted m-b-0">Developer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="align-middle m-b-30">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                            <div class="d-inline-block">
-                                                                <h6>David Jones</h6>
-                                                                <p class="text-muted m-b-0">Developer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="align-middle m-b-30">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                            <div class="d-inline-block">
-                                                                <h6>David Jones</h6>
-                                                                <p class="text-muted m-b-0">Developer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="align-middle m-b-10">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/avatar-5.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                                            <div class="d-inline-block">
-                                                                <h6>David Jones</h6>
-                                                                <p class="text-muted m-b-0">Developer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="text-center">
-                                                            <a href="#!" class="b-b-primary text-primary">View all Projects</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--  project and team member end -->
+                                        
+                                        	<div class="col-xl-6 col-md-12">
+												<div class="card">
+													<div class="card-header">
+														<h5>하나금융TV 리서피센터 모닝브리프</h5>
+														<span class="text-muted">어서오세요! 친절한 거시경제지표 서비스 스톡시그널입니다!</span>
+													</div>
+													<div class="card-block"
+														style="padding-left: 100px">
+														<div
+															class="row align-items-center">
+															<div class="container">
+																<iframe width="600" height="315" src="https://www.youtube.com/embed/WV3V0C_5zDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>																
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+                                        	<div class="col-xl-6 col-md-12">
+												<div class="card">
+													<div class="card-header">
+														<h5>하나금융TV 리서피센터 모닝브리프</h5>
+														<span class="text-muted">어서오세요! 친절한 거시경제지표 서비스 스톡시그널입니다!</span>
+													</div>
+													<div class="card-block"
+														style="padding-left: 100px">
+														<div
+															class="row align-items-center">
+															<div class="container">
+																<iframe width="600" height="315" src="https://www.youtube.com/embed/Pfp4PmLt14w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+                                        	
                                         </div>
                                     </div>
                                     <!-- Page-body end -->
@@ -428,7 +329,7 @@
             </div>
         </div>
     </div>
-
+	
     
     <jsp:include page="/WEB-INF/jsp/include/bottom.jsp"/>
     <!-- index amChart의 js파일 -->
@@ -436,6 +337,7 @@
 	<script>
 		$(document).ready(function() {
 			$('#index').attr('class', 'active');
+		
 		})
 	</script>
 </body>

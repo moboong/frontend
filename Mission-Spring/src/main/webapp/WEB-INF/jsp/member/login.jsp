@@ -36,10 +36,6 @@
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css">
       
-      <script>
-		if('${ msg }')
-			alert('${ msg }')
-	  </script>
   </head>
 
   <body themebg-pattern="theme1">
@@ -180,6 +176,15 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/SmoothScroll.js"></script>     
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/common-pages.js"></script>
+
+<jsp:include page="/WEB-INF/jsp/modal/msgalert.jsp" />
+<script>
+	    if ('${ msg }') {
+			$('#msgModalBody').html('${ msg }');
+			$('#msgModal').modal('show'); 
+		}
+</script>
+
 </body>
 
 </html>

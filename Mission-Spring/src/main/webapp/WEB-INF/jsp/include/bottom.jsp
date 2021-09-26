@@ -31,13 +31,15 @@
     <!-- notification js -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-growl.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/notification/notification.js"></script>
-    <!-- Morris Chart js -->
-    <%-- <script src="${pageContext.request.contextPath}/assets/js/raphael/raphael.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/morris.js/morris.js"></script> --%>
-    <!-- custom js -->
-    <%-- <script src="${pageContext.request.contextPath}/assets/js/morris-custom-chart.js"></script> --%>
-    <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/custom-dashboard.js"></script> --%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/script.js "></script>
+
+<jsp:include page="/WEB-INF/jsp/modal/msgalert.jsp" />   
+<script>
+	    if ('${ msg }') {
+			$('#msgModalBody').html('${ msg }');
+			$('#msgModal').modal('show'); 
+		}
+</script>    
     
 <script>
 var socket = null;

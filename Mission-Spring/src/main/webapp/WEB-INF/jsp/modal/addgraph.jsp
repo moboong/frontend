@@ -156,7 +156,7 @@
 												<div class="d-inline-block align-middle">
 
 													<div class="d-inline-block">
-														<h6>sample 3</h6>
+														<h6>국고채(3년) 금리 지표</h6>
 														<p class="text-muted m-b-0"></p>
 													</div>
 												</div>
@@ -212,7 +212,7 @@
 												<div class="d-inline-block align-middle">
 
 													<div class="d-inline-block">
-														<h6>sample 4</h6>
+														<h6>회사채(3년) 금리 지표</h6>
 														<p class="text-muted m-b-0"></p>
 													</div>
 												</div>
@@ -268,7 +268,7 @@
 												<div class="d-inline-block align-middle">
 
 													<div class="d-inline-block">
-														<h6>sample 5</h6>
+														<h6>KODEX 200선물인버스2X</h6>
 														<p class="text-muted m-b-0"></p>
 													</div>
 												</div>
@@ -324,7 +324,7 @@
 												<div class="d-inline-block align-middle">
 
 													<div class="d-inline-block">
-														<h6>sample 6</h6>
+														<h6>일본JPY(100엔)</h6>
 														<p class="text-muted m-b-0"></p>
 													</div>
 												</div>
@@ -380,7 +380,7 @@
 												<div class="d-inline-block align-middle">
 
 													<div class="d-inline-block">
-														<h6>sample 7</h6>
+														<h6>유럽연합EUR</h6>
 														<p class="text-muted m-b-0"></p>
 													</div>
 												</div>
@@ -436,7 +436,7 @@
 												<div class="d-inline-block align-middle">
 
 													<div class="d-inline-block">
-														<h6>sample 8</h6>
+														<h6>중국CNY</h6>
 														<p class="text-muted m-b-0"></p>
 													</div>
 												</div>
@@ -492,7 +492,7 @@
 												<div class="d-inline-block align-middle">
 
 													<div class="d-inline-block">
-														<h6>sample 9</h6>
+														<h6>콜금리</h6>
 														<p class="text-muted m-b-0"></p>
 													</div>
 												</div>

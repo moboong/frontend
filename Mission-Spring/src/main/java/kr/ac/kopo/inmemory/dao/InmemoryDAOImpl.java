@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.exchange.vo.ExchangeVO;
+import kr.ac.kopo.kospi.vo.KospiVO;
+import kr.ac.kopo.signal.vo.ForeignVO;
 
 @Repository
 public class InmemoryDAOImpl implements InmemoryDAO {
@@ -45,5 +47,28 @@ public class InmemoryDAOImpl implements InmemoryDAO {
 		return vlist;
 	}
 	
-
+	@Override
+	public int insertAllKospi(List<KospiVO> kospiVOs) {
+		int result = hsqlsessionTemplate.update("kospi.KospiDAO.insertAll", kospiVOs);
+		return result;
+	}
+	
+	@Override
+	public List<KospiVO> searchAllKospi() {
+		List<KospiVO> list = hsqlsessionTemplate.selectList("kospi.KospiDAO.selectAll");
+		return list;
+	}
+	
+	@Override
+	public int insertAllForeign(List<ForeignVO> foreignVOs) {
+		int result = hsqlsessionTemplate.update("foreign.ForeignDAO.insertAll", foreignVOs);
+		return result;
+	}
+	
+	@Override
+	public List<ForeignVO> searchAllForeign() {
+		List<ForeignVO> list = hsqlsessionTemplate.selectList("foreign.ForeignDAO.selectAll");
+		return list;
+	}
+	
 }

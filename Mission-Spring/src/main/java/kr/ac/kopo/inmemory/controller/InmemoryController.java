@@ -19,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.ac.kopo.exchange.vo.ExchangeVO;
 import kr.ac.kopo.inmemory.service.InmemoryService;
 import kr.ac.kopo.inmemory.vo.NoticeVO;
+import kr.ac.kopo.kospi.vo.KospiVO;
+import kr.ac.kopo.signal.vo.ForeignVO;
 
 @Controller
 public class InmemoryController {
@@ -34,6 +36,25 @@ public class InmemoryController {
 		
 		return mav;
 	}
+	
+	@GetMapping("/inmemory/selectAllKospi")
+	public ModelAndView selectAllKospi() {
+		ModelAndView mav = new ModelAndView("ajax/inmemorytable2");
+		List<KospiVO> kospiVOs = service.searchAllKospi();
+		mav.addObject("kospiList", kospiVOs);
+		
+		return mav;
+	}
+	
+	@GetMapping("/inmemory/selectAllForeign")
+	public ModelAndView selectAllForeign() {
+		ModelAndView mav = new ModelAndView("ajax/inmemorytable3");
+		List<ForeignVO> foreignVOs = service.searchAllForeign();
+		mav.addObject("foreignList", foreignVOs);
+		
+		return mav;
+	}
+	
 	
 
 	@RequestMapping("/inmemory/insertAll")
@@ -204,5 +225,145 @@ public class InmemoryController {
 		
 		return noticeList;
 	}
+	
+	
+	
+	@RequestMapping("/inmemory/insertAllKospi")
+	@ResponseBody
+	public String insertAllKospi() {
+		
+		int result = 0;
+		int page = 1;
+		
+		String urlTemp = "https://finance.naver.com/sise/sise_index.naver?code=KOSPI";
+		Document docTemp = null;
+		try {
+			docTemp = Jsoup.connect(urlTemp).get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Elements eleTemp = docTemp.select("iframe[name='time']");
 
+		String paramUrl = "https://finance.naver.com" + eleTemp.attr("src") + "&page=";
+		String url = paramUrl + 1;
+
+		Document doc = null;
+		try {
+			doc = Jsoup.connect(url).get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		Elements eleTemp2 = doc.select("a:contains(맨뒤)");
+		String strlast = eleTemp2.attr("href");
+		String[] strArr = strlast.split("=");
+		String last = strArr[strArr.length - 1];
+		int lastpage = Integer.parseInt(last);
+
+		while (true) {
+			String url3 = paramUrl + page;
+			Document doc3 = null;
+			try {
+				doc3 = Jsoup.connect(url3).get();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			Elements elements = doc3.select("td[class='date']");
+
+			String[] str = elements.text().split(" ");
+
+			List<KospiVO> list = new ArrayList<KospiVO>();
+			for (int i = 0; i < str.length; i++) {
+				KospiVO kospiVO = new KospiVO();
+				String regDate = str[i];
+
+				kospiVO.setRegDate(regDate);
+
+				elements = doc3.select("tr:contains(" + str[i] + ")");
+
+				double variation = Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", ""));
+
+				Elements e1 = elements.select("img");
+				if (e1.attr("alt").equals("하락")) {
+					variation = variation * -1;
+				}
+
+				kospiVO.setEndPrice(Double.parseDouble(elements.text().split(" ")[1].replaceAll(",", "")));
+				kospiVO.setVariation(variation);
+
+				System.out.println(kospiVO);
+				list.add(kospiVO);
+			}
+
+			result = result + service.insertAllKospi(list);
+
+			if (page == lastpage) {
+				break;
+			} else {
+				page++;
+			}
+		}
+		return "총 삽입된 열의 수:" + result;
+	}
+	
+	@RequestMapping("/inmemory/insertAllForeign")
+	@ResponseBody
+	public String insertAllForeign() {
+		
+		int result = 0;
+		
+		String urlTemp = "https://finance.naver.com/sise/investorDealTrendTime.naver?bizdate=20210924&page=1";
+		Document docTemp = null;
+		try {
+			docTemp = Jsoup.connect(urlTemp).get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Elements eleTemp = docTemp.select("a:contains(맨뒤)");
+		String strlast = eleTemp.attr("href");
+		String[] strArr = strlast.split("=");
+		String last = strArr[strArr.length - 1];
+		int lastpage = Integer.parseInt(last);
+		
+		
+		int page = 1;
+		while(true) {
+			
+			String url = "https://finance.naver.com/sise/investorDealTrendTime.naver?bizdate=20210924&page=" + page;
+			Document doc = null;
+			try {
+				doc = Jsoup.connect(url).get();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			Elements elements = doc.select("td[class='date2']");
+			String[] str = elements.text().split(" ");
+			
+			List<ForeignVO> list = new ArrayList<ForeignVO>();
+			for(int i = 0; i < str.length; i++) {
+				elements = doc.select("tr:contains(" + str[i] + ")");
+
+				String regDate = elements.text().split(" ")[0];
+				int retail = Integer.parseInt(elements.text().split(" ")[1].replace(",", ""));
+				int foreign = Integer.parseInt(elements.text().split(" ")[2].replace(",", ""));
+				int institutional = Integer.parseInt(elements.text().split(" ")[3].replace(",", ""));
+				ForeignVO foreignVO = new ForeignVO(regDate, retail, foreign, institutional);
+				
+				System.out.println(foreignVO);
+				list.add(foreignVO);
+			}
+			
+			result = result + service.insertAllForeign(list);
+			
+			if (page == lastpage) {
+				break;
+			} else {
+				page++;
+			}
+			
+		}
+		return "총 삽입된 열의 수:" + result;
+		
+	}
 }

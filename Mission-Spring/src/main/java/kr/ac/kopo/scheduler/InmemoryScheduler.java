@@ -24,6 +24,7 @@ import kr.ac.kopo.email.Email;
 import kr.ac.kopo.email.EmailSender;
 import kr.ac.kopo.exchange.vo.ExchangeVO;
 import kr.ac.kopo.inmemory.service.InmemoryService;
+import kr.ac.kopo.kospi.vo.KospiVO;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
@@ -35,16 +36,16 @@ public class InmemoryScheduler {
 
 	@Autowired
 	private AdminService oracleService;
-	
+
 	@Autowired
 	private EmailSender emailSender;
 	@Autowired
 	private Email email;
 	@Autowired
-    private JavaMailSender mailSender;
+	private JavaMailSender mailSender;
 
 	// 매일 9시에
-	@Scheduled(cron = "0 0 9 * * *")
+	@Scheduled(cron = "0 1 9 * * *")
 	public void insertAll() {
 
 		int result = 0;
@@ -101,7 +102,7 @@ public class InmemoryScheduler {
 	}
 
 	// 1분마다
-	@Scheduled(cron = "0 0/1 * * * *")
+	//@Scheduled(cron = "0 0/1 * * * *")
 	public void insertOne() {
 
 		// 여기부터 인메모리에 적재.
@@ -175,6 +176,83 @@ public class InmemoryScheduler {
 
 	}
 
+	// 매일 9시에
+	@Scheduled(cron = "0 1 9 * * *")
+	public void insertAllKospi() {
+
+		int page = 1;
+
+		String urlTemp = "https://finance.naver.com/sise/sise_index.naver?code=KOSPI";
+		Document docTemp = null;
+		try {
+			docTemp = Jsoup.connect(urlTemp).get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Elements eleTemp = docTemp.select("iframe[name='time']");
+
+		String paramUrl = "https://finance.naver.com" + eleTemp.attr("src") + "&page=";
+		String url = paramUrl + 1;
+
+		Document doc = null;
+		try {
+			doc = Jsoup.connect(url).get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		Elements eleTemp2 = doc.select("a:contains(맨뒤)");
+		String strlast = eleTemp2.attr("href");
+		String[] strArr = strlast.split("=");
+		String last = strArr[strArr.length - 1];
+		int lastpage = Integer.parseInt(last);
+
+		while (true) {
+			String url3 = paramUrl + page;
+			Document doc3 = null;
+			try {
+				doc3 = Jsoup.connect(url3).get();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			Elements elements = doc3.select("td[class='date']");
+
+			String[] str = elements.text().split(" ");
+
+			List<KospiVO> list = new ArrayList<KospiVO>();
+			for (int i = 0; i < str.length; i++) {
+				KospiVO kospiVO = new KospiVO();
+				String regDate = str[i];
+
+				kospiVO.setRegDate(regDate);
+
+				elements = doc3.select("tr:contains(" + str[i] + ")");
+
+				double variation = Double.parseDouble(elements.text().split(" ")[2].replaceAll(",", ""));
+
+				Elements e1 = elements.select("img");
+				if (e1.attr("alt").equals("하락")) {
+					variation = variation * -1;
+				}
+
+				kospiVO.setEndPrice(Double.parseDouble(elements.text().split(" ")[1].replaceAll(",", "")));
+				kospiVO.setVariation(variation);
+
+				System.out.println(kospiVO);
+				list.add(kospiVO);
+			}
+
+			hsqlService.insertAllKospi(list);
+
+			if (page == lastpage) {
+				break;
+			} else {
+				page++;
+			}
+		}
+
+	}
+
 	// 위기 감지 메소드
 	private void checkThreat() throws Exception {
 
@@ -218,20 +296,19 @@ public class InmemoryScheduler {
 		ExampleClient c = new ExampleClient(new URI("ws://localhost:9999/Mission-Spring/replyEcho"));
 		c.connect();
 	}
-	
-	
+
 	@SuppressWarnings("unused")
-	//email 보내기 메소드
+	// email 보내기 메소드
 	private void sendEmail() throws Exception {
-		
+
 		email.setContent("[환율] : 미국달러 환율에서 주목할만한 변동을 보였습니다. 어서 스톡시그널을 확인해보세요!"); // 내용
 		email.setReceiver("luffy333@naver.com");
 		email.setSubject("<하나 스톡시그널 위기감지 알림>"); // 제목
 		emailSender.SendEmail(mailSender, email); // 보내기!
 	}
-	
+
 	@SuppressWarnings("unused")
-	//문자 보내기 메소드
+	// 문자 보내기 메소드
 	private void sendSMS() {
 		String api_key = "NCSPABXT2R8TK227";
 		String api_secret = "Y2BPDNR8YPKA0XHXDEQDSH9SCZ8SMIPL";

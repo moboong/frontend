@@ -47,9 +47,4 @@
         <!-- 네이버금융 -->
         <script type="text/javascript" src="https://ssl.pstatic.net/imgstock/static.pc/20210813130554/js/info/jindo.min.ns.1.5.3.euckr.js"></script>
 	    <script type="text/javascript" src="https://ssl.pstatic.net/imgstock/static.pc/20210813130554/js/jindo.1.5.3.element-text-patch.js"></script>
-	  
-	  <script>
-		  if ('${ msg }') {
-				alert('${ msg }')
-		  }
-	  </script>
+		

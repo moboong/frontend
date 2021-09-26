@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.exchange.vo.ExchangeVO;
 import kr.ac.kopo.inmemory.dao.InmemoryDAO;
+import kr.ac.kopo.kospi.vo.KospiVO;
+import kr.ac.kopo.signal.vo.ForeignVO;
 
 @Service
 public class InmemoryServiceImpl implements InmemoryService {
@@ -43,5 +45,30 @@ public class InmemoryServiceImpl implements InmemoryService {
 		List<ExchangeVO> vlist = inmemoryDAO.checkExchange(top);
 		return vlist;
 	}
+	
+	@Override
+	public int insertAllKospi(List<KospiVO> kospiVOs) {
+		int result = inmemoryDAO.insertAllKospi(kospiVOs);
+		return result;
+	}
+	
+	@Override
+	public List<KospiVO> searchAllKospi() {
+		List<KospiVO> list = inmemoryDAO.searchAllKospi();
+		return list;
+	}
+	
+	@Override
+	public int insertAllForeign(List<ForeignVO> foreignVOs) {
+		int result = inmemoryDAO.insertAllForeign(foreignVOs);
+		return result;
+	}
+	
+	@Override
+	public List<ForeignVO> searchAllForeign() {
+		List<ForeignVO> list = inmemoryDAO.searchAllForeign();
+		return list;
+	}
+	
 
 }
