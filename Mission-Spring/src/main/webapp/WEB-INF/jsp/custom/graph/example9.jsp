@@ -14,7 +14,10 @@
 			</div>
 		</div>
 		<div class="card-block">
-			<img src="https://ssl.pstatic.net/imgfinance/chart/marketindex/area/month3/IRR_CALL.png" width="700" alt="차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x243.gif'">
+			<img 
+			class="card-img rounded mx-auto d-block"
+			border="0" alt="그래프" width="100%"
+			src="https://ssl.pstatic.net/imgfinance/chart/marketindex/area/month3/IRR_CALL.png" alt="차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x243.gif'">
 		</div>
 	</div>
 </div>

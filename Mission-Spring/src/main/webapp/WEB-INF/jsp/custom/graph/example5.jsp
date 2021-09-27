@@ -15,7 +15,10 @@
 			</div>
 		</div>
 		<div class="card-block">
-			<img id="img_chart_area" src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/252670.png?" width="700" height="289" alt="이미지 차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x289.png'">
+			<img 
+			class="card-img rounded mx-auto d-block"
+			border="0" alt="그래프" width="100%"
+			id="img_chart_area" src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/252670.png?" height="289" alt="이미지 차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x289.png'">
 		</div>
 	</div>
 </div>

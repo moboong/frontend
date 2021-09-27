@@ -62,6 +62,8 @@
 					class="pcoded-mcaret"></span>
 			</a>
 				<ul class="pcoded-submenu">
+				
+					<c:if test="${ null eq userVO }">
 					<li class=" "><a href="${pageContext.request.contextPath}/signup"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
@@ -74,18 +76,17 @@
 							data-i18n="nav.basic-components.breadcrumbs">로그인</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
+					</c:if>
+					
+					<c:if test="${ null ne userVO }">
 					<li class=" "><a href="${pageContext.request.contextPath}/logout"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
 							data-i18n="nav.basic-components.alert">로그아웃</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
-						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.breadcrumbs">캘린더</span> <span
-							class="pcoded-mcaret"></span>
-					</a></li>
+					</c:if>
+					
 					<li class=" "><a href="${pageContext.request.contextPath}/board"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
@@ -135,7 +136,8 @@
 					class="pcoded-mcaret"></span>
 			</a></li>
 		</ul>
-
+		
+		<c:if test="${ userVO.id == 'admin' }">
 		<div class="pcoded-navigation-label" data-i18n="nav.category.forms">관리자 기능</div>
 		<ul class="pcoded-item pcoded-left-item">
 			<%-- <li><a href="${pageContext.request.contextPath}" class="waves-effect waves-dark"> <span
@@ -146,11 +148,11 @@
 			<li class="pcoded-hasmenu"><a href="javascript:void(0)"
 				class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 						class="ti-layout-grid2-alt"></i></span> <span class="pcoded-mtext"
-					data-i18n="nav.basic-components.main">룰 추가</span> <span
+					data-i18n="nav.basic-components.main">룰 수정</span> <span
 					class="pcoded-mcaret"></span>
 			</a>
 				<ul class="pcoded-submenu">
-					<li class=" "><a href="${pageContext.request.contextPath}"
+					<li class=" "><a href="${pageContext.request.contextPath}/admin"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
 							data-i18n="nav.basic-components.alert">알림 주기</span> <span
@@ -163,36 +165,9 @@
 							class="pcoded-mcaret"></span>
 					</a></li>
 				</ul></li>
-			
-			<li class="pcoded-hasmenu"><a href="javascript:void(0)"
-				class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-						class="ti-layout-grid2-alt"></i></span> <span class="pcoded-mtext"
-					data-i18n="nav.basic-components.main">관리기능</span> <span
-					class="pcoded-mcaret"></span>
-			</a>
-				<ul class="pcoded-submenu">
-					<li class=" "><a href="${pageContext.request.contextPath}"
-						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.alert">회원관리</span> <span
-							class="pcoded-mcaret"></span>
-					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
-						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.breadcrumbs">토론실관리</span> <span
-							class="pcoded-mcaret"></span>
-					</a></li>
-					<li class=" "><a href="${pageContext.request.contextPath}"
-						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.breadcrumbs">지표관리</span> <span
-							class="pcoded-mcaret"></span>
-					</a></li>
-				</ul></li>
 
 		</ul>
-
+		</c:if>
 		
 	</div>
 </nav>

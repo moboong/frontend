@@ -26,12 +26,16 @@ File: style.css
 /**  =====================
       Custom css start
 ==========================  **/
+@font-face {
+    font-family: 'hana';
+    src: url('../font/HanaM.ttf') format('truetype');
+}
 body {
   background-color: #f3f3f3;
   font-size: 0.875em;
   overflow-x: hidden;
   color: #455a64;
-  /**font-family: "Roboto", sans-serif;**/
+  font-family: "hana";
   background-attachment: fixed;
   background-image: linear-gradient(rgba(255, 255, 255, 0.2) 177px, rgba(255, 255, 255, 0.9) 18.6%); }
 

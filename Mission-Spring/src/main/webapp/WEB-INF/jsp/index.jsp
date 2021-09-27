@@ -294,27 +294,322 @@
 														<div
 															class="row align-items-center">
 															<div class="container">
-																<iframe width="600" height="315" src="https://www.youtube.com/embed/WV3V0C_5zDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>																
+																<iframe width="600" height="315" src="https://www.youtube.com/embed/WV3V0C_5zDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+																<br>
+																<br>
+																<br>																
+																<iframe width="600" height="315" src="https://www.youtube.com/embed/6JmzHdqhsBc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>																
 															</div>
 														</div>
+													</div>
+													<div class="card-footer">
+														<hr>
 													</div>
 												</div>
 											</div>
                                         	<div class="col-xl-6 col-md-12">
 												<div class="card">
-													<div class="card-header">
-														<h5>하나금융TV 리서피센터 모닝브리프</h5>
-														<span class="text-muted">어서오세요! 친절한 거시경제지표 서비스 스톡시그널입니다!</span>
-													</div>
-													<div class="card-block"
-														style="padding-left: 100px">
-														<div
-															class="row align-items-center">
-															<div class="container">
-																<iframe width="600" height="315" src="https://www.youtube.com/embed/Pfp4PmLt14w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>															</div>
-														</div>
-													</div>
+											<div class="card-header">
+												<h5>환율 지표 토론실</h5>
+												<span>환율에 대한 다양한 의견들을 <code>공유</code>해봐요!</span>												
+											</div>
+											<div class="card-block table-border-style">
+												<div class="table-responsive" style="max-height: 679px; overflow-y: auto;">
+													<table class="table table-hover">
+														<thead>
+															<tr>
+																<th>번호</th>
+																<th>제목</th>
+																<th>작성자</th>
+																<th>조회수</th>						
+																<th>등록일</th>
+															</tr>
+														</thead>
+														<tbody>
+															
+																<tr>
+																	<td>662</td>
+																	<td><a href="/Mission-Spring/board/662">
+																			환율 질문 올립니다.
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				4
+																			</label>
+																		
+																	</td>
+																	<td>son07</td>
+																	<td>12</td>
+																	<td>2021-09-24</td>
+																</tr>
+															
+																<tr>
+																	<td>661</td>
+																	<td><a href="/Mission-Spring/board/661">
+																			환율관련 질문 올립니다.
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>son07</td>
+																	<td>1</td>
+																	<td>2021-09-24</td>
+																</tr>
+															
+																<tr>
+																	<td>631</td>
+																	<td><a href="/Mission-Spring/board/631">
+																			질문이요
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				3
+																			</label>
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>11</td>
+																	<td>2021-09-23</td>
+																</tr>
+															
+																<tr>
+																	<td>601</td>
+																	<td><a href="/Mission-Spring/board/601">
+																			미국달러 환율 관련해서 질문 올립니다.
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				5
+																			</label>
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>90</td>
+																	<td>2021-09-22</td>
+																</tr>
+															
+																<tr>
+																	<td>584</td>
+																	<td><a href="/Mission-Spring/board/584">
+																			test4
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				3
+																			</label>
+																		
+																	</td>
+																	<td>ronaldo07</td>
+																	<td>21</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>583</td>
+																	<td><a href="/Mission-Spring/board/583">
+																			test3
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				3
+																			</label>
+																		
+																	</td>
+																	<td>ronaldo07</td>
+																	<td>5</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>582</td>
+																	<td><a href="/Mission-Spring/board/582">
+																			test2
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>mbappe07</td>
+																	<td>0</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>581</td>
+																	<td><a href="/Mission-Spring/board/581">
+																			test
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>mbappe07</td>
+																	<td>0</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>580</td>
+																	<td><a href="/Mission-Spring/board/580">
+																			업로드 테스트
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>son07</td>
+																	<td>0</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>579</td>
+																	<td><a href="/Mission-Spring/board/579">
+																			사진업로드테스트2
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>son07</td>
+																	<td>0</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>577</td>
+																	<td><a href="/Mission-Spring/board/577">
+																			손흥민 테스트
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				4
+																			</label>
+																		
+																	</td>
+																	<td>son07</td>
+																	<td>0</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>575</td>
+																	<td><a href="/Mission-Spring/board/575">
+																			이미지 파일 업로드
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>11</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>572</td>
+																	<td><a href="/Mission-Spring/board/572">
+																			파일업로드 테스트
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>2</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>571</td>
+																	<td><a href="/Mission-Spring/board/571">
+																			환율이 내려가는게 먼저인가요?
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				3
+																			</label>
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>13</td>
+																	<td>2021-09-20</td>
+																</tr>
+															
+																<tr>
+																	<td>541</td>
+																	<td><a href="/Mission-Spring/board/541">
+																			이거 되냐?
+																		</a>&nbsp;
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>1</td>
+																	<td>2021-09-18</td>
+																</tr>
+															
+																<tr>
+																	<td>511</td>
+																	<td><a href="/Mission-Spring/board/511">
+																			새글 등록이요
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				2
+																			</label>
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>0</td>
+																	<td>2021-09-18</td>
+																</tr>
+															
+																<tr>
+																	<td>483</td>
+																	<td><a href="/Mission-Spring/board/483">
+																			asd
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				14
+																			</label>
+																		
+																	</td>
+																	<td>asd</td>
+																	<td>5</td>
+																	<td>2021-08-25</td>
+																</tr>
+															
+																<tr>
+																	<td>451</td>
+																	<td><a href="/Mission-Spring/board/451">
+																			넥스트 레블
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				25
+																			</label>
+																		
+																	</td>
+																	<td>messi10</td>
+																	<td>13</td>
+																	<td>2021-08-25</td>
+																</tr>
+															
+																<tr>
+																	<td>422</td>
+																	<td><a href="/Mission-Spring/board/422">
+																			asd 삽입2...
+																		</a>&nbsp;
+																		
+																			<label class="badge badge-success">
+																				3
+																			</label>
+																		
+																	</td>
+																	<td>ronaldo07</td>
+																	<td>0</td>
+																	<td>2021-08-18</td>
+																</tr>						
+																															
+														</tbody>
+													</table>								
 												</div>
+											</div>
+											<div class="card-footer">
+												<div class="text-center">	
+													<hr>												
+													
+												</div>
+											</div>
+										</div>
 											</div>
                                         	
                                         </div>

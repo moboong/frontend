@@ -123,14 +123,14 @@
 														</div>
 													</div>
 													<div class="card-block"
-														style="min-height: 400px; background-color: #D3F1EC">
-														<div style="max-height: 500px;"
+														style="background-color: #D3F1EC">
+														<div style="max-height: 700px;"
 															class="row align-items-center">
 															<div class="container">
 																<img id="signalImg"
 																	src="${pageContext.request.contextPath}/assets/images/exchange/1.png"
 																	class="card-img rounded mx-auto d-block"
-																	style="max-height: 500px; max-width: 500px;">
+																	style="max-width: 700px;">
 															</div>
 														</div>
 														<div style="position: absolute; top: 55%; left: 3%">
@@ -165,15 +165,28 @@
 													</div>
 													<div class="card-block">
 														<div id="exko-chart" style="height: 400px;"></div>
-														<div class="table-responsive">
+
+														<div id="accordion" role="tablist"
+															aria-multiselectable="true">															
+															
+															<div class="accordion-panel">
+																<div class=" accordion-heading" role="tab"
+																	id="headingThree">
+																	<h3 class="card-title accordion-title">
+																		<a
+																			class="accordion-msg waves-effect waves-dark scale_active collapsed"
+																			data-toggle="collapse" data-parent="#accordion"
+																			href="#collapseThree" aria-expanded="false"
+																			aria-controls="collapseThree"> 과거 급상승 시기 뉴스 : 2008-12, 2020-03 </a>
+																	</h3>
+																</div>
+																<div id="collapseThree" class="panel-collapse collapse"
+																	role="tabpanel" aria-labelledby="headingThree" style="">
+																	<div class="accordion-content accordion-desc">
+																		
+																		<div class="table-responsive">
 															<table class="table table-hover">
 
-																<thead>
-																	<tr>
-																		<th>과거 급상승 시기 뉴스</th>
-																		<th>2008-12, 2020-03</th>
-																	</tr>
-																</thead>
 																<tbody>
 
 
@@ -222,6 +235,13 @@
 																</tbody>
 															</table>
 														</div>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														
 													</div>
 												</div>
 											</div>

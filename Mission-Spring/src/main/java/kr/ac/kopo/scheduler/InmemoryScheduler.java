@@ -102,7 +102,7 @@ public class InmemoryScheduler {
 	}
 
 	// 1분마다
-	//@Scheduled(cron = "0 0/1 * * * *")
+	@Scheduled(cron = "0 0/1 * * * *")
 	public void insertOne() {
 
 		// 여기부터 인메모리에 적재.
