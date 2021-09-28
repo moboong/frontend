@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="col-xl-7 col-md-12">
+
 	<div class="card">
 		<div class="card-header">
 			<h5>실시간 데이터 알림 설정</h5>
@@ -59,10 +59,10 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 
-<div class="col-xl-5 col-md-12">
+
+<%-- <div class="col-xl-5 col-md-12">
 	<div class="card">
 		<div class="card-header">
 			<h5>알림 현황</h5>
@@ -92,7 +92,7 @@
 							<td>
 								09:00
 							</td>
-							<td>5회</td>
+							<td><span class="number"></span>회</td>
 							<td class="text-right">
 								<label class="label label-success">medium</label>
 							</td>
@@ -113,4 +113,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> --%>
+

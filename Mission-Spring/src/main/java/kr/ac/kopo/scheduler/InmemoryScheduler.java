@@ -102,7 +102,7 @@ public class InmemoryScheduler {
 	}
 
 	// 1분마다
-	@Scheduled(cron = "0 0/1 * * * *")
+	//@Scheduled(cron = "0 0/3 * * * *")
 	public void insertOne() {
 
 		// 여기부터 인메모리에 적재.
@@ -319,7 +319,7 @@ public class InmemoryScheduler {
 		params.put("to", "01036676373");
 		params.put("from", "01036676373");
 		params.put("type", "SMS");
-		params.put("text", "Coolsms Testing Message!");
+		params.put("text", "[하나 스톡시그널] : 환율(미국달러) 이상 감지! 확인 요망");
 		params.put("app_version", "test app 1.2"); // application name and version
 
 		try {

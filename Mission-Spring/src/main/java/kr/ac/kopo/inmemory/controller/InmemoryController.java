@@ -312,7 +312,7 @@ public class InmemoryController {
 		
 		int result = 0;
 		
-		String urlTemp = "https://finance.naver.com/sise/investorDealTrendTime.naver?bizdate=20210924&page=1";
+		String urlTemp = "https://finance.naver.com/sise/investorDealTrendTime.naver?bizdate=20210928&page=1";
 		Document docTemp = null;
 		try {
 			docTemp = Jsoup.connect(urlTemp).get();
@@ -329,7 +329,7 @@ public class InmemoryController {
 		int page = 1;
 		while(true) {
 			
-			String url = "https://finance.naver.com/sise/investorDealTrendTime.naver?bizdate=20210924&page=" + page;
+			String url = "https://finance.naver.com/sise/investorDealTrendTime.naver?bizdate=20210928&page=" + page;
 			Document doc = null;
 			try {
 				doc = Jsoup.connect(url).get();

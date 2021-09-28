@@ -57,10 +57,18 @@ public class ReplyEchoHandler extends TextWebSocketHandler {
 					boardWriterSession.sendMessage(tmpMsg);
 				}
 				if ("alarm".equals(cmd) && "all".equals(boardWriter)) {
-					TextMessage tmpMsg = new TextMessage(bno + "이상 감지!! 확인 요함.");
-					for (WebSocketSession sess: sessions) {
-						sess.sendMessage(tmpMsg);
-					}
+					TextMessage tmpMsg = new TextMessage("<label class=\"label label-danger\">" + bno + "</label> 이상 감지!! 확인 요함.");
+//					for (WebSocketSession sess: sessions) {
+//						sess.sendMessage(tmpMsg);
+//					}
+					boardWriterSession = userSessions.get("messi10");
+					boardWriterSession.sendMessage(tmpMsg);
+					boardWriterSession = userSessions.get("son1Q");
+					boardWriterSession.sendMessage(tmpMsg);
+					boardWriterSession = userSessions.get("ronaldo07");
+					boardWriterSession.sendMessage(tmpMsg);
+					boardWriterSession = userSessions.get("mbappe07");
+					boardWriterSession.sendMessage(tmpMsg);
 				}
 			}
 		}

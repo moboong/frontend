@@ -87,10 +87,94 @@
 								<div class="page-wrapper">
 									<!-- Page-body start -->
 									<div class="page-body">
-										<div id="conditionPart" class="row justify-content-md-center">
+										<div class="row justify-content-md-center">
 
 											<!-- 삽입 부분 -->
-
+											<div class="col-xl-7 col-md-12" id="conditionPart"></div>
+											
+											<div class="col-xl-5 col-md-12">
+												<div class="card">
+													<div class="card-header">
+														<h5>알림 현황</h5>
+											
+													</div>
+													<div class="card-block">
+														<div class="table-responsive">
+															<table class="table table-hover">
+																<thead>
+																	<tr>
+																		<th>지표종류</th>
+																		<th>시작시간</th>
+																		<th>감지 횟수</th>
+																		<th class="text-right">Priority</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	
+																	<tr>
+																		<td>
+																			<div class="d-inline-block">
+																				<h6>미국-달러환율</h6>
+																				<p class="text-muted m-b-0">exchange signal</p>
+																			</div>
+																		</td>
+																		<td>
+																			09:00
+																		</td>
+																		<td><span class="number">17</span>회</td>
+																		<td class="text-right">
+																			<label class="label label-success">medium</label>
+																		</td>
+																	</tr>
+																	
+																	<tr>
+																		<td>
+																			<div class="d-inline-block">
+																				<h6>코스피</h6>
+																				<p class="text-muted m-b-0">exchange signal</p>
+																			</div>
+																		</td>
+																		<td>
+																			08:30
+																		</td>
+																		<td><span class="number2">2</span>회</td>
+																		<td class="text-right">
+																			<label class="label label-success">medium</label>
+																		</td>
+																	</tr>
+																	
+																	<tr>
+																		<td>
+																			<div class="d-inline-block">
+																				<h6>외국인매도세</h6>
+																				<p class="text-muted m-b-0">exchange signal</p>
+																			</div>
+																		</td>
+																		<td>
+																			08:30
+																		</td>
+																		<td><span class="number3">0</span>회</td>
+																		<td class="text-right">
+																			<label class="label label-success">medium</label>
+																		</td>
+																	</tr>
+																	
+																</tbody>
+																<!-- 
+																<td class="text-right"><label class="label label-primary">high</label></td>
+																<td class="text-right"><label class="label label-success">medium</label></td>
+																<td class="text-right"><label class="label label-danger">Low</label></td>
+																 -->
+															</table>
+														</div>
+													</div>
+													<div class="card-footer">
+														<div class="text-right">
+															<hr>
+														</div>
+													</div>
+												</div>
+											</div>
 											<!-- 삽입 부분 -->
 
 										</div>
@@ -177,6 +261,7 @@
 																class="btn waves-effect waves-light btn-primary">
 																<i class="icofont icofont-user-alt-3"></i>전체삽입(insertAll)
 															</button>
+															<!-- <button type="button" onclick="sendBoroadCast()">체크</button> -->
 														</div>
 													</div>
 												</div>
@@ -191,6 +276,7 @@
 						</div>
 					</div>
 					<!-- 컨텐츠 끝 -->
+					
 
 				</div>
 			</div>
@@ -335,6 +421,7 @@
 					console.log('func: POST 조건수정 성공');
 					//모달 닫기
 					$('#editModal').modal("hide");
+					
 				},
 				error : function() {
 					console.log('func: POST 조건수정 실패');
@@ -365,6 +452,13 @@
 			$('#editModal').modal("show");
 			$('input[name=no]').val(no)
 		}
+		
+		function sendBoroadCast() {
+			if(socket) {
+				let socketMsg = "alarm," + "admin," + "all," + "[환율]";
+				socket.send(socketMsg);
+			}
+		} 
 	</script>
 
 	<script>
@@ -374,6 +468,28 @@
 			selectAllKospi();
 			selectAllForeign();
 		});
+	</script>
+	
+	<script>
+		function startTime() {
+		  var cnt0 = 1;
+
+		  counterFn();
+
+		  function counterFn() {
+
+		    id0 = setInterval(count0Fn, 1000);
+
+		    function count0Fn() {
+		      cnt0++;
+		      if (cnt0 > 17) {
+		        clearInterval(id0);
+		      } else {
+		        $(".number").text(cnt0);
+		      }
+		    }
+		  }
+		}
 	</script>
 </body>
 </html>
