@@ -25,4 +25,6 @@ public interface InmemoryDAO {
 	int insertAllForeign(List<ForeignVO> foreignVOs);
 	
 	List<ForeignVO> searchAllForeign();
+	
+	int insertTest();
 }

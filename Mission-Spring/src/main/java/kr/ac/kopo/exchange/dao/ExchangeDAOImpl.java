@@ -38,9 +38,13 @@ public class ExchangeDAOImpl implements ExchangeDAO {
 		return list;
 	}
 	
-	
 	public List<ExchangeVO> searchYear() {
 		List<ExchangeVO> list = sqlsessionTemplate.selectList("exchange.ExchangeDAO.selectYear");
 		return list;
+	}
+	
+	public int insertTest() {
+		int result = sqlsessionTemplate.insert("exchange.ExchangeDAO.insertTest");
+		return result;
 	}
 }

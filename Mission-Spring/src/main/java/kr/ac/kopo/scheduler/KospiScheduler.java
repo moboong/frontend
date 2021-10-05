@@ -7,7 +7,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import kr.ac.kopo.kospi.service.KospiService;
 import kr.ac.kopo.kospi.vo.KospiVO;
@@ -19,7 +18,7 @@ public class KospiScheduler {
 	private KospiService service;
 	
 	//새벽 1시
-	@Scheduled(cron = "0 0 1 * * *")
+	//@Scheduled(cron = "0 0 1 * * *")
 	public void insertOne() {
 
 		String latest = service.getSeq();

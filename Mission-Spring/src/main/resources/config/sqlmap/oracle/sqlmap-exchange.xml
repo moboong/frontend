@@ -42,4 +42,9 @@
 			from t_exchange_d
 	</select>
 	
+	<insert id="insertTest">
+		INSERT INTO FOREIGNSELL (retail, regDate, foreigns, institutional)
+		VALUES (1000, '2021-10-21', 2000, 3000)
+	</insert>
+	
 </mapper>

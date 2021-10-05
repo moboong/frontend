@@ -71,4 +71,9 @@ public class InmemoryDAOImpl implements InmemoryDAO {
 		return list;
 	}
 	
+	@Override
+	public int insertTest() {
+		int result = hsqlsessionTemplate.insert("exchange.ExchangeDAO.insertTest");
+		return result;
+	}
 }

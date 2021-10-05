@@ -43,4 +43,10 @@ public class ExchangeServiceImpl implements ExchangeService {
 		List<ExchangeVO> exchangeVOs = exchangeDAO.searchYear();
 		return exchangeVOs;
 	}
+	
+	@Override
+	public int insertTest() {
+		int result = exchangeDAO.insertTest();
+		return result;
+	}
 }

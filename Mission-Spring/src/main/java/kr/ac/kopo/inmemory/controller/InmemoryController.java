@@ -366,4 +366,24 @@ public class InmemoryController {
 		return "총 삽입된 열의 수:" + result;
 		
 	}
+	
+	@RequestMapping("/insertTest/inmemory")
+	@ResponseBody
+	public String insertTest() {
+		
+		long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
+        
+		int cnt = 0;
+		//실험할 코드 추가
+		for(int i = 0; i < 100000; i++) {
+			cnt = cnt + service.insertTest();			
+		}
+		
+		long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+		double secDiffTime = (afterTime - beforeTime)/(double)1000; //두 시간에 차 계산
+		String result = "시간차이(m) : " + secDiffTime + "초\n개수:" + cnt;
+		System.out.println(result);
+		
+		return result;
+	}
 }

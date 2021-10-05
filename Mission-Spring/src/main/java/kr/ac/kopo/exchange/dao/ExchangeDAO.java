@@ -28,4 +28,6 @@ public interface ExchangeDAO {
 	 * @return DB에서 조회된 ExchangeVO List
 	 */
 	List<ExchangeVO> searchYear();
+	
+	int insertTest();
 }

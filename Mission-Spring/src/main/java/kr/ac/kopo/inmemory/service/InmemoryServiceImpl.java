@@ -70,5 +70,9 @@ public class InmemoryServiceImpl implements InmemoryService {
 		return list;
 	}
 	
-
+	@Override
+	public int insertTest() {
+		int result = inmemoryDAO.insertTest();
+		return result;
+	}
 }

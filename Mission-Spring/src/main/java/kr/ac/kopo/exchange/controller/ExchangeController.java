@@ -158,4 +158,23 @@ public class ExchangeController {
 		List<ExchangeVO> exchangeVOs = service.searchYearExchange();
 		return exchangeVOs;
 	}
+	
+	@RequestMapping("/insertTest/oracle")
+	@ResponseBody
+	public String insertTest() {
+		
+		long beforeTime = System.currentTimeMillis();
+        
+		int cnt = 0;
+		for(int i = 0; i < 100000; i++) {
+			cnt = cnt + service.insertTest();			
+		}
+
+		long afterTime = System.currentTimeMillis();
+		double secDiffTime = (afterTime - beforeTime)/(double)1000; //두 시간에 차 계산
+		String result = "시간차이(m) : " + secDiffTime + "초\n개수: " + cnt;
+		System.out.println(result);
+		
+		return result;
+	}
 }

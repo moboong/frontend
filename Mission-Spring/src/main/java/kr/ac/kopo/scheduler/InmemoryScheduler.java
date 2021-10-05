@@ -14,7 +14,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import kr.ac.kopo.admin.ExampleClient;
@@ -45,7 +44,7 @@ public class InmemoryScheduler {
 	private JavaMailSender mailSender;
 
 	// 매일 9시에
-	@Scheduled(cron = "0 1 9 * * *")
+	//@Scheduled(cron = "0 1 9 * * *")
 	public void insertAll() {
 
 		int result = 0;
@@ -177,7 +176,7 @@ public class InmemoryScheduler {
 	}
 
 	// 매일 9시에
-	@Scheduled(cron = "0 1 9 * * *")
+	//@Scheduled(cron = "0 1 9 * * *")
 	public void insertAllKospi() {
 
 		int page = 1;
